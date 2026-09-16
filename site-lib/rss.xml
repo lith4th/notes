@@ -1,11 +1,463 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[School]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>School</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 21 Jul 2026 03:12:51 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 21 Jul 2026 03:12:50 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Apache]]></title><description><![CDATA[sudo systemctl restart apache2
-]]></description><link>linux/apache.html</link><guid isPermaLink="false">Linux/Apache.md</guid><pubDate>Tue, 21 Jul 2026 01:47:25 GMT</pubDate></item><item><title><![CDATA[Welcome]]></title><description><![CDATA[
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[School]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>School</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 16 Sep 2026 18:59:28 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 16 Sep 2026 18:59:13 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[ICT 211]]></title><description><![CDATA[
+<a data-href="Day one 211" href="ict-211/day-one-211.html" class="internal-link" target="_self" rel="noopener nofollow">Day one 211</a>
+<br><a data-href="More intro stuff - day 2" href="ict-211/more-intro-stuff-day-2.html" class="internal-link" target="_self" rel="noopener nofollow">More intro stuff - day 2</a>
+<br><a data-href="Hyper-V and Hypervisors" href="ict-211/hyper-v-and-hypervisors.html" class="internal-link" target="_self" rel="noopener nofollow">Hyper-V and Hypervisors</a>
+<br><a data-href="Virtual Switches" href="ict-211/virtual-switches.html" class="internal-link" target="_self" rel="noopener nofollow">Virtual Switches</a>
+<br><a data-href="tommorrows build" href="ict-211/tommorrows-build.html" class="internal-link" target="_self" rel="noopener nofollow">tommorrows build</a>
+]]></description><link>ict-211/ict-211.html</link><guid isPermaLink="false">ICT 211/ICT 211.md</guid><pubDate>Wed, 16 Sep 2026 18:54:12 GMT</pubDate></item><item><title><![CDATA[tommorrows build]]></title><description><![CDATA[<img alt="Pasted image 20260916115244.png" src="images/pasted-image-20260916115244.png" target="_self">]]></description><link>ict-211/tommorrows-build.html</link><guid isPermaLink="false">ICT 211/tommorrows build.md</guid><pubDate>Wed, 16 Sep 2026 18:52:45 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260916115244]]></title><description><![CDATA[<img src="images/pasted-image-20260916115244.png" target="_self">]]></description><link>images/pasted-image-20260916115244.html</link><guid isPermaLink="false">images/Pasted image 20260916115244.png</guid><pubDate>Wed, 16 Sep 2026 18:52:44 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Hyper-V and Hypervisors]]></title><description><![CDATA[. A Hypervisor is the software layer on a physical host that coordinates virtual machines. A Hypervisor manages virtual machines and is responsible for allocating resources to each virtual machine. The Hypervisor is ultimately what makes virtualization possible. There are two types of Hypervisor: Type 1 and Type 2
+Also known as the "Bare Metal Hypervisor"
+Type 1 Hypervisor is installed directly on the physical host
+Has direct access to the physical resources of the physical host which then allocates the available resources to the virtual machines
+Hypervisor loads (boots) first, before the Operating System
+Administrators have the ability to create clusters with many Type 1 Hypervisors (but not all) Also known as "Hosted Hypervisor"
+Type 2 Hypervisor is installed on top of the host Operating System (ie Windows 10)
+The host Operating System manages the hardware resources
+The Type 2 Hypervisor requests the resources from the Operating System
+Type 2 Hypervisors do not support clustering Type 1 Hypervisors have better performance compared to Type 2
+Type 1 Hypervisors have direct access to hardware resources!
+Type 2 Hypervisors need to request resources from the OS first, the OS then accesses the hardware resources
+Hyper-V is Type 1 <img alt="Pasted image 20260914114302.png" src="images/pasted-image-20260914114302.png" target="_self"><br><img alt="Pasted image 20260914114853.png" src="images/pasted-image-20260914114853.png" target="_self">
+Hyper-V is a Type 1 Hypervisor!
+Can be confusing because on Windows 10 / 11 it's a Feature that's enabled from the Control Panel
+Can be confusing because on Server 2016/2019/2022 it's enabled as a Server Role
+Hyper-V Manager "appears" to look like an application, but this is what an administrator uses to create/manage VMs
+Hyper-V is the Virtual Machine Manager
+When Creating New VM’s
+When creating New Server VM’s use datacenter not standard.
+Datacenter supports clusters. For exporting and importing VMs from your home computer to the ICT Lab environment create a private vSwitch named "Private Virtual Switch"
+vSwitch names
+The name of the vSwitch is case sensitive. Your computer with Hyper-V already has the "Default Switch" configured
+To complete a successful Export (Copy/Backup) of a VM using Hyper-V Manager: Ensure the VM is shut down / turned off Remove the DVD / CD Drive from the VM Export the VM to the desired location using Hyper-V Manager by clicking Export ... (ie to an External Hard Drive - SSD) There are 3 Types of Imports when using Hyper-V Manager
+This type of import allows you to import, or "register," a VM where the files and VHD of the VM are already moved to the host
+You can perform this import when the files are already moved to the new host (ie VM files are cut and pasted from an SSD to a host computer prior to starting the Import process)
+This import will maintain the same unique ID
+this if faster then restore since it doesn't need to move a bunch of files. less work for hyper-v. This type of import allows you to import by copying the files and VHD of the VM are from one location to another
+This import will copy the VM files to a new host, the original files will remain in-tact on the original source (ie VM files saved on an SSD)
+The original exported files remain unchanged and can be reused for future imports This import will also maintain the same unique ID of the VM This type of import allows you to create "templates" of VMs
+This type of import can create multiple instances of the same VM on the same host
+This import will create a new ID for each VM
+You will not need to use this type of import for this course!
+]]></description><link>ict-211/hyper-v-and-hypervisors.html</link><guid isPermaLink="false">ICT 211/Hyper-V and Hypervisors.md</guid><pubDate>Wed, 16 Sep 2026 18:38:40 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Virtual Switches]]></title><description><![CDATA[Virtual Switches Do not change the virtual switches on the lab machines, only on nested VM’s may you change them. Private Virtual Switches only establish connectivity between virtual machines within a host
+There is no external connectivity outside of the host
+<img alt="Pasted image 20260916112115.png" src="images/pasted-image-20260916112115.png" target="_self"> External Virtual Switches connect to a network interface card (NIC) on the host essentially “takes over” that NIC Establishes connectivity between virtual machines and intermediary devices (ie physical router) connected to the host
+Can also establish connectivity between virtual machines and other physical host
+<br><img alt="Pasted image 20260916111759.png" src="images/pasted-image-20260916111759.png" target="_self">
+Hypervisors can also provide virtual machines with immediate connectivity to the internet
+This is known as the "Default Switch" on Windows 11. This is not included with Server!
+This type of virtual switch essentially makes the host a multi-function routing device
+Designed to provide immediate internet connectivity to VMs
+The host provides DHCP and NAT services to VMs with the Default Switch However, the VMs do not have connectivity to the physical host
+<br><img alt="Pasted image 20260916112040.png" src="images/pasted-image-20260916112040.png" target="_self">
+Internal Virtual Switches can establish connectivity between virtual machines and the physical host
+Internal Virtual Switches are rarely used<br>
+<img alt="Pasted image 20260916112624.png" src="images/pasted-image-20260916112624.png" target="_self">
+]]></description><link>ict-211/virtual-switches.html</link><guid isPermaLink="false">ICT 211/Virtual Switches.md</guid><pubDate>Wed, 16 Sep 2026 18:26:30 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260916112624]]></title><description><![CDATA[<img src="images/pasted-image-20260916112624.png" target="_self">]]></description><link>images/pasted-image-20260916112624.html</link><guid isPermaLink="false">images/Pasted image 20260916112624.png</guid><pubDate>Wed, 16 Sep 2026 18:26:24 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260916112115]]></title><description><![CDATA[<img src="images/pasted-image-20260916112115.png" target="_self">]]></description><link>images/pasted-image-20260916112115.html</link><guid isPermaLink="false">images/Pasted image 20260916112115.png</guid><pubDate>Wed, 16 Sep 2026 18:21:15 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260916112040]]></title><description><![CDATA[<img src="images/pasted-image-20260916112040.png" target="_self">]]></description><link>images/pasted-image-20260916112040.html</link><guid isPermaLink="false">images/Pasted image 20260916112040.png</guid><pubDate>Wed, 16 Sep 2026 18:20:40 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260916111759]]></title><description><![CDATA[<img src="images/pasted-image-20260916111759.png" target="_self">]]></description><link>images/pasted-image-20260916111759.html</link><guid isPermaLink="false">images/Pasted image 20260916111759.png</guid><pubDate>Wed, 16 Sep 2026 18:17:59 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[CLI Basics - Linux]]></title><description><![CDATA[ict219@ict219-server:~$
+Command [Options] [Arguments]
+ls -R /
+Practice Connor Prime recommends this game to help get familiar with the terminal:
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://gitlab.com/slackermedia/bashcrawl" target="_self">https://gitlab.com/slackermedia/bashcrawl</a>
+]]></description><link>ict-219/cli-basics-linux.html</link><guid isPermaLink="false">ICT 219/CLI Basics - Linux.md</guid><pubDate>Wed, 16 Sep 2026 17:44:40 GMT</pubDate></item><item><title><![CDATA[ICT 219]]></title><description><![CDATA[
+<a data-href="Info about Linux - 219" href="ict-219/info-about-linux-219.html" class="internal-link" target="_self" rel="noopener nofollow">Info about Linux - 219</a>
+<br><a data-href="CLI Basics - Linux" href="ict-219/cli-basics-linux.html" class="internal-link" target="_self" rel="noopener nofollow">CLI Basics - Linux</a> ]]></description><link>ict-219/ict-219.html</link><guid isPermaLink="false">ICT 219/ICT 219.md</guid><pubDate>Wed, 16 Sep 2026 17:01:32 GMT</pubDate></item><item><title><![CDATA[The Technology Triangle]]></title><description><![CDATA[Functionality
+Features Security
+Restrictions Usability
+the GUI
+Always consider the functionality of the environment with the necessity of the security measures and the workflow of your users ]]></description><link>ict-212/definitions/the-technology-triangle.html</link><guid isPermaLink="false">ICT 212/Definitions/The Technology Triangle.canvas</guid><pubDate>Wed, 16 Sep 2026 16:50:57 GMT</pubDate></item><item><title><![CDATA[ICT 212]]></title><description><![CDATA[
+<a data-href="ICT 212/Day one" href="ict-212/day-one.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 212/Day one</a>
+<br><a data-href="Day 2 - 212" href="ict-212/day-2-212.html" class="internal-link" target="_self" rel="noopener nofollow">Day 2 - 212</a> <br><a data-href="what is an asset" href="ict-212/definitions/what-is-an-asset.html" class="internal-link" target="_self" rel="noopener nofollow">what is an asset</a>
+<br><a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
+<br><a data-tooltip-position="top" aria-label="The Technology Triangle.canvas" data-href="The Technology Triangle.canvas" href="ict-212/definitions/the-technology-triangle.html" class="internal-link" target="_self" rel="noopener nofollow">The Technology Triangle</a>
+<br><a data-href="TCP - 3 way handshake" href="ict-137/general-info/protocols/tcp-3-way-handshake.html" class="internal-link" target="_self" rel="noopener nofollow">TCP - 3 way handshake</a>
+<br><a data-href="3 States of Data" href="ict-212/definitions/3-states-of-data.html" class="internal-link" target="_self" rel="noopener nofollow">3 States of Data</a> ]]></description><link>ict-212/ict-212.html</link><guid isPermaLink="false">ICT 212/ICT 212.md</guid><pubDate>Wed, 16 Sep 2026 16:46:20 GMT</pubDate></item><item><title><![CDATA[3 States of Data]]></title><link>ict-212/definitions/3-states-of-data.html</link><guid isPermaLink="false">ICT 212/Definitions/3 States of Data.md</guid><pubDate>Wed, 16 Sep 2026 16:45:05 GMT</pubDate></item><item><title><![CDATA[CIA Triad]]></title><description><![CDATA[Note
+This works hand in hand with <a data-tooltip-position="top" aria-label="The Technology Triangle.canvas" data-href="The Technology Triangle.canvas" href="ict-212/definitions/the-technology-triangle.html" class="internal-link" target="_self" rel="noopener nofollow">The Technology Triangle</a> when it comes to security considerations.
+]]></description><link>ict-212/definitions/cia-triad.html</link><guid isPermaLink="false">ICT 212/Definitions/CIA Triad.md</guid><pubDate>Wed, 16 Sep 2026 16:39:10 GMT</pubDate></item><item><title><![CDATA[Protocols]]></title><description><![CDATA[
+<a data-href="CDP - Cisco Discovery Protocol" href="ict-137/general-info/protocols/cdp-cisco-discovery-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">CDP - Cisco Discovery Protocol</a>
+<br><a data-href="DTP - Dynamic Trunking Protocol" href="ict-137/general-info/protocols/dtp-dynamic-trunking-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">DTP - Dynamic Trunking Protocol</a>
+<br><a data-href="STP - Spanning Tree Protocol" href="ict-137/general-info/protocols/stp-spanning-tree-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">STP - Spanning Tree Protocol</a>
+<br><a data-href="PAgP - Port Aggregation Protocol" href="ict-137/general-info/protocols/pagp-port-aggregation-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">PAgP - Port Aggregation Protocol</a>
+<br><a data-href="LACP - Link Aggregation Protocol" href="ict-137/general-info/protocols/lacp-link-aggregation-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">LACP - Link Aggregation Protocol</a>
+<br><a data-href="TCP - 3 way handshake" href="ict-137/general-info/protocols/tcp-3-way-handshake.html" class="internal-link" target="_self" rel="noopener nofollow">TCP - 3 way handshake</a>
+]]></description><link>ict-137/general-info/protocols/protocols.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/Protocols.md</guid><pubDate>Wed, 16 Sep 2026 16:35:40 GMT</pubDate></item><item><title><![CDATA[TCP - 3 way handshake]]></title><description><![CDATA[<img alt="Pasted image 20260916093350.png" src="images/pasted-image-20260916093350.png" target="_self">]]></description><link>ict-137/general-info/protocols/tcp-3-way-handshake.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/TCP - 3 way handshake.md</guid><pubDate>Wed, 16 Sep 2026 16:33:52 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260916093350]]></title><description><![CDATA[<img src="images/pasted-image-20260916093350.png" target="_self">]]></description><link>images/pasted-image-20260916093350.html</link><guid isPermaLink="false">images/Pasted image 20260916093350.png</guid><pubDate>Wed, 16 Sep 2026 16:33:50 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[PowerShell Security and Hashes]]></title><description><![CDATA[
+Cyber security Looking after the <a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a> Confidentiality Only those allowed can read it Integrity Data hasn’t been altered Availability The thing is available when required PowerShell Prevent the user from messing up this is what its based on/the reasoning behind it Set execution policy RemoteSigned If you initiate it then windows assumes you trust the author Undeffined Domain and local Defaults Dose not recognize.ps1 as an exacutable
+Dose not run a script just by its name Digital signature
+Certificate
+Root certificate authority (root/authority CA)
+Hash Input of any length = fixed length string Cryptographic hash&nbsp; -- Digital signature Input of any length + secret key = fixed length string
+Use another key to decode into og string <br><img alt="Pasted image 20260408174213.png" src="images/pasted-image-20260408174213.png" target="_self">]]></description><link>ict-128/windows-info/powershell-security-and-hashes.html</link><guid isPermaLink="false">ICT 128/Windows Info/PowerShell Security and Hashes.md</guid><pubDate>Wed, 16 Sep 2026 16:25:31 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Day one and two - 218]]></title><description><![CDATA[
+<a data-tooltip-position="top" aria-label="https://learning.oreilly.com/playlists/c851d351-4ab3-433f-847e-25a7798b1741/" data-href="https://learning.oreilly.com/playlists/c851d351-4ab3-433f-847e-25a7798b1741/" href="https://learning.oreilly.com/playlists/c851d351-4ab3-433f-847e-25a7798b1741/" class="internal-link is-unresolved" target="_self" rel="noopener nofollow">Book</a>
+Quiz 1 Quiz Date: September 18 (Take home) deadline: September 21, 12 PM
+Covers: Windows 2025 chapter 1-4, and Security+, chapter 1. By the end of this lecture, students should be able to:
+Define security controls and explain their purpose.
+Describe the four categories of security controls.
+Differentiate between control categories and control types.
+Explain the six major control types using the PDDCCD framework.
+Apply security control concepts to real-world cybersecurity scenarios.
+Identify examples of controls used in organizations.
+Analyze how multiple controls work together through Defense in Depth have layers to your security Security controls are safeguards or countermeasures that protect an organization’s:
+Information
+Systems
+Networks
+Facilities
+Employees
+The purpose of security controls is to reduce risk by:
+Preventing attacks
+Detecting attacks
+Responding to incidents
+Recovering from disruption
+No organization can completely eliminate risk.
+Threats constantly evolve:
+Hackers
+Malware
+Insider threats disgruntled employee
+bad software Social engineering attacks
+Physical theft
+Organizations implement security controls to minimize the chances of successful
+attacks and reduce the impact when incidents occur.
+A common cybersecurity strategy is called Defense in Depth.Defense in Depth means using multiple layers of security controls rather than relying on a single protection mechanism.Imagine a company protecting a file server:If one layer fails, additional layers continue protecting the organizationA user's password is stolen.Without MFA:
+Attacker logs in immediately.
+With MFA:
+If Passwords are compromised.
+MFA blocks access.
+The security team receives an alert.
+One failed control does not necessarily mean a security breach.
+Security controls are grouped into four major categoriesTechnical controls are implemented through hardware or software systems.
+They automatically enforce security requirements.Protect digital assets using technology.
+Firewalls A firewall filters network traffic.
+Functions: Allows authorized traffic
+Blocks unauthorized traffic
+Monitors network communications Example: A firewall blocks incoming traffic from known malicious IP addresses Multi-Factor Authentication (MFA) MFA requires multiple forms of verification.
+Three common factors: Something you know Password Something you have Smartphone
+Smart card Something you are Fingerprint
+Facial recognition Example Logging into Microsoft 365 requires: Username
+Password
+Approval through Microsoft Authenticator Encryption Encryption converts readable data into ciphertext.
+<br>this works hand in hand with the <a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
+Benefits: Protects confidentiality
+Prevents unauthorized access
+Secures sensitive information Examples: HTTPS websites
+BitLocker drive encryption
+VPN communications Antivirus and Endpoint Protection Functions: Detect malware
+Block malicious programs
+Quarantine infected files
+Remove threats Real-world Example: Microsoft Defender identifies ransomware activity and isolates the affected device. Managerial controls are administrative processes used to manage security programs.Create security governance and oversight.
+Security Policies Policies establish management's security expectations.
+Examples: Password policy
+Remote work policy
+Acceptable Use Policy (AUP) Policies tell employees what they can and cannot do. Risk Assessments Organizations must identify: Threats
+Vulnerabilities
+Potential impacts Questions include: What can go wrong?
+How likely is it?
+What would be the impact? Security Awareness Training Human error remains a major cause of security incidents.
+Training helps employees: Identify phishing attacks
+Recognize suspicious behavior
+Follow security procedures Audits and Compliance Reviews Audits verify: Policies are followed
+Controls are working
+Regulatory requirements are met Examples: ISO 27001 audits
+PCI-DSS assessments
+Internal security reviews Operational controls are security activities performed by people during daily operations.Ensure security procedures are consistently followed. Account Management Examples: Creating user accounts
+Disabling terminated employees
+Reviewing permissions Poor account management frequently leads to unauthorized access.
+Incident Response
+When a security incident occurs:
+• Detect
+• Analyze
+• Contain
+• Eradicate
+• Recover
+Organizations develop incident response procedures before an attack occurs.
+Security Monitoring
+Security analysts continuously monitor:
+• Event logs
+• Security alerts
+• Network activity
+Example:
+Microsoft Sentinel identifying suspicious login activity.
+User Awareness Programs
+Employees learn:
+• Secure password practices
+• Email security
+• Social engineering awareness
+Users become part of the organization's security defense. Physical controls protect facilities, equipment, and personnel.Prevent unauthorized physical access.Locks and Keys
+Protect:
+• Server rooms
+• Data centers
+• Equipment cabinets
+Security Guards
+Provide:
+• Visible security presence
+• Access verification
+• Emergency response
+CCTV Surveillance
+Functions:
+• Monitor activity
+• Record evidence
+• Support investigations
+Fencing and Gates
+Used to create secure boundaries around facilities.
+Examples:
+• Data centers
+• Power plants
+• Corporate campuses
+Mantraps
+A mantrap is a small, controlled entry area containing two doors.
+Purpose:
+• Only one person enters at a time.
+• Prevents tailgating attacks.
+Commonly used in:
+• Data centers
+• Research laboratories
+• Government facilitiesCategories tell us what kind of control it is.
+Types tell us what the control does.Stop attacks before they occur.• MFA
+• Firewalls
+• Encryption
+• Access control lists
+• Security patchesA firewall blocks malicious traffic before it reaches a server.Discourage of attacks.
+The control may not stop an attack but makes attackers think twice.• Warning signs
+• Security guards
+• Cameras
+• Alarm systemsCriminals often avoid facilities with visible monitoring systems.Identify attacks that occur or have occurred.• Intrusion Detection Systems (IDS)
+• Security logs
+• SIEM solutions
+• CCTV recordingsMicrosoft Sentinel detects repeated failed login attempts and generates an alert.Restore systems after an incident.• Malware removal
+• Backup restoration
+• Patch deployment
+• Disaster recovery plansA company restores encrypted files after a ransomware attack using backups.Provide alternative protection when the preferred control cannot be implemented.• Additional monitoring
+• VPN-only access
+• Manual approvalsA legacy application cannot support MFA.• VPN access only
+• Restricted access hours
+• Increased monitoringProvide instructions and guidance.• Security policies
+• Procedures
+• Standards
+• Acceptable Use PoliciesA corporate password policy requiring:
+• Minimum 12 characters
+• Complexity requirements
+• Regular reviewsSecurity+ Memory Aid
+Security controls reduce organizational risk.
+Defense in Depth uses multiple security layers.
+Four categories of controls: Technical
+Managerial
+Operational
+Physical Six common control types: Preventive
+Deterrent
+Detective
+Corrective
+Compensating
+Directive One control can belong to multiple control types.
+Security+ examinations frequently test control categories and PDDCCD classifications
+]]></description><link>ict-218/day-one-and-two-218.html</link><guid isPermaLink="false">ICT 218/Day one and two - 218.md</guid><pubDate>Wed, 16 Sep 2026 16:25:17 GMT</pubDate></item><item><title><![CDATA[Linux]]></title><description><![CDATA[
+<a data-href="PFSense" href="linux-personal-notes/pfsense/pfsense.html" class="internal-link" target="_self" rel="noopener nofollow">PFSense</a>
+<br><a data-href="Apache" href="linux-personal-notes/apache.html" class="internal-link" target="_self" rel="noopener nofollow">Apache</a>
+<br><a data-href="Screen" href="linux-personal-notes/screen.html" class="internal-link" target="_self" rel="noopener nofollow">Screen</a> <br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://www.youtube.com/watch?v=kyOJ4PCfSDg" target="_self">https://www.youtube.com/watch?v=kyOJ4PCfSDg</a>]]></description><link>linux-personal-notes/linux.html</link><guid isPermaLink="false">Linux personal notes/Linux.md</guid><pubDate>Wed, 16 Sep 2026 16:17:27 GMT</pubDate></item><item><title><![CDATA[what is an asset]]></title><description><![CDATA[An asset is anything valuable (tangible or intangible) to an individual or organization that requires protection.
+Data/information
+Computers and servers
+Network equipment
+Applications and services
+Credentials
+Intellectual property
+Reputation and business operations
+]]></description><link>ict-212/definitions/what-is-an-asset.html</link><guid isPermaLink="false">ICT 212/Definitions/what is an asset.md</guid><pubDate>Wed, 16 Sep 2026 16:15:02 GMT</pubDate></item><item><title><![CDATA[Day one and two - 225]]></title><description><![CDATA[
+we work on the network side of things firewalls routers switches Authentication you are who you say you are Authorization what can you do what permissions you have Accounting Event logs Module Title: Understanding Defense
+Module Objective: Explain approaches to network security defense.
+Cybersecurity analysts must prepare for any type of attack. It is their job to secure the assets of the organization’s network.
+Data is the one asset that cannot be replaced, it is the hardest to put a price on. To do this, cybersecurity analysts must first identify: Assets - Anything of value to an organization that must be protected including servers, infrastructure devices, end devices, and the greatest asset, data.
+Vulnerabilities - A weakness in a system or its design that could be exploited by a threat actor.
+Threats - Any potential danger to an asset. • The collection of all the devices and information owned or managed by an organization are
+assets.
+• The assets constitute the attack surface that threat actors could target.
+• As an organization grows, so do its assets. Consider the number of assets a large
+organization would have to protect.
+• Asset management consists of inventorying all assets, and then developing and implementing
+policies and procedures to protect them.
+• Organizations need to identify where critical information assets are stored, and how access is
+gained to that information.• Asset classification assigns an organization’s resources into groups based on common characteristics.
+• The most critical information needs to receive the highest level of protection and may even require special handling.
+• A labeling system can be used to determine how valuable, how sensitive, and how critical the information is.
+• The steps for identifying and classifying assets are:
+Determine the proper asset identification category: Information assets
+Software assets
+Physical assets
+Services Establish asset accountability by identifying the owner of each information asset and each piece of software: Identify the owner for all information assets.
+Identify the owner for all application software. Determine the criteria for classification Confidentiality
+Value
+Time
+Access rights
+Destruction Implement a classification schema: Adopt a consistent way of identifying information to ensure uniform protection and easier monitoring. Asset standards identify specific hardware and software products used by an organization.
+When a failure occurs, prompt action helps to maintain both access and security. If an organization does not standardize its hardware selection, personnel may need to scramble to find a replacement component.
+Non-standard environments require more expertise to manage, and they increase the cost of maintenance contracts and inventory • Part of the cybersecurity specialists’ job is to manage information assets and related systems throughout that asset´s lifecycle. The stages of asset´s lifecycle are:
+Procurement - The organization purchases the assets based on the needs identified from data gathered to justify the purchase. The asset is added to the organization’s inventory.
+Deployment -The asset is assembled and inspected to check for defects or other problems. Staff perform tests and install tags or barcodes for tracking purposes. The asset moves from inventory to in-use.
+Utilization -This is the longest stage of the cycle. The asset’s performance is continuously checked. Upgrades, patch fixes, new license purchases, and compliance audits are all part of the utilization stage.
+Maintenance It helps to extend an asset’s productive life. Staff may modify or upgrade the asset.
+Disposal - At the end of the asset’s productive life, it must be disposed of. All data must be wiped from the asset. Disposal may include dismantling an asset for parts. Any parts that can cause an environmental hazard must be disposed of according to local guidelines. have multiple layers of security to get to the asset eg AAA
+firewall IPS (intrusion prevention system)
+Hardened devices
+content filtering this is the key idea
+<img alt="Pasted image 20260914140154.png" src="images/pasted-image-20260914140154.png" target="_self">
+<br><img alt="Pasted image 20260914140315.png" src="images/pasted-image-20260914140315.png" target="_self">
+the idea is that a threat actor will try to attack individual leaves to get to the data/core asset. To make sure data and infrastructure remain secure, an organization should create different layers of protection: Layering: To make sure data and information remains available, an organization must set up different layers of protection, creating a barrier of multiple defenses that work together to prevent attacks.
+Limiting: Limiting access to data and information reduces the possibility of a security threat. An organization should restrict access so that each user only has the level of access required to do their job.
+Diversity: If all defense layers were the same, it would not be very difficult for cybercriminals to succeed in an attack. The layers must be different so that if one layer is penetrated, the same technique will not work on all the others which would compromise the whole system
+Obscurity: Obscuring information can also protect data and information. An organization should not reveal any information that cybercriminals can use to identify which Operating System (OS) a server is running, or the type or make of equipment or software it uses.
+Simplicity: Complexity does not necessarily guarantee security. If employees do not understand how to configure a solution properly, such as setting up their account using an unnecessarily complex process, this may make it just as easy for cybercriminals to compromise those systems. • They are the guidelines that are developed by an organization to govern its actions.
+• The policies define standards of correct behavior for the business and its employees.
+• If behavior that violates business policy (baseline) is detected on the network, it is possible that a
+security breach has occurred. An organization may have several guiding policies:<br><img alt="Pasted image 20260914141030.png" src="images/pasted-image-20260914141030.png" target="_self">
+A comprehensive security policy has several benefits: Demonstrates an organization’s commitment to security
+Sets the rules for expected behavior
+Ensures consistency in system operations, software and hardware acquisition and use, and maintenance
+Defines the legal consequences of violations
+Gives security staff the backing of management Security policies are used to inform users, staff, and managers of an organization’s requirements for protecting technology and information assets.
+A security policy also specifies the mechanisms that are needed to meet security requirements and provides a baseline from which to acquire, configure, and audit computer systems and networks for compliance.
+Policies in a security policy may include:<br>
+<img alt="Pasted image 20260914141015.png" src="images/pasted-image-20260914141015.png" target="_self">Configuration includes all the settings that you configure for a system which provide the foundation for all similar systems - like a template of sorts normal operations so that if an irregular event does occur, it can be detected! Baselining data takes timeItem’s to build defenses around:
+Hardware
+OS
+Protocols Tracking events that occur on end and intermediary devices (Workstations, Servers, Switches, Routers, etc)
+Categories of Logs (ie for the os, Applications)
+Categories of Events - Severity Levels, etc
+]]></description><link>ict-225/day-one-and-two-225.html</link><guid isPermaLink="false">ICT 225/Day one and two - 225.md</guid><pubDate>Mon, 14 Sep 2026 21:17:34 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914141030]]></title><description><![CDATA[<img src="images/pasted-image-20260914141030.png" target="_self">]]></description><link>images/pasted-image-20260914141030.html</link><guid isPermaLink="false">images/Pasted image 20260914141030.png</guid><pubDate>Mon, 14 Sep 2026 21:10:30 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914141015]]></title><description><![CDATA[<img src="images/pasted-image-20260914141015.png" target="_self">]]></description><link>images/pasted-image-20260914141015.html</link><guid isPermaLink="false">images/Pasted image 20260914141015.png</guid><pubDate>Mon, 14 Sep 2026 21:10:15 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914140315]]></title><description><![CDATA[<img src="images/pasted-image-20260914140315.png" target="_self">]]></description><link>images/pasted-image-20260914140315.html</link><guid isPermaLink="false">images/Pasted image 20260914140315.png</guid><pubDate>Mon, 14 Sep 2026 21:03:15 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914140154]]></title><description><![CDATA[<img src="images/pasted-image-20260914140154.png" target="_self">]]></description><link>images/pasted-image-20260914140154.html</link><guid isPermaLink="false">images/Pasted image 20260914140154.png</guid><pubDate>Mon, 14 Sep 2026 21:01:54 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 225]]></title><description><![CDATA[
+<a data-href="Day one and two - 225" href="ict-225/day-one-and-two-225.html" class="internal-link" target="_self" rel="noopener nofollow">Day one and two - 225</a> ]]></description><link>ict-225/ict-225.html</link><guid isPermaLink="false">ICT 225/ICT 225.md</guid><pubDate>Mon, 14 Sep 2026 20:33:52 GMT</pubDate></item><item><title><![CDATA[ICT 218]]></title><description><![CDATA[
+<a data-href="Day one and two - 218" href="ict-218/day-one-and-two-218.html" class="internal-link" target="_self" rel="noopener nofollow">Day one and two - 218</a> ]]></description><link>ict-218/ict-218.html</link><guid isPermaLink="false">ICT 218/ICT 218.md</guid><pubDate>Mon, 14 Sep 2026 19:33:24 GMT</pubDate></item><item><title><![CDATA[More intro stuff - day 2]]></title><description><![CDATA[September 14thObjectives:
+Define Virtualization and "Enlightenment"
+Different Types of Virtualization
+Benefits of virtualization
+Type 1 vs Type 2 Hypervisor
+Hyper-V
+If Time - Virtual SwitchesWednesday we'll talk about Virtual Switches, Exporting/Importing, and Lab 1Friday we'll look at OS ring architecture and other hypervisors· Define Virtualization
+. Identify Different Types of Virtualization
+· Virtualization in a Traditional Data Center Environment
+· Benefits of Virtualization
+. Hypervisors and Types of Hypervisors
+· Hyper-V
+. OS Architecture Rings
+. Hyper-V Windows 11 and Server
+· Virtual Switches
+. Exporting and Importing VMs (Backups). The ability to enable multiple operating system (OS) instances to execute simultaneously on a single physical system.· Allows for multiple virtual machines to run on a single host (aka a single node).. Each virtual machine runs independently from one another and behaves like an independent computer or server.. The OS installed on a virtual machine only has accessed to its virtualized resources (ie CPU, Memory, Storage, Network) - No direct access to the physical resource of the host.. Most modern Operating Systems are "Enlightened" to virtualization and "understand" virtualized hardware (since Server 2012 and Windows 8)Enlightened OS’s
+the term “Enlightened” is for systems that are made to be virtualized. the OS assumes that it is running on virtualized hardware. . Hardware Virtualization (CPU, Memory, Storage, Network Card)· Desktop Virtualization (Terminal Servers, Remote Desktop Server, Virtual Desktop Infrastructure). Network Virtualization (Virtual Switches, Virtual Firewalls, Software Defined Networking)· Storage Virtualization (Storage Pools, SANs, NASs)Operating System Virtualization (Containerization)<img alt="Pasted image 20260914111933.png" src="images/pasted-image-20260914111933.png" target="_self">*on the left is the lab and on the right is a data center. types of traffic north south traffic that goes outside the data center east west talk between the hosts traffic in the datacenter <br><img alt="Pasted image 20260914113131.png" src="images/pasted-image-20260914113131.png" target="_self" style="width: 619px; max-width: 100%;">
+Scalability Reliability
+Redundancy - High Availability
+Mobility
+Efficiency (of Resource Utilization)
+Cost Reduction (Physical equipment, Licensing, Electricity)
+Testing
+Backup and Disaster Recovery
+. A Hypervisor is the software layer on a physical host that coordinates virtual machines. A Hypervisor manages virtual machines and is responsible for allocating resources to each virtual machine. The Hypervisor is ultimately what makes virtualization possible. There are two types of Hypervisor: Type 1 and Type 2
+Also known as the "Bare Metal Hypervisor"
+Type 1 Hypervisor is installed directly on the physical host
+Has direct access to the physical resources of the physical host which then allocates the available resources to the virtual machines
+Hypervisor loads (boots) first, before the Operating System
+Administrators have the ability to create clusters with many Type 1 Hypervisors (but not all) Also known as "Hosted Hypervisor"
+Type 2 Hypervisor is installed on top of the host Operating System (ie Windows 10)
+The host Operating System manages the hardware resources
+The Type 2 Hypervisor requests the resources from the Operating System
+Type 2 Hypervisors do not support clustering Type 1 Hypervisors have better performance compared to Type 2
+Type 1 Hypervisors have direct access to hardware resources!
+Type 2 Hypervisors need to request resources from the OS first, the OS then accesses the hardware resources
+Hyper-V is Type 1 <br><img alt="Pasted image 20260914114302.png" src="images/pasted-image-20260914114302.png" target="_self"><br><img alt="Pasted image 20260914114853.png" src="images/pasted-image-20260914114853.png" target="_self">
+Hyper-V is a Type 1 Hypervisor!
+Can be confusing because on Windows 10 / 11 it's a Feature that's enabled from the Control Panel
+Can be confusing because on Server 2016/2019/2022 it's enabled as a Server Role
+Hyper-V Manager "appears" to look like an application, but this is what an administrator uses to create/manage VMs
+Hyper-V is the Virtual Machine Manager
+]]></description><link>ict-211/more-intro-stuff-day-2.html</link><guid isPermaLink="false">ICT 211/More intro stuff - day 2.md</guid><pubDate>Mon, 14 Sep 2026 18:50:20 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914114853]]></title><description><![CDATA[<img src="images/pasted-image-20260914114853.png" target="_self">]]></description><link>images/pasted-image-20260914114853.html</link><guid isPermaLink="false">images/Pasted image 20260914114853.png</guid><pubDate>Mon, 14 Sep 2026 18:48:53 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914114302]]></title><description><![CDATA[<img src="images/pasted-image-20260914114302.png" target="_self">]]></description><link>images/pasted-image-20260914114302.html</link><guid isPermaLink="false">images/Pasted image 20260914114302.png</guid><pubDate>Mon, 14 Sep 2026 18:43:02 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914114156]]></title><description><![CDATA[<img src="images/pasted-image-20260914114156.png" target="_self">]]></description><link>images/pasted-image-20260914114156.html</link><guid isPermaLink="false">images/Pasted image 20260914114156.png</guid><pubDate>Mon, 14 Sep 2026 18:41:56 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914113131]]></title><description><![CDATA[<img src="images/pasted-image-20260914113131.png" target="_self">]]></description><link>images/pasted-image-20260914113131.html</link><guid isPermaLink="false">images/Pasted image 20260914113131.png</guid><pubDate>Mon, 14 Sep 2026 18:31:31 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914111933]]></title><description><![CDATA[<img src="images/pasted-image-20260914111933.png" target="_self">]]></description><link>images/pasted-image-20260914111933.html</link><guid isPermaLink="false">images/Pasted image 20260914111933.png</guid><pubDate>Mon, 14 Sep 2026 18:19:33 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260914110741]]></title><description><![CDATA[<img src="images/pasted-image-20260914110741.png" target="_self">]]></description><link>images/pasted-image-20260914110741.html</link><guid isPermaLink="false">images/Pasted image 20260914110741.png</guid><pubDate>Mon, 14 Sep 2026 18:07:41 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Info about Linux - 219]]></title><description><![CDATA[
+Core interface between hardware and processes
+the Kernel is the open source part and different distros are developed on top of it.
+Linux is a name of kernel, real name is GNU/Linux
+Under GNU project since 1984
+UNIX like system Mac is UNIX based but not Linux GNU = GNU's Not Unix Open source and free
+Written in C
+Initially is a hobby project developed by Linus Torvalds Two major type of distributions
+Debian, Red Hat
+Debian based - Ubuntu, Raspbian, Kali
+Red Hat based - CentOS, Fedora
+More information: <a rel="noopener nofollow" class="external-link is-unresolved" href="https://distrowatch.com" target="_self">https://distrowatch.com</a>
+the difference is in the commands for redhat and debian based rpm for redhat apt for debian GUI: Graphical User Interface
+CLI: Command Line Interface
+We will focus on CLI in this course
+]]></description><link>ict-219/info-about-linux-219.html</link><guid isPermaLink="false">ICT 219/Info about Linux - 219.md</guid><pubDate>Mon, 14 Sep 2026 17:45:53 GMT</pubDate></item><item><title><![CDATA[PFSense]]></title><description><![CDATA[
+<a data-tooltip-position="top" aria-label="Linux personal notes/PFSense/misc" data-href="Linux personal notes/PFSense/misc" href="linux-personal-notes/pfsense/misc.html" class="internal-link" target="_self" rel="noopener nofollow">misc</a>
+<br><a data-href="Package installation" href="linux-personal-notes/pfsense/package-installation.html" class="internal-link" target="_self" rel="noopener nofollow">Package installation</a> ]]></description><link>linux-personal-notes/pfsense/pfsense.html</link><guid isPermaLink="false">Linux personal notes/PFSense/PFSense.md</guid><pubDate>Mon, 14 Sep 2026 17:31:29 GMT</pubDate></item><item><title><![CDATA[Day 2 - 212]]></title><description><![CDATA[
+Why cybersecurity is important? prevent downtime prevent vulnerabilities prevent loss of reputation prevent financial loss
+Modern society/companies depends on digital systems:
+e.g: banking, healthcare, education, transportation, government and
+Communication.
+Cyber incidents can cause financial loss,
+privacy breaches,
+operational disruption,
+reputational damage,
+safety risks. Cybersecurity is therefore a business, organizational and societal issue - not only an IT issue. What we need to protect? - CIA triad An asset is anything valuable (tangible or intangible) to an individual or
+organization that requires protection.
+Examples of asset:
+· Data/information
+· Computers and servers
+· Network equipment
+. Applications and services
+· Credentials · Intellectual property
+· Reputation and business operations
+Three states of data
+Types of hackers and threat actors
+Hacking phases
+Cybersecurity Kill Chain
+Ethical hackers and ethical hacking
+Ethics, authorization and scope
+Canadian law and security standards
+OSINT and reconnaissance
+]]></description><link>ict-212/day-2-212.html</link><guid isPermaLink="false">ICT 212/Day 2 - 212.md</guid><pubDate>Mon, 14 Sep 2026 16:46:07 GMT</pubDate></item><item><title><![CDATA[Screen]]></title><description><![CDATA[<a rel="noopener nofollow" class="external-link is-unresolved" href="https://www.youtube.com/watch?v=kyOJ4PCfSDg" target="_self">https://www.youtube.com/watch?v=kyOJ4PCfSDg</a>create screen screen -S web
+exit
+crtl + a, crtl +d rejoinscreen -ls
+screeen -r ______
+kill a screen
+enter the screen type exit
+]]></description><link>linux-personal-notes/screen.html</link><guid isPermaLink="false">Linux personal notes/Screen.md</guid><pubDate>Mon, 14 Sep 2026 16:31:50 GMT</pubDate></item><item><title><![CDATA[Welcome]]></title><description><![CDATA[
 <a data-href="ICT 123" href="ict-123/ict-123.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 123</a>
 <br><a data-href="ICT 127" href="ict-127/ict-127.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 127</a>
 <br><a data-href="ICT 128" href="ict-128/ict-128.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 128</a>
 <br><a data-href="ICT 129" href="ict-129/ict-129.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 129</a>
 <br><a data-href="ICT 137" href="ict-137/ict-137.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 137</a>
-<br><a data-href="Linux" href="linux/linux.html" class="internal-link" target="_self" rel="noopener nofollow">Linux</a> ]]></description><link>welcome.html</link><guid isPermaLink="false">Welcome.md</guid><pubDate>Tue, 21 Jul 2026 01:37:43 GMT</pubDate></item><item><title><![CDATA[Linux]]></title><description><![CDATA[
+<br><a data-href="Linux" href="linux-personal-notes/linux.html" class="internal-link" target="_self" rel="noopener nofollow">Linux</a>
+<br><a data-href="ICT 212" href="ict-212/ict-212.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 212</a>
+<br><a data-href="ICT 211" href="ict-211/ict-211.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 211</a>
+<br><a data-href="ICT 218" href="ict-218/ict-218.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 218</a>
+<br><a data-href="ICT 219" href="ict-219/ict-219.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 219</a>
+<br><a data-href="ICT 225" href="ict-225/ict-225.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 225</a> ]]></description><link>welcome.html</link><guid isPermaLink="false">Welcome.md</guid><pubDate>Fri, 11 Sep 2026 20:24:31 GMT</pubDate></item><item><title><![CDATA[Day one 211]]></title><description><![CDATA[
+don't rely on the calendar and to do menu look into what is actually required from each chapter don't just read the whole chapter work on labs at home then bring them to school on an SSD Outline
+Evaluations (Labs/Case Studies/Midterm/Final)Labs (Submissions and Quick Demonstrations ~ 5 minutes)
+-- &gt;Screenshots aren't best suited for things we'll do in the lab
+-- &gt;It's honestly too easy to fake a broken build or something not working to seem like it is
+-- &gt;In the field, you'd have to show your Team Lead's/Manager that something is working
+-- &gt;In the field, if something doesn't work .... it doesn't add valueLabs 1 and 2 will be individual
+Lab 4 will be individual or partnersCase Studies (Partners and Demonstrations ~ 10 minutes)
+-- &gt;Essentially multiple week lab builds
+-- &gt;More challenging
+-- &gt;We'll talk about these more after the midtermThis is my 4th time teaching it and I've made adjustments and changes to the course based on feedback from previous
+years to make it better
+I've made changes to try to make it a better experience for you
+-- &gt;Adjusted some labs
+-- &gt;Changed the rubrics
+-- &gt;The demonstrations worked out well last yearI've designed the course with data center experience in mind
+I've designed the pace of the course knowing that you have 6 other courses, and knowing the pace of the course
+(difficult concepts, etc)
+And the consensus in the field is if you can use Hyper-V for virtualization, you can use any hypervisor
+I -- &gt;A lot like if you know how to use Cisco networking equipment, you can use any brand (ie HP, Aruba, etc)The labs up to the midterm are intended to give you a feel for how things would work in the field or how they might
+be set up in the fieldI'll use PowerPoints, Demos, Hyper-V
+I'll also try and point out where you don't have to write things down.Tips for success!-- &gt;Use takeaways!-- &gt;Get an SSD external hard drive - 500GB - 1TB is sufficient
+-- &gt;You'll want to take backups of VMs-- &gt; Read the required material before the start of the lectures.
+I realize the text looks outdated, but unfortunately the authors have not created a new edition since 2016,and I haven't found a good/better text
+Hyper-V Server 2016 has not really had any major changes conceptually, really just dealing more with Azure.
+-- &gt; Read the labs and start planning before you come to the lab.
+-- &gt; I've really tried to filter out and exclude as much as I can from the readings.
+-- &gt; There is extra material uploaded to Moodle for you, ie Tech Pages, YouTube vids, to help support you.
+-- &gt; I've tried to set up Moodle for you to be able to look quickly and see what you need to read, and what you can exclude.-- &gt;The second year courses are generally designed to ask you to complete a task or do something for a lab, but not tell you how.
+-- &gt;You're going to find that there are multiple ways to solve a problem, or complete a task.
+There are multiple ways you can design a network]]></description><link>ict-211/day-one-211.html</link><guid isPermaLink="false">ICT 211/Day one 211.md</guid><pubDate>Fri, 11 Sep 2026 18:41:16 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260911110304]]></title><description><![CDATA[<img src="images/pasted-image-20260911110304.png" target="_self">]]></description><link>images/pasted-image-20260911110304.html</link><guid isPermaLink="false">images/Pasted image 20260911110304.png</guid><pubDate>Fri, 11 Sep 2026 18:03:04 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Day one]]></title><description><![CDATA[
+you will need to keep an eye on the news <a data-tooltip-position="top" aria-label="https://www.bleepingcomputer.com/news/security/google-patches-seventh-chrome-zero-day-exploited-in-attacks-this-year/" data-href="https://www.bleepingcomputer.com/news/security/google-patches-seventh-chrome-zero-day-exploited-in-attacks-this-year/" href="https://www.bleepingcomputer.com/news/security/google-patches-seventh-chrome-zero-day-exploited-in-attacks-this-year/" class="internal-link is-unresolved" target="_self" rel="noopener nofollow">The News - Good spot</a>
+there will be some project where you need to update classmates you need to declare where and what AII is used in for the assignments ]]></description><link>ict-212/day-one.html</link><guid isPermaLink="false">ICT 212/Day one.md</guid><pubDate>Fri, 11 Sep 2026 16:47:00 GMT</pubDate></item><item><title><![CDATA[Apache]]></title><description><![CDATA[sudo systemctl restart apache2
+]]></description><link>linux-personal-notes/apache.html</link><guid isPermaLink="false">Linux personal notes/Apache.md</guid><pubDate>Tue, 21 Jul 2026 01:47:25 GMT</pubDate></item><item><title><![CDATA[Package installation]]></title><description><![CDATA[Version Warning
+make sure you are using version 2.7.2 or higher otherwise PFSense will be unable to locate the registry. go to package manager click on install packages
+select the package you want to install ]]></description><link>linux-personal-notes/pfsense/package-installation.html</link><guid isPermaLink="false">Linux personal notes/PFSense/Package installation.md</guid><pubDate>Wed, 20 May 2026 01:32:10 GMT</pubDate></item><item><title><![CDATA[misc]]></title><description><![CDATA[
+update/reconfigure repository command ```
+certctl rehash ]]></description><link>linux-personal-notes/pfsense/misc.html</link><guid isPermaLink="false">Linux personal notes/PFSense/misc.md</guid><pubDate>Tue, 05 May 2026 22:47:01 GMT</pubDate></item><item><title><![CDATA[Apache]]></title><description><![CDATA[sudo systemctl restart apache2
+]]></description><link>linux/apache.html</link><guid isPermaLink="false">Linux/Apache.md</guid><pubDate>Tue, 21 Jul 2026 01:47:25 GMT</pubDate></item><item><title><![CDATA[Linux]]></title><description><![CDATA[
 <a data-href="PFSense" href="linux/pfsense/pfsense.html" class="internal-link" target="_self" rel="noopener nofollow">PFSense</a>
 <br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://www.youtube.com/watch?v=kyOJ4PCfSDg" target="_self">https://www.youtube.com/watch?v=kyOJ4PCfSDg</a>]]></description><link>linux/linux.html</link><guid isPermaLink="false">Linux/Linux.md</guid><pubDate>Tue, 21 Jul 2026 01:37:08 GMT</pubDate></item><item><title><![CDATA[REGEX]]></title><description><![CDATA[==================================
 What is it A tool to match strings When You want to check the format of a string that a user enters
@@ -244,13 +696,7 @@ Giant = frame &gt; 1518 bytes ]]></description><link>ict-137/general-info/boot-s
 <br><a data-href="Loops" href="ict-128/scripting/loops.html" class="internal-link" target="_self" rel="noopener nofollow">Loops</a>
 <br><a data-href="Piping" href="ict-128/scripting/piping.html" class="internal-link" target="_self" rel="noopener nofollow">Piping</a> ]]></description><link>ict-128/scripting/scripting.html</link><guid isPermaLink="false">ICT 128/scripting/Scripting.md</guid><pubDate>Thu, 09 Apr 2026 05:52:02 GMT</pubDate></item><item><title><![CDATA[Piping]]></title><link>ict-128/scripting/piping.html</link><guid isPermaLink="false">ICT 128/scripting/Piping.md</guid><pubDate>Thu, 09 Apr 2026 05:51:47 GMT</pubDate></item><item><title><![CDATA[Loops]]></title><description><![CDATA[ <a data-href="Import-ADUser" href="ict-128/scripting/example-scripts/import-aduser.html" class="internal-link" target="_self" rel="noopener nofollow">Import-ADUser</a> <br><a data-href="Kill Proccess" href="ict-128/scripting/example-scripts/kill-proccess.html" class="internal-link" target="_self" rel="noopener nofollow">Kill Proccess</a>
 <br><a data-href="Reset AD User Password" href="ict-128/scripting/example-scripts/reset-ad-user-password.html" class="internal-link" target="_self" rel="noopener nofollow">Reset AD User Password</a> <br><a data-href="Get Disk Report" href="ict-128/scripting/example-scripts/get-disk-report.html" class="internal-link" target="_self" rel="noopener nofollow">Get Disk Report</a>
-<br><a data-href="Get Service Health Report" href="ict-128/scripting/example-scripts/get-service-health-report.html" class="internal-link" target="_self" rel="noopener nofollow">Get Service Health Report</a> ]]></description><link>ict-128/scripting/loops.html</link><guid isPermaLink="false">ICT 128/scripting/Loops.md</guid><pubDate>Thu, 09 Apr 2026 05:50:44 GMT</pubDate></item><item><title><![CDATA[Hash Tables]]></title><link>ict-128/scripting/hash-tables.html</link><guid isPermaLink="false">ICT 128/scripting/Hash Tables.md</guid><pubDate>Thu, 09 Apr 2026 05:37:10 GMT</pubDate></item><item><title><![CDATA[PowerShell Security and Hashes]]></title><description><![CDATA[
-Cyber security Looking after the CIA Confidentiality Only those allowed can read it Integrity Data hasn’t been altered Availability The thing is available when required PowerShell Prevent the user from messing up this is what its based on/the reasoning behind it Set execution policy RemoteSigned If you initiate it then windows assumes you trust the author Undeffined Domain and local Defaults Dose not recognize.ps1 as an exacutable
-Dose not run a script just by its name Digital signature
-Certificate
-Root certificate authority (root/authority CA)
-Hash Input of any length = fixed length string Cryptographic hash&nbsp; -- Digital signature Input of any length + secret key = fixed length string
-Use another key to decode into og string <img alt="Pasted image 20260408174213.png" src="images/pasted-image-20260408174213.png" target="_self">]]></description><link>ict-128/windows-info/powershell-security-and-hashes.html</link><guid isPermaLink="false">ICT 128/Windows Info/PowerShell Security and Hashes.md</guid><pubDate>Thu, 09 Apr 2026 00:42:15 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260408174213]]></title><description><![CDATA[<img src="images/pasted-image-20260408174213.png" target="_self">]]></description><link>images/pasted-image-20260408174213.html</link><guid isPermaLink="false">images/Pasted image 20260408174213.png</guid><pubDate>Thu, 09 Apr 2026 00:42:13 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Windows Info]]></title><description><![CDATA[
+<br><a data-href="Get Service Health Report" href="ict-128/scripting/example-scripts/get-service-health-report.html" class="internal-link" target="_self" rel="noopener nofollow">Get Service Health Report</a> ]]></description><link>ict-128/scripting/loops.html</link><guid isPermaLink="false">ICT 128/scripting/Loops.md</guid><pubDate>Thu, 09 Apr 2026 05:50:44 GMT</pubDate></item><item><title><![CDATA[Hash Tables]]></title><link>ict-128/scripting/hash-tables.html</link><guid isPermaLink="false">ICT 128/scripting/Hash Tables.md</guid><pubDate>Thu, 09 Apr 2026 05:37:10 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260408174213]]></title><description><![CDATA[<img src="images/pasted-image-20260408174213.png" target="_self">]]></description><link>images/pasted-image-20260408174213.html</link><guid isPermaLink="false">images/Pasted image 20260408174213.png</guid><pubDate>Thu, 09 Apr 2026 00:42:13 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Windows Info]]></title><description><![CDATA[
 <a data-href="CIM vs WMI vs Native PS CMDlets" href="ict-128/windows-info/cim-vs-wmi-vs-native-ps-cmdlets.html" class="internal-link" target="_self" rel="noopener nofollow">CIM vs WMI vs Native PS CMDlets</a>
 <br><a data-href="Get the verions" href="ict-128/windows-info/get-the-verions.html" class="internal-link" target="_self" rel="noopener nofollow">Get the verions</a>
 <br><a data-href="Built in variables" href="ict-128/windows-info/built-in-variables.html" class="internal-link" target="_self" rel="noopener nofollow">Built in variables</a>
@@ -665,12 +1111,7 @@ also see <a data-href="WCM - Wild Card Mask" href="ict-137/routing/concepts/wcm-
 <br><a data-href="Boot sequence" href="ict-137/general-info/boot-sequence.html" class="internal-link" target="_self" rel="noopener nofollow">Boot sequence</a>
 <br><a data-href="LED indicators" href="ict-137/general-info/led-indicators.html" class="internal-link" target="_self" rel="noopener nofollow">LED indicators</a>
 <br><a data-href="Frame forwarding" href="ict-137/general-info/frame-forwarding.html" class="internal-link" target="_self" rel="noopener nofollow">Frame forwarding</a>
-<br><a data-href="Protocols" href="ict-137/general-info/protocols/protocols.html" class="internal-link" target="_self" rel="noopener nofollow">Protocols</a> ]]></description><link>ict-137/general-info/general-info.html</link><guid isPermaLink="false">ICT 137/general info/General info.md</guid><pubDate>Tue, 24 Mar 2026 19:16:51 GMT</pubDate></item><item><title><![CDATA[Terminology]]></title><link>ict-137/general-info/terminology.html</link><guid isPermaLink="false">ICT 137/general info/Terminology.md</guid><pubDate>Tue, 24 Mar 2026 19:16:29 GMT</pubDate></item><item><title><![CDATA[Protocols]]></title><description><![CDATA[
-<a data-href="CDP - Cisco Discovery Protocol" href="ict-137/general-info/protocols/cdp-cisco-discovery-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">CDP - Cisco Discovery Protocol</a>
-<br><a data-href="DTP - Dynamic Trunking Protocol" href="ict-137/general-info/protocols/dtp-dynamic-trunking-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">DTP - Dynamic Trunking Protocol</a>
-<br><a data-href="STP - Spanning Tree Protocol" href="ict-137/general-info/protocols/stp-spanning-tree-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">STP - Spanning Tree Protocol</a>
-<br><a data-href="PAgP - Port Aggregation Protocol" href="ict-137/general-info/protocols/pagp-port-aggregation-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">PAgP - Port Aggregation Protocol</a>
-<br><a data-href="LACP - Link Aggregation Protocol" href="ict-137/general-info/protocols/lacp-link-aggregation-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">LACP - Link Aggregation Protocol</a> ]]></description><link>ict-137/general-info/protocols/protocols.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/Protocols.md</guid><pubDate>Tue, 24 Mar 2026 19:15:14 GMT</pubDate></item><item><title><![CDATA[LACP - Link Aggregation Protocol]]></title><link>ict-137/general-info/protocols/lacp-link-aggregation-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/LACP - Link Aggregation Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:14:34 GMT</pubDate></item><item><title><![CDATA[PAgP - Port Aggregation Protocol]]></title><link>ict-137/general-info/protocols/pagp-port-aggregation-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/PAgP - Port Aggregation Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:14:03 GMT</pubDate></item><item><title><![CDATA[STP - Spanning Tree Protocol]]></title><link>ict-137/general-info/protocols/stp-spanning-tree-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/STP - Spanning Tree Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:12:12 GMT</pubDate></item><item><title><![CDATA[DTP - Dynamic Trunking Protocol]]></title><link>ict-137/general-info/protocols/dtp-dynamic-trunking-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/DTP - Dynamic Trunking Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:11:15 GMT</pubDate></item><item><title><![CDATA[CDP - Cisco Discovery Protocol]]></title><link>ict-137/general-info/protocols/cdp-cisco-discovery-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/CDP - Cisco Discovery Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:03:30 GMT</pubDate></item><item><title><![CDATA[Switching concepts]]></title><description><![CDATA[
+<br><a data-href="Protocols" href="ict-137/general-info/protocols/protocols.html" class="internal-link" target="_self" rel="noopener nofollow">Protocols</a> ]]></description><link>ict-137/general-info/general-info.html</link><guid isPermaLink="false">ICT 137/general info/General info.md</guid><pubDate>Tue, 24 Mar 2026 19:16:51 GMT</pubDate></item><item><title><![CDATA[Terminology]]></title><link>ict-137/general-info/terminology.html</link><guid isPermaLink="false">ICT 137/general info/Terminology.md</guid><pubDate>Tue, 24 Mar 2026 19:16:29 GMT</pubDate></item><item><title><![CDATA[LACP - Link Aggregation Protocol]]></title><link>ict-137/general-info/protocols/lacp-link-aggregation-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/LACP - Link Aggregation Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:14:34 GMT</pubDate></item><item><title><![CDATA[PAgP - Port Aggregation Protocol]]></title><link>ict-137/general-info/protocols/pagp-port-aggregation-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/PAgP - Port Aggregation Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:14:03 GMT</pubDate></item><item><title><![CDATA[STP - Spanning Tree Protocol]]></title><link>ict-137/general-info/protocols/stp-spanning-tree-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/STP - Spanning Tree Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:12:12 GMT</pubDate></item><item><title><![CDATA[DTP - Dynamic Trunking Protocol]]></title><link>ict-137/general-info/protocols/dtp-dynamic-trunking-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/DTP - Dynamic Trunking Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:11:15 GMT</pubDate></item><item><title><![CDATA[CDP - Cisco Discovery Protocol]]></title><link>ict-137/general-info/protocols/cdp-cisco-discovery-protocol.html</link><guid isPermaLink="false">ICT 137/general info/Protocols/CDP - Cisco Discovery Protocol.md</guid><pubDate>Tue, 24 Mar 2026 19:03:30 GMT</pubDate></item><item><title><![CDATA[Switching concepts]]></title><description><![CDATA[
 <a data-href="VLANs" href="ict-137/switching/concepts/vlans.html" class="internal-link" target="_self" rel="noopener nofollow">VLANs</a>
 <br><a data-href="Trunks" href="ict-137/switching/concepts/trunks.html" class="internal-link" target="_self" rel="noopener nofollow">Trunks</a>
 <br><a data-href="Port-aggregation (EtherChannel)" href="ict-137/switching/concepts/port-aggregation-(etherchannel).html" class="internal-link" target="_self" rel="noopener nofollow">Port-aggregation (EtherChannel)</a>
