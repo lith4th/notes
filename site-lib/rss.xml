@@ -1,14 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[www.ryderfryling.ca]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>www.ryderfryling.ca</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Fri, 25 Sep 2026 21:35:21 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 25 Sep 2026 21:34:32 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Technologies and Protocols]]></title><description><![CDATA[
-Syslog messages are usually timestamped.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[www.ryderfryling.ca]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>www.ryderfryling.ca</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 29 Sep 2026 00:49:16 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 29 Sep 2026 00:48:20 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[SNMP - remote management]]></title><description><![CDATA[SNMP was developed to allow administrators to manage nodes on an IP network. It enables network administrators to monitor and manage network performance, find and solve network problems, and plan for network growth.SNMP is an application layer protocol that provides a message format for communication between managers and agents. The SNMP system consists of three elements:
+SNMP manager - references info base for decisions/requests SNMP agents (managed node)
+Management Information Base (MIB)
+SNMP defines how management information is exchanged between network management applications and management agents. The SNMP manager polls the agents and queries the MIB for SNMP agents on UDP port 161. SNMP agents send any SNMP traps to the SNMP manager on UDP port 162.The SNMP manager is part of a network management system (NMS). The SNMP manager can collect information from an SNMP agent by using the "get" action and can change configurations on an agent by using the "set" action. SNMP agents can forward information directly to a network manager by using "traps". The SNMP agent and MIB reside on SNMP client devices. MIBs store data about the device and operational statistics and are meant to be available to authenticated remote users. The SNMP agent is responsible for providing access to the local MIB.
+<img alt="Pasted image 20260928142040.png" src="images/pasted-image-20260928142040.png" target="_self">
+a trap is an unprompted response full RAM notification faulty fan notification manager usally has read only to agents SNMPv1 and SNMPv2c use community strings that control access to the MIB. Community strings are plaintext passwords. SNMP community strings authenticate access to MIB objects.There are two types of community strings:
+. Read-only (ro) - This type provides access to the MIB
+variables, but does not allow these variables to be
+changed, only read. Because security is minimal in
+version 2c, many organizations use SNMPv2c in read-
+only mode.
+. Read-write (rw) - This type provides read and write
+access to all objects in the MIB.SNMP
+! The Simple Network Management Protocol (SNMP) allows you to monitor, diagnose, and manage network equipment remotely! Community string is essentially a shared password that an SNMP manager uses to identify itself when talking to an SNMP dew
+! The SNMP community is basically the shared identifier between an SNMP manager (ie SolarWinds) and an SNMP agent (switch)snmp-server community cisco123I [ro or rw]
+! ! read-only means that the manager can only request the information but can't change anything
+! read-write means that the manager can make changes to some configsTBD&lt;content<br>
+<img alt="Pasted image 20260928142239.png" src="images/pasted-image-20260928142239.png" target="_self">auto secure! Remote connection parameters! login block
+! login delay
+!login on-failure log !logs all failures
+! login on-success log !logs all successes
+! login quiet-mode!login block-for [X] attempts [Y] within [Z]
+! This blocks access for "X" seconds after "Y" login attempts within "Z" seconds.
+!Block logins for 20 minutes after 3 failed attempts within 1 minute
+! The block will go into "quiet mode"
+login block-for 1200 attempts 3 within 60! login delay [second]
+!Sets up a delay between successive attempts to login.
+login delay 15! login quiet-mode Defines an ACL to authorize connections when access is blocked by the login block-for.
+!If a device is in quiet mode, it will reference a list of permitted devices to allow access
+! Login quiet-mode access-class {acl-name|ac1-number}
+ip access-list standard QUIET-MODE-LIST
+permit host 10.30.0.50
+&lt;]]></description><link>ict-225/snmp-remote-management.html</link><guid isPermaLink="false">ICT 225/SNMP - remote management.md</guid><pubDate>Mon, 28 Sep 2026 21:25:28 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260928142239]]></title><description><![CDATA[<img src="images/pasted-image-20260928142239.png" target="_self">]]></description><link>images/pasted-image-20260928142239.html</link><guid isPermaLink="false">images/Pasted image 20260928142239.png</guid><pubDate>Mon, 28 Sep 2026 21:22:39 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260928142040]]></title><description><![CDATA[<img src="images/pasted-image-20260928142040.png" target="_self">]]></description><link>images/pasted-image-20260928142040.html</link><guid isPermaLink="false">images/Pasted image 20260928142040.png</guid><pubDate>Mon, 28 Sep 2026 21:20:40 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[OSPF authentication]]></title><description><![CDATA[Firstly, there is a shared secret involved for authenticating devices - the device knows the password and authenticates with it
+!MD5 is a type of hashing - not encryption - it's used to check for the integrity of the data - if anything was
+changed during transmission"This message came from someone who knows the shared secret, and the message hasn't been modified."! area 0 authentication message-digest establishes the authentication requirement for OSPF interfaces in Area 0.
+! The message-digest-key is then configured at the interface level for the interfaces that actually need to authenticate with OSPF neighbors.! Int g0/0/0 are the interfaces that are the interfaces that are used to establish neighbour adjacency
+! The sub-interfaces on SiteRTR01 don't need an OSPF authentication key just make them passive interfacesNote
+the command area [area # - 0] authentication message-digest just enables authentication on the router not the int’s. Config for EdgeRTR01, EdgeRTR02, SiteRTR01en
+config t
+router ospf [proccess ID - 1]
+area [area # - 0] authentication message-digest !-message-digest indicates the mechanism, for this its md5 int [int ID - g0/0/0] !-do this for each int that has adjacentcies ip ospf message-digest-key [key ID - 1] md5 [ shared seacret/pasword - cisco123] after the command is run all unauthenticated adjacencies go down. Seealso
+<a data-href="Cryptogaphy#commands for hashing" href="ict-225/cryptogaphy.html#commands for hashing" class="internal-link" target="_self" rel="noopener nofollow">Cryptogaphy &gt; commands for hashing</a><br>
+<a data-href="OSPF Authentication - config" href="ict-225/configs/ospf-authentication-config.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF Authentication - config</a>
+]]></description><link>ict-225/ospf-authentication.html</link><guid isPermaLink="false">ICT 225/OSPF authentication.md</guid><pubDate>Mon, 28 Sep 2026 21:17:33 GMT</pubDate></item><item><title><![CDATA[Syslog]]></title><description><![CDATA[
+NTP so that there are timestamps en
+config t service timestamps log datetime msec !Activates the timestamps on the log messages
+logging on !-enables logging logging trap [severity code] !default is 6 - this allowes you to enable specific severity levels for logging. logging host [ Host server IP add - 10.30.0.1] ]]></description><link>ict-225/syslog.html</link><guid isPermaLink="false">ICT 225/Syslog.md</guid><pubDate>Mon, 28 Sep 2026 21:17:02 GMT</pubDate></item><item><title><![CDATA[Technologies and Protocols]]></title><description><![CDATA[
+<a data-href="Syslog" href="ict-225/syslog.html" class="internal-link" target="_self" rel="noopener nofollow">Syslog</a> messages are usually timestamped.
 This allows messages from different sources to be organized by time to provide a view of network communication processes.
 Because the messages can come from many devices, it is important that the devices share a consistent timeclock.
 One way that this can be achieved is for the devices to use Network Time Protocol (NTP).
 NTP uses a hierarchy of authoritative time sources to share time information between devices on the network.
 NTP operates on UDP port 123. this just deals with date and time it makes it so that all devices in a network work on the same clock. if the devices fall out of sync with each other by a couple of minutes it can leed to orruption of devices and logs stratum 0 highest level like a gps These authoritative time sources are high-precision timekeeping devices assumed to be accurate and with little or no delay associated with them. Stratum 1 local NTP server
 highest level locally Devices that are directly connected to the authoritative time sources. They act as the primary network time standard. stratum 2 client of a stratum 1 can share with another stratum 2 Stratum 2 servers are connected to stratum 1 devices through network connections. Stratum 2 devices, such as NTP clients, synchronize their time by using the NTP packets from stratum 1 servers. They could also act as servers for stratum 3 devices. Time servers on the same stratum level can be configured to act as a peer with other time servers
-on the same stratum level for backup or verification of time.its a chain of command. we will mostly be looking at 1 and 2. <img alt="Pasted image 20260925140356.png" src="images/pasted-image-20260925140356.png" target="_self">`show ntp associations
-shows what references what in a hierarchy. `show ntp status
-shows the current devices status `ntp server sets the server takes a minute to sync ntp server [ip add of ntp server]
+on the same stratum level for backup or verification of time.its a chain of command. we will mostly be looking at 1 and 2. <br><img alt="Pasted image 20260925140356.png" src="images/pasted-image-20260925140356.png" target="_self">`show ntp associations
+shows what references what in a hierarchy. <br><a href=".?query=tag:show_commands" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#show_commands">#show_commands</a> `show ntp status
+shows the current devices status <br><a href=".?query=tag:show_commands" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#show_commands">#show_commands</a> `ntp server sets the server takes a minute to sync ntp server [ip add of ntp server]
 en
 config t ntp authenticate
 ! Enables authentication for NTP services ntp authentication-key [key ID - 1] md5 [Password - cisco]
@@ -19,8 +65,9 @@ config t ntp authenticate
 sending everything to a syslog server will eat bandwidth and overflow the server. usually send over a certain level to server. By default, the format of syslog messages on the Cisco IOS Software is as follows:
 `%facility-severity-MNEMONIC: descriptionFor example, sample output on a Cisco switch for an EtherChannel link changing state to up is:
 `%LINK-3-UPDOWN: Interface Port-channel1, changed state to upHere the facility is LINK and the severity level is 3, with a MNEMONIC of UPDOWN.
-the issue here is that it could be an unauthorized device en conf t service timestamps log datetime ]]></description><link>ict-225/technologies-and-protocols.html</link><guid isPermaLink="false">ICT 225/Technologies and Protocols.md</guid><pubDate>Fri, 25 Sep 2026 21:25:49 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 225]]></title><description><![CDATA[
+the issue here is that it could be an unauthorized device en conf t service timestamps log datetime ]]></description><link>ict-225/technologies-and-protocols.html</link><guid isPermaLink="false">ICT 225/Technologies and Protocols.md</guid><pubDate>Mon, 28 Sep 2026 21:11:00 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 225]]></title><description><![CDATA[
 <a data-href="Day one and two - 225" href="ict-225/day-one-and-two-225.html" class="internal-link" target="_self" rel="noopener nofollow">Day one and two - 225</a>
+<br><a data-href="Configs" href="ict-225/configs/configs.html" class="internal-link" target="_self" rel="noopener nofollow">Configs</a>
 <br><a data-href="Network Hardening" href="ict-225/network-hardening.html" class="internal-link" target="_self" rel="noopener nofollow">Network Hardening</a>
 <br><a data-href="CIA - when it comes to config" href="ict-225/cia-when-it-comes-to-config.html" class="internal-link" target="_self" rel="noopener nofollow">CIA - when it comes to config</a>
 <br><a data-href="Hashing" href="ict-225/hashing.html" class="internal-link" target="_self" rel="noopener nofollow">Hashing</a>
@@ -34,24 +81,293 @@ the issue here is that it could be an unauthorized device en conf t service time
 <br><a data-href="Hardening Checklist" href="ict-225/hardening-checklist.html" class="internal-link" target="_self" rel="noopener nofollow">Hardening Checklist</a>
 <br><a data-href="Cryptogaphy" href="ict-225/cryptogaphy.html" class="internal-link" target="_self" rel="noopener nofollow">Cryptogaphy</a>
 <br><a data-href="Technologies and Protocols" href="ict-225/technologies-and-protocols.html" class="internal-link" target="_self" rel="noopener nofollow">Technologies and Protocols</a>
-]]></description><link>ict-225/ict-225.html</link><guid isPermaLink="false">ICT 225/ICT 225.md</guid><pubDate>Fri, 25 Sep 2026 21:24:10 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260925142033]]></title><description><![CDATA[<img src="images/pasted-image-20260925142033.png" target="_self">]]></description><link>images/pasted-image-20260925142033.html</link><guid isPermaLink="false">images/Pasted image 20260925142033.png</guid><pubDate>Fri, 25 Sep 2026 21:20:33 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925140356]]></title><description><![CDATA[<img src="images/pasted-image-20260925140356.png" target="_self">]]></description><link>images/pasted-image-20260925140356.html</link><guid isPermaLink="false">images/Pasted image 20260925140356.png</guid><pubDate>Fri, 25 Sep 2026 21:03:56 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Network Access Control - NAC]]></title><description><![CDATA[ They support access management by enforcing organizational policies regarding the people and devices that are attempting to access the network. NAC systems allow cybersecurity professionals to monitor the users and devices that are attached to the network, and manually control access as required. Network access control systems provide the following capabilities: Rapidly enforcing access policies that have been created for different operational conditions.
-Recognizing and profiling connected users and devices to prevent malicious software on non-compliant systems from causing damage.
-Providing secure access to network guests, often through registration portals.
-Evaluating device compliance with security policies by user type, device type, and operating system prior to permitting network access.
-Mitigating security incidents by blocking, isolating, or repairing non-compliant devices. non-compliant: required updates personal devices IoT BYOD
-This heavily plays into bring your own device programs, public wifi, and IoT. Because BYOD and loT networking greatly expand the network attack surface, NAC system automation features make focused control of network access by such devices practical.
-The NAC system is configured to enforce organizational policies.
-The relevant policies are enacted to permit or deny network access according to a wide range of factors that the NAC system detects on the devices that are attempting access.
-Without NAC systems it would be impossible for cybersecurity personnel to evaluate the thousands of devices that could attempt to access the network.
-NAC is an important component of a zero-trust security architecture that enforces security policy compliance with all devices and users that attempt to access the network.
-Summary
-Use <a href=".?query=tag:principle_of_Least_Privaledge" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#principle_of_Least_Privaledge">#principle_of_Least_Privaledge</a> with all devices. network separation between IoT, BYOD, guest, and internal devices. <br><img alt="Pasted image 20260925135430.png" src="images/pasted-image-20260925135430.png" target="_self">]]></description><link>ict-225/network-access-control-nac.html</link><guid isPermaLink="false">ICT 225/Network Access Control - NAC.md</guid><pubDate>Fri, 25 Sep 2026 20:54:32 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925135430]]></title><description><![CDATA[<img src="images/pasted-image-20260925135430.png" target="_self">]]></description><link>images/pasted-image-20260925135430.html</link><guid isPermaLink="false">images/Pasted image 20260925135430.png</guid><pubDate>Fri, 25 Sep 2026 20:54:30 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Access Controlls]]></title><description><![CDATA[
+<br><a data-href="Network Access Control - NAC" href="ict-225/network-access-control-nac.html" class="internal-link" target="_self" rel="noopener nofollow">Network Access Control - NAC</a> ]]></description><link>ict-225/ict-225.html</link><guid isPermaLink="false">ICT 225/ICT 225.md</guid><pubDate>Mon, 28 Sep 2026 21:08:01 GMT</pubDate></item><item><title><![CDATA[Configs]]></title><description><![CDATA[
+<a data-href="OSPF Authentication - config" href="ict-225/configs/ospf-authentication-config.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF Authentication - config</a>
+<br><a data-href="NTP Authentication" href="ict-225/configs/ntp-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">NTP Authentication</a> ]]></description><link>ict-225/configs/configs.html</link><guid isPermaLink="false">ICT 225/Configs/Configs.md</guid><pubDate>Mon, 28 Sep 2026 21:07:50 GMT</pubDate></item><item><title><![CDATA[OSPF Authentication - config]]></title><description><![CDATA[en
+config t
+router ospf [proccess ID - 1]
+area [area # - 0] authentication message-digest int [int ID - g0/0/0] !-do this for each int that has adjacentcies ip ospf message-digest-key [key ID - 1] md5 [ shared seacret/pasword - cisco123] ]]></description><link>ict-225/configs/ospf-authentication-config.html</link><guid isPermaLink="false">ICT 225/Configs/OSPF Authentication - config.md</guid><pubDate>Mon, 28 Sep 2026 21:04:21 GMT</pubDate></item><item><title><![CDATA[NTP Authentication]]></title><description><![CDATA[en
+config t ntp authenticate
+! Enables authentication for NTP services ntp authentication-key [key ID - 1] md5 [Password - cisco]
+!Creates key 1 on the device with md5 and the shared pecret cisco
+! The Key ID is 1 and uses md5 as the authentication ntp trusted-key [ key ID - 1]
+!Trust NTP authentication using key 1 - defines which key it is willing to trust which authorizes the key for authentication ntp server 10.30.0.1 key [key ID - 1]
+! Configures AdminServ01 as the NTP server and tells the router to use key 1 when communicating / authenticating with it
+]]></description><link>ict-225/configs/ntp-authentication.html</link><guid isPermaLink="false">ICT 225/Configs/NTP Authentication.md</guid><pubDate>Mon, 28 Sep 2026 21:02:43 GMT</pubDate></item><item><title><![CDATA[Network Hardening]]></title><description><![CDATA[Dynamic host configuration protocol (DHCP) uses a server to assign an IP address and other
+configuration information to network devices.
+In effect, the device gets a permission slip from the DHCP server to use the network.
+Attackers can target DHCP servers to deny access to devices on the network, but security
+measures like DHCP snooping prevent rogue DHCP servers from providing IP addresses to
+clients by validating messages from sources that are not trusted.. A security checklist for DHCP:
+. Physically secure the DHCP server.
+. Apply any software patches.
+. Locate the DHCP server behind a firewall.
+. Monitor DHCP activity by reviewing DHCP logs.
+· Maintain a strong antivirus solution.
+. Uninstall any unused services and applications.
+.Close unused ports.recognize the IP address. |.Enable logging and analyze logs.Domain name system (DNS) translates a URL or website address, such as <a data-tooltip-position="top" aria-label="http://www.cisco.com" rel="noopener nofollow" class="external-link is-unresolved" href="http://www.cisco.com" target="_self">www.cisco.com</a>, into a
+numerical IP address. When users type a web address into the address bar, the DNS server will
+IDNS Security Extensions (DNSSEC) uses digital signatures to strengthen authentication and protect
+against threats to the DNS.. A security checklist for DNS:
+. Keep DNS software up to date.
+. Prevent version string from revealing information.
+Separate internal and external DNS servers.
+Restrict allowed transactions by client IP address.
+Use transaction signatures to authenticate transactions.
+Disable or restrict zone transfers and dynamic updates as much as possible.
+.
+.
+. Use Domain Name System Security Extensions (DNSSEC).
+Sign zones.CISCOO 2020 Ciaco and/or its affilintos. All sights raserved. Cisco ConfidentialInternet control messaging protocol (ICMP): Network devices use ICMP to send error messages
+that a requested service is not available, or the host could not reach the router, for example.. The ping command is a network utility that uses ICMP to test the reachability of a host on a
+network.
+. Ping sends ICMP messages to the host and waits for a reply.
+. Cybercriminals can alter the use of ICMP to run reconnaissance, denial of service (DoS) and
+covert channel attacks.
+. Many networks filter ICMP requests to prevent such attacks.Routing information protocol: RIP is a routing protocol that limits the number of hops from source
+to destination that are allowed in a network path.
+. The maximum number of hops allowed for RIP is fifteen.
+. RIP is used to exchange routing information about which networks each router can reach
+and how far away those networks are.. RIP calculates the best route based on hop count, but cybercriminals can also target routers and
+the RIP protocol.
+. Such attacks on routing services can affect performance and availability, some attacks can
+even result in traffic redirection.
+. Use secure services with authentication and implement system patching and updates to
+protect routing services.Network Time Protocol (NTP) is a protocol that synchronizes network computer system clocks.Having the correct time within networks is important.
+. Correct timestamps accurately track network events such as security violations.
+. Additionally, clock synchronization is critical for the correct interpretation of events
+within syslog data files as well as for digital certificates.. NTP allows network devices to synchronize their time settings with an NTP server.
+. Cybercriminals attack timeservers to disrupt secure communication that depends on digital
+certificates and to hide attack information.<br>
+. Use <a data-href="NTP Authentication" href="ict-225/configs/ntp-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">NTP Authentication</a> to verify that the server is trusted.Telnet, SSH, and SCPSecure Shell (SSH) is a protocol that provides a secure (encrypted) remote connection to a device.Telnet is an older protocol that uses unsecure plaintext when authenticating a device (username and
+password) and transmitting data.. SSH should be used rather than Telnet to manage connections, as it provides strong encryption.
+SSH uses TCP port 22.
+Telnet uses TCP port 23.Secure copy (SCP) securely transfers files between two remote systems.. SCP uses SSH for data transfer and authentication, ensuring the authenticity and confidentiality of
+the data in transit.CISCOSecure ProtocolsAttackers can penetrate a network's infrastructure through services, protocols, and open ports.Simple Network Management Protocol (SNMP) collects statistics from TCP/IP devices to monitor
+network and computer equipment. SNMPv3 is the current standard - it uses cryptography to prevent
+eavesdropping and make sure data hasn't been tampered with while in transit.Hypertext Transfer Protocol (HTTP) provides basic web connectivity and uses port 80. HTTP
+contains limited built-in security and is open to traffic monitoring when transmitting content, leaving the o
+user's computer open to attack.Protocols that provide a more secure connection:
+. Secure Sockets Layer (SSL) manages encryption by using an SSL handshake at the
+beginning of a session to provide confidentiality and prevent eavesdropping and tampering.
+. Transport Layer Security (TLS) is an updated, more secure replacement for SSL.
+SSL/TLS encrypts communication between the client and the server. Where it's used, the
+user will see HTTPS in the URL field of a browser instead of HTTP.
+2020 Claco and/or its affiliates. All rights reserved. Cisco ConfidentialFile Transfer Protocol (FTP) transfers computer files between a client and a server. In FTP, the client
+uses a plaintext username and password to connect. File Transfer Protocol Secure (FTPS) is more
+secure - it adds support for TLS and SSL to prevent eavesdropping, tampering and forgery on
+exchanged messages.Email uses Post Office Protocol (POP), Internet Message Access Protocol (IMAP) and
+Multipurpose Internet Mail Extensions (MIME) to attach non-text data, such as an image or video,
+to an email message.. To secure POP (port 110) or IMAP (port 143), use SSL/TLS to encrypt mail during transmission.
+The Secure/Multipurpose Internet Mail Extensions (S/MIME) protocol provides a secure method of
+transmission.
+It sends digitally signed and encrypted messages that provide authentication, message
+integrity, and nonrepudiation.The network is segmented.
+. VLANs allow an administrator to segment a network based on factors such as function,
+project, team, or application.
+. Devices within a VLAN act as if they are in their own independent network, even though they share
+a common infrastructure with other VLANs on the same LAN.
+. A VLAN can separate groups of devices that host sensitive data from the rest of the network,
+decreasing the chances of confidential information breaches - in our example, the HR
+department looking to protect sensitive data.
+. Trunks allow individuals on the HR VLAN to be physically connected to multiple switches.Data is protected.
+. VLANs provide a way to limit broadcast traffic in a switched network.
+. To protect the VLAN, monitor its performance, use advanced configurations, and regularly install
+patches and updates.A demilitarized zone (DMZ) is a small network between a trusted private network and the Internet.Access to untrusted networks: Web servers and mail servers are usually placed within the DMZ to
+allow users to access an untrusted network, such as the Internet, without compromising the internal
+network.<br><img alt="Pasted image 20260918140239.png" src="images/pasted-image-20260918140239.png" target="_self" style="width: 431px; max-width: 100%;"> Zero trust model: Firewalls manage east-west traffic (traffic that goes between servers within
+the organization's data center) and north-south traffic (data moving into and out of the
+organization's network).. To protect its network, an organization can implement a Zero Trust model.
+. Automatically trusting users and endpoints within the organization can put any network at risk, as
+trusted users can move throughout the network to access data.
+. Zero Trust networking constantly monitors all users on the network regardless of their status or
+role.]]></description><link>ict-225/network-hardening.html</link><guid isPermaLink="false">ICT 225/Network Hardening.md</guid><pubDate>Mon, 28 Sep 2026 21:01:44 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Change Management Proccesses]]></title><description><![CDATA[• Change Management
+• Purpose of Change Management
+• Benefits of Change Management
+• Risks of Uncontrolled Changes
+• Change Lifecyclea group responsible for approving changes to the system.• Change Advisory Board (CAB)
+• CAB Responsibilities
+• Change Review Process
+• Change Approval
+• Change Prioritization
+• CAB Membership• Change Requests
+• Authorization Process
+• Security Review
+• Compliance Review• Change Ownership
+• Accountability
+who is despicable for the change.,
+• Responsibility for the Assignment• Stakeholder Identification
+• Internal Stakeholders
+• External Stakeholders
+• Change Communicationthis is like in project management. • Business Impact
+• Operational Impact
+• Security Impact
+• Risk Assessment
+example - ADDS update - what effects what • Testing Procedures
+• Validation
+• Security Testing
+• Acceptance Criteria• Rollback Procedures
+• Recovery Planning
+• Incident Response Supportthis is <a href=".?query=tag:BDR" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#BDR">#BDR</a> if the implementation fails. • Scheduled Changes
+• Service Availability
+• Planned Downtime• SOP Development
+• Process Standardization
+• Operational Consistency• Application Allow Lists
+• Application Control
+• Approved Software Management• Block Lists
+• Software Restrictions
+• Security Filtering• Unauthorized Software Installation
+• Configuration Changes
+• Access Restrictions
+• Removable Media Controls• Service Availability
+• Business Continuity
+• Operational Impact• Service Interruptions
+• System Recovery
+• Operational Risks• Application Recovery
+• Session Impact
+• Availability Considerations• Legacy Systems
+• Unsupported Software
+• Security Risks• Service Dependencies
+• System Interconnections
+• Dependency Management• Change Documentation
+• Audit Requirements
+• Compliance Requirements
+• Troubleshooting Support
+• Incident Response Documentation• Network Diagrams
+• System Architecture Diagrams
+• Cloud Architecture Documentation• Security Policies
+• Operational Procedures
+• Governance Documentation• Version Control
+• Change Tracking
+• Audit Trails
+• Rollback Capability
+• Collaboration
+• Configuration ManagementCrowdStrike Update Incident (2024)• Faulty Software Updates
+• Global Business Impact
+• Change Testing
+• Phased Deployment
+• Rollback Procedures
+• Recovery Planning• Change Management
+• Change Advisory Board (CAB)
+• Approval Process
+• Ownership
+• Stakeholders
+• Impact Analysis
+• Test Results
+• Backout Plan
+• Maintenance Window
+• SOP
+• Allow List
+• Deny List
+• Legacy System
+• Version Control• Change Management
+• Change Approval and Governance
+• Business Processes and Security Operations
+• Technical Change Considerations
+• Documentation and Compliance
+• Version Control
+• Risk Management
+• Security Best Practices for Change Control]]></description><link>ict-218/change-management-proccesses.html</link><guid isPermaLink="false">ICT 218/Change Management Proccesses.md</guid><pubDate>Mon, 28 Sep 2026 20:09:37 GMT</pubDate></item><item><title><![CDATA[Hypervisor architecture]]></title><description><![CDATA[
+Hyper-V is a Type 1 Hypervisor
+"Bare Metal Hypervisor"
+Installed Directly on the Physical Host
+Direct access to the physical resources of the physical host
+Hypervisors have drivers to be able to communicate with those resources
+There are 2 "Architectures" or flavors of Type 1 Hypervisors where those drivers are stored: Monolithic
+Microkernelized Drivers exist within the hypervisor
+Very good performance!
+Larger Hypervisor
+However, all drivers are shared, limiting hardware support because the driver is specifically made for the Hypervisor!
+Small compatibility list of drivers
+<img alt="Pasted image 20260925114843.png" src="images/pasted-image-20260925114843.png" target="_self" style="width: 249px; max-width: 100%;"> Drivers exist within the Management Partition (AKA the Parent Partition)
+Smaller Hypervisor
+a little bit slower more secure due to individual drivers for each VM. All Windows drivers created from various vendors for their hardware can still be used and run in the Management Partition
+The Guest VM's have their own Child Partitions for virtual drivers.
+The Child Partitions do not impact the security of the Parent Partitions.
+biggest issue is if the drivers in the parent go then so do the children.<br>
+<img alt="Pasted image 20260925114955.png" src="images/pasted-image-20260925114955.png" target="_self" style="width: 303px; max-width: 100%;"> Hypervisor governs Processor (CPU) and Memory Resources for the Virtual Machines
+The Parent Partition has Management Components running in User Mode (Ring 3)
+Management Components include: Virtual Machine Management Service (VMMS) - Controls State of the VM (Powered On, Off, etc)
+VMBUS Virtual Service Provider REVIEW OF DRIVERS Drivers are software programs that facilitate communication between hardware devices and the operating system of a computer.
+They serve as a bridge that allows the operating system to interact with and control the hardware components of a computer
+Drivers are essential for enabling the operating system to recognize, configure, and utilize hardware devices efficiently.
+There are drivers for CPU, Memory, Display, Storage, Network Cards, etc. <br><img alt="Pasted image 20260928110707.png" src="images/pasted-image-20260928110707.png" target="_self">**Management
+it is the parent partition it’s used by the Virtual Service Provider to connect to resources aside from RAM and Processing. VSC - Virtual Service Client used by the VM to connect to the VMBus and VSP There is only one communication channel between the Parent and each Child Partition.
+The VMBus is not shared between the child partitions on different virtual machines.
+Thus, the child partitions cannot communicate between each other nor see data between other child partitions running on the same host.
+The VMBus runs in Kernel Mode (aka Ring 0)
+VMBus is pure memory, which is why it's so fast.
+If the parent partition reboots or is unavailable, none of the child partitions will be available. All of the child partitions will go down as well. Emulated devices emulate "Legacy" hardware devices that exist as physical hardware (ie, IDE Controllers, Diskette / Floppy Drives, BIOS, "Legacy Network Adapter," etc) Hyper-V pretends that the hardware exists for "Legacy" Operating Systems. Used for older, "Legacy" systems not specifically designed for virtualization Thus, any operating system, including older, "Legacy," operating systems can use these emulated devices (ie, Windows XP). Newer operating systems can use them too! Emulated hardware requires extra code and processing to run between User Mode (Ring 3) and Ring 0 (Kernel Mode) This extra code and extra processing happens on top of the driver communication between the applications and the kernel of the operating system this can cause them to be slow. Generally speaking, Operating Systems that are "Enlightened" to virtualization will use Synthetic Devices (ie Operating Systems since Server 2012 and newer)
+Synthetic devices are "Enlightened" to virtualization. They are designed for virtualized environments
+An example would be (UEFI firmware, etc)
+A major advantage using synthetic devices is high performance
+.]]></description><link>ict-211/hypervisor-architecture.html</link><guid isPermaLink="false">ICT 211/Hypervisor architecture.md</guid><pubDate>Mon, 28 Sep 2026 18:45:04 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260928110707]]></title><description><![CDATA[<img src="images/pasted-image-20260928110707.png" target="_self">]]></description><link>images/pasted-image-20260928110707.html</link><guid isPermaLink="false">images/Pasted image 20260928110707.png</guid><pubDate>Mon, 28 Sep 2026 18:07:07 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[File Structure]]></title><description><![CDATA[<img alt="Pasted image 20260918102932.png" src="images/pasted-image-20260918102932.png" target="_self"><br>
+<img alt="Pasted image 20260928101414.png" src="images/pasted-image-20260928101414.png" target="_self">is where most configurations are stored Absolute paths Begins with / (root directory)
+Example: /home/sysadmin Relative paths: Relative to current directory <br><img alt="Pasted image 20260928102827.png" src="images/pasted-image-20260928102827.png" target="_self"><br>
+<img alt="Pasted image 20260928103648.png" src="images/pasted-image-20260928103648.png" target="_self">]]></description><link>ict-219/file-structure.html</link><guid isPermaLink="false">ICT 219/File Structure.md</guid><pubDate>Mon, 28 Sep 2026 17:36:50 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260928103648]]></title><description><![CDATA[<img src="images/pasted-image-20260928103648.png" target="_self">]]></description><link>images/pasted-image-20260928103648.html</link><guid isPermaLink="false">images/Pasted image 20260928103648.png</guid><pubDate>Mon, 28 Sep 2026 17:36:48 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Commands]]></title><description><![CDATA[
+Internal Commands : shell built-in
+External Commands : stored in the list in PATH variable
+Aliases : command mapping
+We can use the 'type' command to check the type of commands type : show the command type shows you info about commands and the path of commands that are applications (ie: IP)
+clear : clear the terminal screen
+man : show man page of a command
+help : get help of a command
+exit : exit the terminal or logout server
+shutdown : turn off or reboot the computer
+reboot : reboot the computer
+type : show the command type
+echo : show the text in argument
+cat : show the content of the file in argument
+date : show the date
+cal : show calendar
+Is : list files in a folder -R : recursive listing (list all subfolders in the directory)
+-d : listing directory
+-S : sort a listing by size
+-t :sort by time
+-r : reverse sorting order cd : change directory
+tree : show the contents of directory in tree format
+whoami : show current user
+who : show current login users
+whatis: display the man page description
+pwd : show current working directory
+sudo : do the command as root
+history : show command history
+! : run the command in history We can use the following commands for getting detail of a command type
+which
+whereis
+whatis command -v , similar to type just typing alias will list aliases
+We can use the following to show and modify aliases alias : list the alias
+alias name=command : create alias
+unalias : remove aliases ]]></description><link>ict-219/commands.html</link><guid isPermaLink="false">ICT 219/Commands.md</guid><pubDate>Mon, 28 Sep 2026 17:36:00 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260928102827]]></title><description><![CDATA[<img src="images/pasted-image-20260928102827.png" target="_self">]]></description><link>images/pasted-image-20260928102827.html</link><guid isPermaLink="false">images/Pasted image 20260928102827.png</guid><pubDate>Mon, 28 Sep 2026 17:28:27 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260928101414]]></title><description><![CDATA[<img src="images/pasted-image-20260928101414.png" target="_self">]]></description><link>images/pasted-image-20260928101414.html</link><guid isPermaLink="false">images/Pasted image 20260928101414.png</guid><pubDate>Mon, 28 Sep 2026 17:14:14 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[NMap]]></title><description><![CDATA[
+a network scanning tool. helps build a map of a network. ]]></description><link>ict-211/nmap.html</link><guid isPermaLink="false">ICT 211/NMap.md</guid><pubDate>Mon, 28 Sep 2026 16:06:26 GMT</pubDate></item><item><title><![CDATA[week 3 readings]]></title><description><![CDATA[**Cisco Netacad Network Defense: Module 3 List and discuss common physical access controls, citing examples <a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a> List and discuss common logical access controls, citing examples <br><a data-href="Access Controlls#Logical Access Controls" href="ict-225/access-controlls.html#Logical Access Controls" class="internal-link" target="_self" rel="noopener nofollow">Access Controlls &gt; Logical Access Controls</a> List and discuss common administrative access controls, citing examples, and based upon: Authentication Authorization
+Accounting
+<br><a href=".?query=tag:Tripple_A" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#Tripple_A">#Tripple_A</a> Discuss common means of identification permitted by an authorization policy
+Discuss the goals, advantages and disadvantages of federated identity management
+Use examples to discuss means of multifactor authentication methods
+Define and discuss the concept of zero trust security
+Define the purpose of NAC (network access control)
+Discuss key best practices regarding account types and account management
+Discuss the differences between various file access controls in Windows
+List and discuss common means of authentication management (SSO, OAuth, KBA, and password vaults)
+Describe HMAC and where it is used
+List and describe common authentication protocols (EAP, PAP, CHAP, 802.1x, RADIUS, TACACS+, and Kerberos)
+Understand basic cryptographic functions (Hashes, symmetric, and asymmetric encryption) List and discuss specific types of access control, including DAC, MAC, RBAC (Role and Rule), ABAC, and TAC
+Define and discuss AAA concepts and cite examples of where they apply
+Computer Network Security, Chapter 4 – Securing Access Using AAAConceptual
+Explain AAA as a security strategy
+Differentiate local vs server-based AAA
+Manage method list order behavior to prevent lockout while maintaining security
+Practical
+Enable the aaa new-model commands, create local users with privilege levels, build a login method list and bind it to console/VTY/AUX lines
+local authenticationen conf t username [username - bob] privilege [level - 15] secret [password - P@ssw0rd] aaa new-model aaa authentication login{ default| [list-name - bob] } { methodl [ method2 configure radius server multiple servers Direct accounting logs to the AAA server and/or Syslog, ensuring timestamps are accurate (NTP) for forensic integrity
+]]></description><link>ict-225/week-3-readings.html</link><guid isPermaLink="false">ICT 225/week 3 readings.md</guid><pubDate>Mon, 28 Sep 2026 02:36:35 GMT</pubDate></item><item><title><![CDATA[Access Controlls]]></title><description><![CDATA[
 Logical Controls
 Administrative Controls
 Authentication, Authorization, Accounting
 Federated Identity Management (aka Single Sign-On - SSO)
 MFA
-NAC Logical access controls are the hardware and software solutions used to manage access to resources and systems. These technology-based solutions include tools and protocols that computer systems use for identification, authentication, authorization, and accountability. Encryption is the process of taking plaintext and creating ciphertext.
+NAC <a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a>
+Physical access controls are actual barriers deployed to prevent direct physical contact with systems. The goal is to prevent unauthorized users from gaining physical access to facilities, equipment and other organizational assets.For example, physical access control determines who can enter (or exit), where they can enter (or exit) and when they can enter (or exit). Logical access controls are the hardware and software solutions used to manage access to resources and systems. These technology-based solutions include tools and protocols that computer systems use for identification, authentication, authorization, and accountability. Encryption is the process of taking plaintext and creating ciphertext.
 Smart cards have an embedded microchip.
 Passwords are protected strings of characters.
 Biometrics are users' physical characteristics.
@@ -81,7 +397,38 @@ Cybersecurity accounting services track each data transaction and provide auditi
 System administrators can set up computer policies to enable system auditing.
 Cybersecurity accounting tracks and monitors in real time.
 The concept of AAA is like using a credit card that identifies who can use it, how much that user
-can spend, and accounts for items or services the user purchased.<img alt="Pasted image 20260925135412.png" src="images/pasted-image-20260925135412.png" target="_self">]]></description><link>ict-225/access-controlls.html</link><guid isPermaLink="false">ICT 225/Access Controlls.md</guid><pubDate>Fri, 25 Sep 2026 20:54:14 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925135412]]></title><description><![CDATA[<img src="images/pasted-image-20260925135412.png" target="_self">]]></description><link>images/pasted-image-20260925135412.html</link><guid isPermaLink="false">images/Pasted image 20260925135412.png</guid><pubDate>Fri, 25 Sep 2026 20:54:12 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 218]]></title><description><![CDATA[
+can spend, and accounts for items or services the user purchased.<br><img alt="Pasted image 20260925135412.png" src="images/pasted-image-20260925135412.png" target="_self">
+<br><a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a> ]]></description><link>ict-225/access-controlls.html</link><guid isPermaLink="false">ICT 225/Access Controlls.md</guid><pubDate>Sat, 26 Sep 2026 22:11:52 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Physical Security]]></title><description><![CDATA[
+Barricades or fencing are often the first things that come to mind when thinking about types of physical security.
+In many situations, they are the outermost layer of defense and the most visible. All physical barriers should meet specific design requirements and material specifications. Perimeter fence system
+Security gate system
+Bollards (short posts used to stop vehicle intrusions)
+Vehicle entry barriers
+Guard shelters
+Fencing
+doors with locks logs biometrics RFID
+surveillance systems CCTV Guards to monitor the facility
+Fences to protect the perimeter
+Motion detectors to detect moving objects
+Laptop locks to safeguard portable equipment
+Locked doors to prevent unauthorized access
+Swipe cards to allow access to restricted areas
+Guard dogs to protect the facility
+Video cameras to monitor a facility by collecting and recording images
+Mantrap-style entry systems to stagger the flow of people into the secured area and trap any unwanted visitors
+Alarms to detect intrusion
+]]></description><link>ict-225/physical-security.html</link><guid isPermaLink="false">ICT 225/Physical Security.md</guid><pubDate>Sat, 26 Sep 2026 22:08:28 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260925142033]]></title><description><![CDATA[<img src="images/pasted-image-20260925142033.png" target="_self">]]></description><link>images/pasted-image-20260925142033.html</link><guid isPermaLink="false">images/Pasted image 20260925142033.png</guid><pubDate>Fri, 25 Sep 2026 21:20:33 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925140356]]></title><description><![CDATA[<img src="images/pasted-image-20260925140356.png" target="_self">]]></description><link>images/pasted-image-20260925140356.html</link><guid isPermaLink="false">images/Pasted image 20260925140356.png</guid><pubDate>Fri, 25 Sep 2026 21:03:56 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Network Access Control - NAC]]></title><description><![CDATA[ They support access management by enforcing organizational policies regarding the people and devices that are attempting to access the network. NAC systems allow cybersecurity professionals to monitor the users and devices that are attached to the network, and manually control access as required. Network access control systems provide the following capabilities: Rapidly enforcing access policies that have been created for different operational conditions.
+Recognizing and profiling connected users and devices to prevent malicious software on non-compliant systems from causing damage.
+Providing secure access to network guests, often through registration portals.
+Evaluating device compliance with security policies by user type, device type, and operating system prior to permitting network access.
+Mitigating security incidents by blocking, isolating, or repairing non-compliant devices. non-compliant: required updates personal devices IoT BYOD
+This heavily plays into bring your own device programs, public wifi, and IoT. Because BYOD and loT networking greatly expand the network attack surface, NAC system automation features make focused control of network access by such devices practical.
+The NAC system is configured to enforce organizational policies.
+The relevant policies are enacted to permit or deny network access according to a wide range of factors that the NAC system detects on the devices that are attempting access.
+Without NAC systems it would be impossible for cybersecurity personnel to evaluate the thousands of devices that could attempt to access the network.
+NAC is an important component of a zero-trust security architecture that enforces security policy compliance with all devices and users that attempt to access the network.
+Summary
+Use <a href=".?query=tag:principle_of_Least_Privaledge" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#principle_of_Least_Privaledge">#principle_of_Least_Privaledge</a> with all devices. network separation between IoT, BYOD, guest, and internal devices. <br><img alt="Pasted image 20260925135430.png" src="images/pasted-image-20260925135430.png" target="_self">]]></description><link>ict-225/network-access-control-nac.html</link><guid isPermaLink="false">ICT 225/Network Access Control - NAC.md</guid><pubDate>Fri, 25 Sep 2026 20:54:32 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925135430]]></title><description><![CDATA[<img src="images/pasted-image-20260925135430.png" target="_self">]]></description><link>images/pasted-image-20260925135430.html</link><guid isPermaLink="false">images/Pasted image 20260925135430.png</guid><pubDate>Fri, 25 Sep 2026 20:54:30 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925135412]]></title><description><![CDATA[<img src="images/pasted-image-20260925135412.png" target="_self">]]></description><link>images/pasted-image-20260925135412.html</link><guid isPermaLink="false">images/Pasted image 20260925135412.png</guid><pubDate>Fri, 25 Sep 2026 20:54:12 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 218]]></title><description><![CDATA[
 <a data-href="Day one and two - 218" href="ict-218/day-one-and-two-218.html" class="internal-link" target="_self" rel="noopener nofollow">Day one and two - 218</a>
 <br><a data-href="Split-Brain DNS" href="ict-218/split-brain-dns.html" class="internal-link" target="_self" rel="noopener nofollow">Split-Brain DNS</a>
 <br><a data-href="Deception Technologies" href="ict-218/deception-technologies.html" class="internal-link" target="_self" rel="noopener nofollow">Deception Technologies</a>
@@ -132,29 +479,7 @@ local administrator passwords. By integrating directly with Active Directory thr
 extensions, LAPS provides centralized password storage, automatic rotation, encryption,
 delegation, and auditing. Proper implementation helps prevent credential theft, pass-the-hash
 attacks, and lateral movement while supporting modern security frameworks and Zero Trust principles. LAPS solves the shared local administrator password problem. Every managed computer receives a unique password. Active Directory stores LAPS password information using schema extensions. Domain Controllers replicate password information securely. Permission delegation controls who can view passwords. Windows LAPS supports encryption and auditing. LAPS significantly reduces lateral movement and credential-based attacks. LAPS is a recommended security control for all Windows Server 2025 environments
-]]></description><link>ict-218/laps.html</link><guid isPermaLink="false">ICT 218/LAPS.md</guid><pubDate>Fri, 25 Sep 2026 20:10:18 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925130139]]></title><description><![CDATA[<img src="images/pasted-image-20260925130139.png" target="_self">]]></description><link>images/pasted-image-20260925130139.html</link><guid isPermaLink="false">images/Pasted image 20260925130139.png</guid><pubDate>Fri, 25 Sep 2026 20:01:39 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925130133]]></title><description><![CDATA[<img src="images/pasted-image-20260925130133.png" target="_self">]]></description><link>images/pasted-image-20260925130133.html</link><guid isPermaLink="false">images/Pasted image 20260925130133.png</guid><pubDate>Fri, 25 Sep 2026 20:01:33 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925124010]]></title><description><![CDATA[<img src="images/pasted-image-20260925124010.png" target="_self">]]></description><link>images/pasted-image-20260925124010.html</link><guid isPermaLink="false">images/Pasted image 20260925124010.png</guid><pubDate>Fri, 25 Sep 2026 19:40:10 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Hypervisor architecture]]></title><description><![CDATA[
-Hyper-V is a Type 1 Hypervisor
-"Bare Metal Hypervisor"
-Installed Directly on the Physical Host
-Direct access to the physical resources of the physical host
-Hypervisors have drivers to be able to communicate with those resources
-There are 2 "Architectures" or flavors of Type 1 Hypervisors where those drivers are stored: Monolithic
-Microkernelized Drivers exist within the hypervisor
-Very good performance!
-Larger Hypervisor
-However, all drivers are shared, limiting hardware support because the driver is specifically made for the Hypervisor!
-Small compatibility list of drivers
-<img alt="Pasted image 20260925114843.png" src="images/pasted-image-20260925114843.png" target="_self" style="width: 249px; max-width: 100%;"> Drivers exist within the Management Partition (AKA the Parent Partition)
-Smaller Hypervisor
-a little bit slower more secure due to individual drivers for each VM. All Windows drivers created from various vendors for their hardware can still be used and run in the Management Partition
-The Guest VM's have their own Child Partitions for virtual drivers.
-The Child Partitions do not impact the security of the Parent Partitions.
-biggest issue is if the drivers in the parent go then so do the children.<br>
-<img alt="Pasted image 20260925114955.png" src="images/pasted-image-20260925114955.png" target="_self" style="width: 303px; max-width: 100%;">
-REVIEW OF DRIVERS Drivers are software programs that facilitate communication between hardware devices and the operating system of a computer.
-They serve as a bridge that allows the operating system to interact with and control the hardware components of a computer
-Drivers are essential for enabling the operating system to recognize, configure, and utilize hardware devices efficiently.
-There are drivers for CPU, Memory, Display, Storage, Network Cards, etc. ]]></description><link>ict-211/hypervisor-architecture.html</link><guid isPermaLink="false">ICT 211/Hypervisor architecture.md</guid><pubDate>Fri, 25 Sep 2026 18:54:03 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 211]]></title><description><![CDATA[
+]]></description><link>ict-218/laps.html</link><guid isPermaLink="false">ICT 218/LAPS.md</guid><pubDate>Fri, 25 Sep 2026 20:10:18 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925130139]]></title><description><![CDATA[<img src="images/pasted-image-20260925130139.png" target="_self">]]></description><link>images/pasted-image-20260925130139.html</link><guid isPermaLink="false">images/Pasted image 20260925130139.png</guid><pubDate>Fri, 25 Sep 2026 20:01:39 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925130133]]></title><description><![CDATA[<img src="images/pasted-image-20260925130133.png" target="_self">]]></description><link>images/pasted-image-20260925130133.html</link><guid isPermaLink="false">images/Pasted image 20260925130133.png</guid><pubDate>Fri, 25 Sep 2026 20:01:33 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260925124010]]></title><description><![CDATA[<img src="images/pasted-image-20260925124010.png" target="_self">]]></description><link>images/pasted-image-20260925124010.html</link><guid isPermaLink="false">images/Pasted image 20260925124010.png</guid><pubDate>Fri, 25 Sep 2026 19:40:10 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 211]]></title><description><![CDATA[
 <a data-href="Day one 211" href="ict-211/day-one-211.html" class="internal-link" target="_self" rel="noopener nofollow">Day one 211</a>
 <br><a data-href="More intro stuff - day 2" href="ict-211/more-intro-stuff-day-2.html" class="internal-link" target="_self" rel="noopener nofollow">More intro stuff - day 2</a>
 <br><a data-href="Hyper-V and Hypervisors" href="ict-211/hyper-v-and-hypervisors.html" class="internal-link" target="_self" rel="noopener nofollow">Hyper-V and Hypervisors</a>
@@ -498,38 +823,7 @@ Syntax:
 Function_name () { commands
 } Remove a function in shell unset -f function_name func1 (){ echo 'File size of Documents folder." echo -n 'Date Printed: ' date Is -ISH ~/Documents
 }
-]]></description><link>ict-219/variables.html</link><guid isPermaLink="false">ICT 219/Variables.md</guid><pubDate>Wed, 23 Sep 2026 17:42:57 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260923102210]]></title><description><![CDATA[<img src="images/pasted-image-20260923102210.png" target="_self">]]></description><link>images/pasted-image-20260923102210.html</link><guid isPermaLink="false">images/Pasted image 20260923102210.png</guid><pubDate>Wed, 23 Sep 2026 17:22:10 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Commands]]></title><description><![CDATA[
-Internal Commands : shell built-in
-External Commands : stored in the list in PATH variable
-Aliases : command mapping
-We can use the 'type' command to check the type of commands type : show the command type shows you info about commands and the path of commands that are applications (ie: IP)
-clear : clear the terminal screen
-man : show man page of a command
-help : get help of a command
-exit : exit the terminal or logout server
-shutdown : turn off or reboot the computer
-reboot : reboot the computer
-type : show the command type
-echo : show the text in argument
-cat : show the content of the file in argument
-date : show the date
-cal : show calendar
-Is : list files in a folder
-cd : change directory
-tree : show the contents of directory in tree format
-whoami : show current user
-who : show current login users
-whatis: display the man page description
-pwd : show current working directory
-sudo : do the command as root
-history : show command history
-! : run the command in history We can use the following commands for getting detail of a command type
-which
-whereis
-whatis command -v , similar to type just typing alias will list aliases
-We can use the following to show and modify aliases alias : list the alias
-alias name=command : create alias
-unalias : remove aliases ]]></description><link>ict-219/commands.html</link><guid isPermaLink="false">ICT 219/Commands.md</guid><pubDate>Wed, 23 Sep 2026 17:17:12 GMT</pubDate></item><item><title><![CDATA[OSINT Tools]]></title><description><![CDATA[
+]]></description><link>ict-219/variables.html</link><guid isPermaLink="false">ICT 219/Variables.md</guid><pubDate>Wed, 23 Sep 2026 17:42:57 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260923102210]]></title><description><![CDATA[<img src="images/pasted-image-20260923102210.png" target="_self">]]></description><link>images/pasted-image-20260923102210.html</link><guid isPermaLink="false">images/Pasted image 20260923102210.png</guid><pubDate>Wed, 23 Sep 2026 17:22:10 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[OSINT Tools]]></title><description><![CDATA[
 Rather than memorizing tools, start with the information you need.
 People &amp; organizations - names, roles, contact patterns
 Domains &amp; infrastructure - WHOIS/RDAP, DNS, certificates
@@ -698,7 +992,7 @@ i - insert characters to the left of cursor
 o - add a new line after current line
 x - delete the character at the cursor
 dd - delete the line the cursor is on
-]]></description><link>ict-219/vim.html</link><guid isPermaLink="false">ICT 219/VIM.md</guid><pubDate>Mon, 21 Sep 2026 17:21:42 GMT</pubDate></item><item><title><![CDATA[File Structure]]></title><description><![CDATA[<img alt="Pasted image 20260918102932.png" src="images/pasted-image-20260918102932.png" target="_self">is where most configurations are stored ]]></description><link>ict-219/file-structure.html</link><guid isPermaLink="false">ICT 219/File Structure.md</guid><pubDate>Mon, 21 Sep 2026 17:08:46 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260921095125]]></title><description><![CDATA[<img src="images/pasted-image-20260921095125.png" target="_self">]]></description><link>images/pasted-image-20260921095125.html</link><guid isPermaLink="false">images/Pasted image 20260921095125.png</guid><pubDate>Mon, 21 Sep 2026 16:51:25 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Ethical hacking]]></title><description><![CDATA[
+]]></description><link>ict-219/vim.html</link><guid isPermaLink="false">ICT 219/VIM.md</guid><pubDate>Mon, 21 Sep 2026 17:21:42 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260921095125]]></title><description><![CDATA[<img src="images/pasted-image-20260921095125.png" target="_self">]]></description><link>images/pasted-image-20260921095125.html</link><guid isPermaLink="false">images/Pasted image 20260921095125.png</guid><pubDate>Mon, 21 Sep 2026 16:51:25 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Ethical hacking]]></title><description><![CDATA[
 An ethical hacker uses hacking knowledge and techniques, which is the same as those used by malicious hacker, with authorization to identify vulnerabilities and improve security.
 Activities may include vulnerability research and assessment, penetration testing, network testing, web application testing and wireless testing.
 Ethical hackers may also assess human and procedural weaknesses when explicitly authorized.
@@ -889,95 +1183,7 @@ Four categories of controls: <br><a data-tooltip-position="top" aria-label="Day 
 Security+ examinations frequently test control categories and PDDCCD classifications
 ]]></description><link>ict-218/day-one-and-two-218.html</link><guid isPermaLink="false">ICT 218/Day one and two - 218.md</guid><pubDate>Mon, 21 Sep 2026 00:21:51 GMT</pubDate></item><item><title><![CDATA[High Availability]]></title><description><![CDATA[ The term 'high availability' describes systems designed to avoid downtime as much as possible. The continuous availability of information systems is imperative, not only to organizations but to modern life, as we are all using and relying on computer and information systems more than ever before. High availability systems typically are based on three design principles: eliminating single points of failure, providing for reliable crossover, and detecting failures as they occur. The first principle that defines high availability systems starts with identifying all system devices and components whose failure would result in system-wide failure. Methods to eliminate single points of failure include replacing or removing hot stand-by devices, redundant components, and multiple connections or pathways. Redundant power supplies, backup power systems and backup communications systems all provide for reliable crossover - the second design principle. The third principle is active device and system monitoring to detect many types of events including system and device failures. Monitoring systems may even trigger the backup system in the case of failure.
 Every organization wants to be able to operate uninterrupted, even under extreme conditions, such as during an attack.One of the most popular high availability goals is often called 'five nines.' It gets its name from its aim to achieve an availability rate of 99.999%, which is five nines in a row. In practice, this means that downtime is less than 5.26 minutes per year.Common steps taken to reach the five nines include:
-Standardized Systems Systems standardization provides for systems that use the same components. As a result, parts inventories are easier to maintain and it is possible and easy to swap components, even during an emergency. In highly secure information system facilities, guards control access to the organization's sensitive areas. The benefit of using guards here is that they can adapt more than automated systems. Guards can learn and distinguish many different conditions and situations and make decisions on the spot. Clustering Multiple devices grouped together provide a service that, to users, appears to be a single entity. If one device in a cluster fails, the other devices remain available and can step in. Shared Component Systems Systems are built so that a complete system can stand in for one that failed. N+1 redundancy helps ensure system availability in the event of a component failure. It means that components (N) need to have at least one backup component (+1). A good way to think about this is that a car has four tires (N) and a spare tire (+1) in the trunk in case of a flat. Although a system using N+1 architecture contains redundant equipment, it is not a fully redundant system. My summary Always have at least one extra of what you need always ready for the event that it goes down. N +1 Is specifically not in use/on its own. Like bellow the N+1 is the secondary network, not the redundancy in the first. <img alt="Pasted image 20260918142146.png" src="images/pasted-image-20260918142146.png" target="_self" style="width: 355px; max-width: 100%;">]]></description><link>ict-225/high-availability.html</link><guid isPermaLink="false">ICT 225/High Availability.md</guid><pubDate>Fri, 18 Sep 2026 21:24:04 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260918142146]]></title><description><![CDATA[<img src="images/pasted-image-20260918142146.png" target="_self">]]></description><link>images/pasted-image-20260918142146.html</link><guid isPermaLink="false">images/Pasted image 20260918142146.png</guid><pubDate>Fri, 18 Sep 2026 21:21:46 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Network Hardening]]></title><description><![CDATA[Dynamic host configuration protocol (DHCP) uses a server to assign an IP address and other
-configuration information to network devices.
-In effect, the device gets a permission slip from the DHCP server to use the network.
-Attackers can target DHCP servers to deny access to devices on the network, but security
-measures like DHCP snooping prevent rogue DHCP servers from providing IP addresses to
-clients by validating messages from sources that are not trusted.. A security checklist for DHCP:
-. Physically secure the DHCP server.
-. Apply any software patches.
-. Locate the DHCP server behind a firewall.
-. Monitor DHCP activity by reviewing DHCP logs.
-· Maintain a strong antivirus solution.
-. Uninstall any unused services and applications.
-.Close unused ports.recognize the IP address. |.Enable logging and analyze logs.Domain name system (DNS) translates a URL or website address, such as <a data-tooltip-position="top" aria-label="http://www.cisco.com" rel="noopener nofollow" class="external-link is-unresolved" href="http://www.cisco.com" target="_self">www.cisco.com</a>, into a
-numerical IP address. When users type a web address into the address bar, the DNS server will
-IDNS Security Extensions (DNSSEC) uses digital signatures to strengthen authentication and protect
-against threats to the DNS.. A security checklist for DNS:
-. Keep DNS software up to date.
-. Prevent version string from revealing information.
-Separate internal and external DNS servers.
-Restrict allowed transactions by client IP address.
-Use transaction signatures to authenticate transactions.
-Disable or restrict zone transfers and dynamic updates as much as possible.
-.
-.
-. Use Domain Name System Security Extensions (DNSSEC).
-Sign zones.CISCOO 2020 Ciaco and/or its affilintos. All sights raserved. Cisco ConfidentialInternet control messaging protocol (ICMP): Network devices use ICMP to send error messages
-that a requested service is not available, or the host could not reach the router, for example.. The ping command is a network utility that uses ICMP to test the reachability of a host on a
-network.
-. Ping sends ICMP messages to the host and waits for a reply.
-. Cybercriminals can alter the use of ICMP to run reconnaissance, denial of service (DoS) and
-covert channel attacks.
-. Many networks filter ICMP requests to prevent such attacks.Routing information protocol: RIP is a routing protocol that limits the number of hops from source
-to destination that are allowed in a network path.
-. The maximum number of hops allowed for RIP is fifteen.
-. RIP is used to exchange routing information about which networks each router can reach
-and how far away those networks are.. RIP calculates the best route based on hop count, but cybercriminals can also target routers and
-the RIP protocol.
-. Such attacks on routing services can affect performance and availability, some attacks can
-even result in traffic redirection.
-. Use secure services with authentication and implement system patching and updates to
-protect routing services.Network Time Protocol (NTP) is a protocol that synchronizes network computer system clocks.Having the correct time within networks is important.
-. Correct timestamps accurately track network events such as security violations.
-. Additionally, clock synchronization is critical for the correct interpretation of events
-within syslog data files as well as for digital certificates.. NTP allows network devices to synchronize their time settings with an NTP server.
-. Cybercriminals attack timeservers to disrupt secure communication that depends on digital
-certificates and to hide attack information.
-. Use NTP Authentication to verify that the server is trusted.Telnet, SSH, and SCPSecure Shell (SSH) is a protocol that provides a secure (encrypted) remote connection to a device.Telnet is an older protocol that uses unsecure plaintext when authenticating a device (username and
-password) and transmitting data.. SSH should be used rather than Telnet to manage connections, as it provides strong encryption.
-SSH uses TCP port 22.
-Telnet uses TCP port 23.Secure copy (SCP) securely transfers files between two remote systems.. SCP uses SSH for data transfer and authentication, ensuring the authenticity and confidentiality of
-the data in transit.CISCOSecure ProtocolsAttackers can penetrate a network's infrastructure through services, protocols, and open ports.Simple Network Management Protocol (SNMP) collects statistics from TCP/IP devices to monitor
-network and computer equipment. SNMPv3 is the current standard - it uses cryptography to prevent
-eavesdropping and make sure data hasn't been tampered with while in transit.Hypertext Transfer Protocol (HTTP) provides basic web connectivity and uses port 80. HTTP
-contains limited built-in security and is open to traffic monitoring when transmitting content, leaving the o
-user's computer open to attack.Protocols that provide a more secure connection:
-. Secure Sockets Layer (SSL) manages encryption by using an SSL handshake at the
-beginning of a session to provide confidentiality and prevent eavesdropping and tampering.
-. Transport Layer Security (TLS) is an updated, more secure replacement for SSL.
-SSL/TLS encrypts communication between the client and the server. Where it's used, the
-user will see HTTPS in the URL field of a browser instead of HTTP.
-2020 Claco and/or its affiliates. All rights reserved. Cisco ConfidentialFile Transfer Protocol (FTP) transfers computer files between a client and a server. In FTP, the client
-uses a plaintext username and password to connect. File Transfer Protocol Secure (FTPS) is more
-secure - it adds support for TLS and SSL to prevent eavesdropping, tampering and forgery on
-exchanged messages.Email uses Post Office Protocol (POP), Internet Message Access Protocol (IMAP) and
-Multipurpose Internet Mail Extensions (MIME) to attach non-text data, such as an image or video,
-to an email message.. To secure POP (port 110) or IMAP (port 143), use SSL/TLS to encrypt mail during transmission.
-The Secure/Multipurpose Internet Mail Extensions (S/MIME) protocol provides a secure method of
-transmission.
-It sends digitally signed and encrypted messages that provide authentication, message
-integrity, and nonrepudiation.The network is segmented.
-. VLANs allow an administrator to segment a network based on factors such as function,
-project, team, or application.
-. Devices within a VLAN act as if they are in their own independent network, even though they share
-a common infrastructure with other VLANs on the same LAN.
-. A VLAN can separate groups of devices that host sensitive data from the rest of the network,
-decreasing the chances of confidential information breaches - in our example, the HR
-department looking to protect sensitive data.
-. Trunks allow individuals on the HR VLAN to be physically connected to multiple switches.Data is protected.
-. VLANs provide a way to limit broadcast traffic in a switched network.
-. To protect the VLAN, monitor its performance, use advanced configurations, and regularly install
-patches and updates.A demilitarized zone (DMZ) is a small network between a trusted private network and the Internet.Access to untrusted networks: Web servers and mail servers are usually placed within the DMZ to
-allow users to access an untrusted network, such as the Internet, without compromising the internal
-network.<br><img alt="Pasted image 20260918140239.png" src="images/pasted-image-20260918140239.png" target="_self" style="width: 431px; max-width: 100%;"> Zero trust model: Firewalls manage east-west traffic (traffic that goes between servers within
-the organization's data center) and north-south traffic (data moving into and out of the
-organization's network).. To protect its network, an organization can implement a Zero Trust model.
-. Automatically trusting users and endpoints within the organization can put any network at risk, as
-trusted users can move throughout the network to access data.
-. Zero Trust networking constantly monitors all users on the network regardless of their status or
-role.]]></description><link>ict-225/network-hardening.html</link><guid isPermaLink="false">ICT 225/Network Hardening.md</guid><pubDate>Fri, 18 Sep 2026 21:04:35 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[CIA - when it comes to config]]></title><description><![CDATA[Data is protected and is only intended to be viewed by users who need to see it. encryption Data hasn’t changed or been modified between the sender and recover. Hashes Mechanisms to ensure that a user is Identified (authenticated) and privileged enough to use the data or service or protocol. credentials Also See <a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
+Standardized Systems Systems standardization provides for systems that use the same components. As a result, parts inventories are easier to maintain and it is possible and easy to swap components, even during an emergency. In highly secure information system facilities, guards control access to the organization's sensitive areas. The benefit of using guards here is that they can adapt more than automated systems. Guards can learn and distinguish many different conditions and situations and make decisions on the spot. Clustering Multiple devices grouped together provide a service that, to users, appears to be a single entity. If one device in a cluster fails, the other devices remain available and can step in. Shared Component Systems Systems are built so that a complete system can stand in for one that failed. N+1 redundancy helps ensure system availability in the event of a component failure. It means that components (N) need to have at least one backup component (+1). A good way to think about this is that a car has four tires (N) and a spare tire (+1) in the trunk in case of a flat. Although a system using N+1 architecture contains redundant equipment, it is not a fully redundant system. My summary Always have at least one extra of what you need always ready for the event that it goes down. N +1 Is specifically not in use/on its own. Like bellow the N+1 is the secondary network, not the redundancy in the first. <img alt="Pasted image 20260918142146.png" src="images/pasted-image-20260918142146.png" target="_self" style="width: 355px; max-width: 100%;">]]></description><link>ict-225/high-availability.html</link><guid isPermaLink="false">ICT 225/High Availability.md</guid><pubDate>Fri, 18 Sep 2026 21:24:04 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260918142146]]></title><description><![CDATA[<img src="images/pasted-image-20260918142146.png" target="_self">]]></description><link>images/pasted-image-20260918142146.html</link><guid isPermaLink="false">images/Pasted image 20260918142146.png</guid><pubDate>Fri, 18 Sep 2026 21:21:46 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[CIA - when it comes to config]]></title><description><![CDATA[Data is protected and is only intended to be viewed by users who need to see it. encryption Data hasn’t changed or been modified between the sender and recover. Hashes Mechanisms to ensure that a user is Identified (authenticated) and privileged enough to use the data or service or protocol. credentials Also See <a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
 ]]></description><link>ict-225/cia-when-it-comes-to-config.html</link><guid isPermaLink="false">ICT 225/CIA - when it comes to config.md</guid><pubDate>Fri, 18 Sep 2026 21:03:50 GMT</pubDate></item><item><title><![CDATA[Pasted image 20260918140239]]></title><description><![CDATA[<img src="images/pasted-image-20260918140239.png" target="_self">]]></description><link>images/pasted-image-20260918140239.html</link><guid isPermaLink="false">images/Pasted image 20260918140239.png</guid><pubDate>Fri, 18 Sep 2026 21:02:39 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260918140040]]></title><description><![CDATA[<img src="images/pasted-image-20260918140040.png" target="_self">]]></description><link>images/pasted-image-20260918140040.html</link><guid isPermaLink="false">images/Pasted image 20260918140040.png</guid><pubDate>Fri, 18 Sep 2026 21:00:40 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Hashing]]></title><description><![CDATA[Integrity Checks (Cont.)How a checksum works:. A checksum verifies the integrity of files, or strings of characters, before and after they transfer
 between devices across a local network or the Internet.
 Checksums convert each piece of information to a value and sums the total.
@@ -996,16 +1202,7 @@ Allows for best performance and for the hypervisor to manage, instruct and sched
 <br><a data-href="Best Practices-OUs" href="ict-127/server-info/server-roles/ous/best-practices-ous.html" class="internal-link" target="_self" rel="noopener nofollow">Best Practices-OUs</a>
 <br><a data-href="Scripting-OU's" href="ict-127/server-info/server-roles/ous/scripting-ou's.html" class="internal-link" target="_self" rel="noopener nofollow">Scripting-OU's</a> ]]></description><link>ict-127/server-info/server-roles/ous/ou-info.html</link><guid isPermaLink="false">ICT 127/Server info/Server roles/OUs/OU info.md</guid><pubDate>Fri, 18 Sep 2026 17:19:04 GMT</pubDate></item><item><title><![CDATA[Cybersecurity Kill Chain]]></title><description><![CDATA[The Cybersecurity Kill Chain models the progression of an attack and helps defenders identify opportunities to interrupt it.The Cybersecurity Kill Chain including the following phases.
 Reconnaissance Weaponization Delivery Exploitation Installation Command &amp; Control Actions on Objectives
-It overlaps with the hacking phases, but provides a different lens for understanding attacker activity.Defenders do not have to wait for the final stage - stopping any stage can prevent the attacker's objective.]]></description><link>ict-212/definitions/cybersecurity-kill-chain.html</link><guid isPermaLink="false">ICT 212/Definitions/Cybersecurity Kill Chain.md</guid><pubDate>Fri, 18 Sep 2026 16:50:50 GMT</pubDate></item><item><title><![CDATA[Physical Security]]></title><description><![CDATA[
-Barricades or fencing are often the first things that come to mind when thinking about types of physical security.
-In many situations, they are the outermost layer of defense and the most visible. All physical barriers should meet specific design requirements and material specifications. Perimeter fence system
-Security gate system
-Bollards (short posts used to stop vehicle intrusions)
-Vehicle entry barriers
-Guard shelters
-Fencing
-doors with locks logs biometrics RFID
-surveillance systems CCTV ]]></description><link>ict-225/physical-security.html</link><guid isPermaLink="false">ICT 225/Physical Security.md</guid><pubDate>Wed, 16 Sep 2026 21:23:28 GMT</pubDate></item><item><title><![CDATA[Identifying vulnerubilities]]></title><description><![CDATA[. Threat identification provides an organization with a list of likely threats for a particular
+It overlaps with the hacking phases, but provides a different lens for understanding attacker activity.Defenders do not have to wait for the final stage - stopping any stage can prevent the attacker's objective.]]></description><link>ict-212/definitions/cybersecurity-kill-chain.html</link><guid isPermaLink="false">ICT 212/Definitions/Cybersecurity Kill Chain.md</guid><pubDate>Fri, 18 Sep 2026 16:50:50 GMT</pubDate></item><item><title><![CDATA[Identifying vulnerubilities]]></title><description><![CDATA[. Threat identification provides an organization with a list of likely threats for a particular
 environment.. When identifying threats, it is important to ask several questions:
 . What are the possible vulnerabilities of a system?
 Who may want to exploit those vulnerabilities to access specific information assets?
