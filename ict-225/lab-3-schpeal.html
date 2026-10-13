@@ -25,10 +25,23 @@ secure boot-image ! dont run this
 secure boot-config !dont run this 
 </code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">Lab 2 - Core Security - Remote Access</p></div><div class="el-p"><p dir="auto">en<br>
 config t</p></div><div class="el-p"><p dir="auto">IDNS-based hostname resolution on Cisco routers and switches - stops accidental lookups (ie typo for command)<br>
-!Also means that you cannot use hostnames/domain names for services such as NTP, Syslog, etc - Must use IP Addresses!<br>
-no ip-domain lookup</p></div><div class="el-p"><p dir="auto">service password-encrypt</p></div><div class="el-p"><p dir="auto">security password min-length 8<br>
-enable secret ciscoensecret</p></div><div class="el-p"><p dir="auto">banner modt <a href="?query=tag:Go" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#Go">#Go</a> Away! Unless you're authorized personnel."</p></div><div class="el-p"><p dir="auto">banner login <a href="?query=tag:We" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#We">#We</a> are watching you during your remote session.#</p></div><div class="el-p"><p dir="auto">secure boot-image !Secures the IOS image by hiding it in Flash<br>
-secure boot-config !Secures the configuration file</p></div><div class="el-h1"><h1 data-heading="local user creation" dir="auto" class="heading" id="local_user_creation_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>local user creation</h1></div><div class="el-pre"><pre><code data-line="0">en 
+!Also means that you cannot use hostnames/domain names for services such as NTP, Syslog, etc - Must use IP Addresses!</p></div><div class="el-pre"><pre><code data-line="0">no ip-domain lookup
+
+service password-encrypt
+
+security password min-length 8
+enable secret ciscoensecret
+
+banner modt \#Go Away! Unless you're authorized personnel."#
+
+banner login \#We are watching you during your remote session.#
+
+secure boot-image !Secures the IOS image by hiding it in Flash
+secure boot-config !Secures the configuration file
+
+
+# local user creation 
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-pre"><pre><code data-line="0">en 
 conf t 
 
 username [usernam - admin] privilege [level #] secret [password]
@@ -56,4 +69,4 @@ ILevel 15 users starts in Priv-Exec Mode</p></div><div class="el-p"><p dir="auto
 			<div class="graph-icon graph-global" role="button" aria-label="Global Graph" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-git-fork"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></div>
 			<canvas id="graph-canvas" class="hide" width="512px" height="512px"></canvas>
 		</div>
-		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item" data-depth="1"><a class="tree-item-self is-clickable" href="#Lab_3_schpeal_0" data-path="#Lab_3_schpeal_0"><div class="tree-item-inner heading-link" heading-name="Lab 3 schpeal">Lab 3 schpeal</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="1"><a class="tree-item-self is-clickable" href="#local_user_creation_0" data-path="#local_user_creation_0"><div class="tree-item-inner heading-link" heading-name="local user creation">local user creation</div></a><div class="tree-item-children"></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>
+		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item" data-depth="1"><a class="tree-item-self is-clickable" href="#Lab_3_schpeal_0" data-path="#Lab_3_schpeal_0"><div class="tree-item-inner heading-link" heading-name="Lab 3 schpeal">Lab 3 schpeal</div></a><div class="tree-item-children"></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>
