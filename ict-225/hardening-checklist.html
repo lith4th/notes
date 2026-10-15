@@ -8,10 +8,591 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="ict-225/hardening-checklist.html">
 <meta property="og:image" content="undefined">
-<meta charset="UTF-8"><meta property="og:site_name" content="www.ryderfryling.ca"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-wasm-script" src="site-lib/scripts/graph-wasm.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-render-worker-script" src="site-lib/scripts/graph-render-worker.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager styled-scrollbars show-inline-title show-ribbon is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><div id="search-container"><div id="search-wrapper"><input enterkeyhint="search" type="search" spellcheck="false" placeholder="Search..."><div aria-label="Clear search" id="search-clear-button"></div></div></div></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"><link itemprop="include" href="site-lib/html/file-tree-content.html"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings allow-fold-lists show-indentation-guide show-properties" data-type="markdown"><style id="MJX-CHTML-styles"></style><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Hardening_Checklist_0">Hardening Checklist</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><label class="theme-toggle-container" for="theme-toggle-input" id=""><input class="theme-toggle-input" type="checkbox" id="theme-toggle-input"><div class="toggle-background"></div></label></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"><div class="graph-view-wrapper"><div class="feature-header"><div class="feature-title">Interactive Graph</div></div><div class="graph-view-placeholder">
+<meta charset="UTF-8"><meta property="og:site_name" content="www.ryderfryling.ca"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-wasm-script" src="site-lib/scripts/graph-wasm.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-render-worker-script" src="site-lib/scripts/graph-render-worker.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager styled-scrollbars show-inline-title show-ribbon is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><div id="search-container"><div id="search-wrapper"><input enterkeyhint="search" type="search" spellcheck="false" placeholder="Search..."><div aria-label="Clear search" id="search-clear-button"></div></div></div></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"><link itemprop="include" href="site-lib/html/file-tree-content.html"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings allow-fold-lists show-indentation-guide show-properties" data-type="markdown"><style id="MJX-CHTML-styles"></style><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Hardening_Checklist_0">Hardening Checklist</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-h1"><h1 data-heading="Router" dir="auto" class="heading" id="Router_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Router</h1></div><div class="el-h2"><h2 data-heading="Base config" dir="auto" class="heading" id="Base_config_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Base config</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr"><strong>Configuration Task</strong></th>
+<th dir="ltr"><strong>Description/Rationale</strong></th>
+<th dir="ltr"><strong>Configuration</strong></th>
+<th dir="ltr"><strong>Complete</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Configure Hostname</td>
+<td dir="ltr">Hostnames should identify the router to administrators and should be unique for SSH purposes</td>
+<td dir="ltr"><code>hostname &lt;RTR&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Display Message</td>
+<td dir="ltr">Display Message is used to display a message once a user accesses the device and to warn them of any consequences</td>
+<td dir="ltr"><code>banner motd cNo Unauthorized Access!c banner motd line -&gt; No Unauthorized Access!l</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set device domain name (or disable if not being used)</td>
+<td dir="ltr">Configures applicable domain name (or disables entirely)</td>
+<td dir="ltr"><code>ip domain name int.HNC.com</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Management Interface</td>
+<td dir="ltr">Configure a reachable IP address for in-band management</td>
+<td dir="ltr"><code>Configure management sub int on site router, otherwise use regular int IPs for edge routers</code></td>
+<td dir="auto"></td>
+</tr>
+</tbody>
+</table></div><div class="el-h2"><h2 data-heading="Management Plane" dir="auto" class="heading" id="Management_Plane_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Management Plane</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr"><strong>Configuration Task</strong></th>
+<th dir="ltr"><strong>Description/Rationale</strong></th>
+<th dir="ltr"><strong>Configuration</strong></th>
+<th dir="ltr"><strong>Complete</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Enhanced password security</td>
+<td dir="ltr">Changes secret password encryption from MD5 to SHA256. MD5 is a legacy encryption type. Slows decryption, and secures passwords</td>
+<td dir="ltr"><code>enable algorithm-type sha256 secret &lt;password&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set minimum password length 10</td>
+<td dir="ltr">Prevents brute force attacks or dictionary attacks</td>
+<td dir="ltr"><code>security passwords min-length 10</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Encrypt plain text passwords</td>
+<td dir="ltr">Prevents credentials from being easily read by a threat actor</td>
+<td dir="ltr"><code>service password-encryption</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Restrict service password recovery</td>
+<td dir="ltr">Prevents password recovery sequence via restricting anyone from clearing/resetting any passwords, has potential to lockout a device</td>
+<td dir="ltr"><code>***NOT RUNNING ON LAB GEAR*** ***– HIGH RISK***no service password-recovery</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable TCP and UDP Small Services</td>
+<td dir="ltr">TCP and UDP small services are servers that run in the router, usually used for diagnostics. Could be used to gather information on the target system</td>
+<td dir="ltr"><code>no service udp-small-servers no service tcp-small-servers</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable finger service</td>
+<td dir="ltr">Legacy – not needed and removed to reduce attack vectors</td>
+<td dir="ltr"><code>no ip finger, no service finger</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable bootstrap protocol</td>
+<td dir="ltr">Legacy – not needed and removed to reduce attack vectors</td>
+<td dir="ltr"><code>no ip bootp server</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable DHCP services</td>
+<td dir="ltr">Not using as the DC is handling DHCP</td>
+<td dir="ltr"><code>no service dhcp</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable MOP service</td>
+<td dir="ltr">MOP is not available on the lab gear</td>
+<td dir="ltr"><code>no mop enabled (per int)</code></td>
+<td dir="ltr">Mop was not available on the lab gear</td>
+</tr>
+<tr>
+<td dir="ltr">Disable PAD service</td>
+<td dir="ltr">Legacy depreciated service – not needed</td>
+<td dir="ltr"><code>no service pad</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable HTTP/HTTPS server</td>
+<td dir="ltr">We do not plan on using http/httpsDisabling the services decreases the device’s attack surface</td>
+<td dir="ltr"><code>no ip http serverno ip http secure-server</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable network configuration retrieval</td>
+<td dir="ltr">Can be used to retrieve information on target network or device.</td>
+<td dir="ltr"><code>Configure privilege level correctly (privilege exec level 5 show)</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure local AAA authentication</td>
+<td dir="ltr">Authenticates users before they are allowed to access the network or network services. Authentication is done using a RADIUS or TACACS+ server</td>
+<td dir="ltr"><code>***AAA IS NOT REQUIRED FOR THIS LAB***aaa new-model</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Create user accounts</td>
+<td dir="ltr">User accounts are an essential/fundamental step in ensuring secure access and manipulation of the management plane</td>
+<td dir="ltr"><code>username &lt;name&gt; privilege &lt;privilege-level&gt; secret &lt;password&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Block local authentication failed attempts</td>
+<td dir="ltr">Locks out a user upon a specified number of unsuccessful authentication attempts. Prevents unauthorized access, brute force attacks, or dictionary attacks</td>
+<td dir="ltr"><code>***AAA IS NOT REQUIRED FOR THIS LAB***aaa local authentication attempts max-fail &lt;number-of-unsuccessful-attempts&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set console timeout</td>
+<td dir="ltr">7min – prevents an exec session being left open and used by someone else</td>
+<td dir="ltr"><code>line con 0exec-timeout 7 0</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Restrict who can login based on by source IP address</td>
+<td dir="ltr">Access control lists can restrict traffic to only allow specified networks or hosts. Can block anyone attempting to connect from an unauthorized network</td>
+<td dir="ltr"><code>ACL (TBD)</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable Quiet-Mode Access</td>
+<td dir="auto"></td>
+<td dir="ltr"><code>ACL (TBD)</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enforce delay after failed login</td>
+<td dir="ltr">Can be used to prevent unauthorized access, brute force attacks, or dictionary attacks. Block for 5 minutes if 3 failed attempts within 1 minute.</td>
+<td dir="ltr"><code>login block-for 300 attempts 3 within 60</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure SSH access</td>
+<td dir="ltr">Allows SSH version 2 on a VTY line. SSH version 2 fixes known vulnerabilities with version 1</td>
+<td dir="ltr"><code>ip ssh version 2 transport input ssh</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure maximum SSH authentication retries</td>
+<td dir="ltr">Can be used to prevent unauthorized access, brute force attacks, or dictionary attacks. Times out for the time specified in “login block-for".</td>
+<td dir="ltr"><code>ip ssh authentication-retries 3</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure SSH connection timeout</td>
+<td dir="ltr">Prevents a threat actor from accessing a device that has an open SSH connection and using it.</td>
+<td dir="ltr"><code>ip ssh time-out 120</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable AUX port</td>
+<td dir="ltr">Prevents a threat actor from physically connecting through the aux port.</td>
+<td dir="ltr"><code>line aux 0 -&gt; no exec</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Log successful logins</td>
+<td dir="ltr">Used to audit which users have logged in. Can be used to audit if a user was logged in when a configuration was changed</td>
+<td dir="ltr"><code>***SYSLOG*** ***IS NOT REQUIRED FOR THIS LAB***login on-success log [every login]</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Log failed logins</td>
+<td dir="ltr">Used to audit which users have logged out. Can be used to audit if a user was active when a configuration was changed</td>
+<td dir="ltr"><code>***SYSLOG*** ***IS NOT REQUIRED FOR THIS LAB***login on-failure log [every login]</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Syslog server connection</td>
+<td dir="ltr">Used to send device logs to a syslog server for centralization. Can be used for auditing or troubleshooting</td>
+<td dir="ltr"><code>***SYSLOG*** ***IS NOT REQUIRED FOR THIS LAB***logging on -&gt; logging host &lt;ip add&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configures TCP keepalives</td>
+<td dir="ltr">Prevents TCP connections from being left open.</td>
+<td dir="ltr"><code>service tcp-keepalives-inservice tcp-keepalives-out</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable secure copy protocol (SCP)</td>
+<td dir="ltr">Secures data transferred over SSH.</td>
+<td dir="ltr"><code>ip scp server enable</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable IOS image resilience</td>
+<td dir="ltr">Prevent corruption and modification of the system. Allows recovery using the secured image or config</td>
+<td dir="ltr"><code>***NOT*** ***RUNNING*** ***ON LAB GEAR*** ***– HIGH RISK***secure boot-imagesecure boot-config</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure NTP (for accurate Syslog purposes)</td>
+<td dir="ltr">Keeps syslog's in sync and prevents network corruption.</td>
+<td dir="ltr"><code>***NTP*** ***IS NOT REQUIRED FOR THIS LAB***service timestamps log datetime msec</code></td>
+<td dir="auto"></td>
+</tr>
+</tbody>
+</table></div><div class="el-h2"><h2 data-heading="Control and Data Plane" dir="auto" class="heading" id="Control_and_Data_Plane_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Control and Data Plane</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr"><strong>Configuration Task</strong></th>
+<th dir="ltr"><strong>Description/Rationale</strong></th>
+<th dir="ltr"><strong>Configuration</strong></th>
+<th dir="ltr"><strong>Complete</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Disable Discovery Protocols (CDP and LLDP)</td>
+<td dir="ltr">Vulnerabilities in CDP, prevent device insertion.</td>
+<td dir="ltr"><code>no cdp runno lldp run</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Router Protocol Authentication</td>
+<td dir="ltr">Prevents man in the middle attacks from other devices trying to establish adjacencies</td>
+<td dir="ltr"><code>ip ospf message-digest-key &lt;key id&gt; md5 &lt;key&gt; (on int) (defines authentication settings)  area &lt;area id&gt; authentication message-digest (configures per zone authentication)</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set Memory Threshold Notifications</td>
+<td dir="ltr">Used to send notifications to a SNMP server when memory resources are running low and have hit a certain threshold.</td>
+<td dir="ltr"><code>***REQUIRES SNMP***memory free low-watermark {processor</code></td>
+<td dir="ltr">io} memory reserve critical kilobytes</td>
+</tr>
+<tr>
+<td dir="ltr">Enable Cisco Express Forwarding</td>
+<td dir="ltr">Better route caching/newer switching technology</td>
+<td dir="ltr"><code>Enabled by default</code></td>
+<td dir="auto"></td>
+</tr>
+</tbody>
+</table></div><div class="el-h1"><h1 data-heading="Switch" dir="auto" class="heading" id="Switch_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Switch</h1></div><div class="el-h2"><h2 data-heading="Base Config" dir="auto" class="heading" id="Base_Config_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Base Config</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">Configuration Task</th>
+<th dir="ltr">Description/Rationale</th>
+<th dir="ltr">Configuration</th>
+<th dir="ltr">Complete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Configure Hostname</td>
+<td dir="ltr">Hostnames should identify the switch to administrators and should be unique for SSH purposes</td>
+<td dir="ltr"><code>hostname &lt;DistSW#&gt;&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Display Message</td>
+<td dir="ltr">Display Message is used to display a message once a user accesses the device and to warn them of any consequences</td>
+<td dir="ltr"><code>banner motd line cNo Unauthorized Access!c&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set device domain name (or disable if not being used)</td>
+<td dir="ltr">Configures applicable domain name (or disables entirely)</td>
+<td dir="ltr"><code>ip domain name int.HNC.com&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Management Interface</td>
+<td dir="ltr">Configure a reachable IP address for in-band management</td>
+<td dir="ltr"><code>Configure Management VLAN SVI&nbsp;&lt;br&gt;&lt;br&gt;int vlan &lt;id&gt;&nbsp;&lt;br&gt;&lt;br&gt;ip address &lt;ip address&gt; &lt;subnet mask&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+</tbody>
+</table></div><div class="el-h2"><h2 data-heading="Management Plane" dir="auto" class="heading" id="Management_Plane_1"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Management Plane</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">Configuration Task</th>
+<th dir="ltr">Description/Rationale</th>
+<th dir="ltr">Configuration</th>
+<th dir="ltr">Complete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Enhanced password security</td>
+<td dir="ltr">Sets the enable secret and changes password encryption from MD5 to SHA256. MD5 is a legacy encryption type and has been retired due to vulnerability from collision attacks</td>
+<td dir="ltr"><code>enable algorithm-type sha256 secret &lt;password&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set minimum password length</td>
+<td dir="ltr">Prevents brute force attacks or dictionary attacks</td>
+<td dir="ltr"><code>IN AAA:&nbsp;&lt;br&gt;&lt;br&gt;aaa common-criteria policy passwords&nbsp;&lt;br&gt;&lt;br&gt;min-length 10</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Encrypt plain text passwords</td>
+<td dir="ltr">Prevents credentials from being easily read by a threat actor</td>
+<td dir="ltr"><code>service password-encryption&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Restrict service password recovery</td>
+<td dir="ltr">Prevents password recovery sequence via restricting anyone from clearing/resetting any passwords, has potential to lockout a device</td>
+<td dir="ltr"><code>NOT RUNNING ON LAB GEAR – HIGH RISK&nbsp;&lt;br&gt;&lt;br&gt;no service password-recovery</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable TCP and UDP Small Services</td>
+<td dir="ltr">TCP and UDP small services are servers that run in the switch, usually used for diagnostics. Could be used to gather information on the target system</td>
+<td dir="ltr"><code>no service udp-small-servers&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;no service tcp-small-servers&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable finger service</td>
+<td dir="ltr">Legacy – not needed and removed to reduce attack vectors&nbsp;<br><br>Finger is a protocol that allows for a client to query human readable information about a user or system. Finger is no longer used as obtaining information about a user/system is a security risk. The protocol is also old and has vulnerabilities. Because of this it should be disabled</td>
+<td dir="ltr"><code>no service finger – older version of command&nbsp;&lt;br&gt;&lt;br&gt;no ip finger&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable bootstrap protocol</td>
+<td dir="ltr">Legacy – not needed and removed to reduce attack vectors&nbsp;<br><br>Bootstrap protocol is a precursor to DHCP and was used to provide clients with IPv4 addresses. Since DHCP now provides that functionality it is recommended to disable bootstrap protocol unless needed.</td>
+<td dir="ltr"><code>no ip bootp server&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable DHCP services</td>
+<td dir="ltr">Not using as the DC is handling DHCP&nbsp;<br><br>DHCP services can let a networking device act as a DHCP server and lease out addresses.</td>
+<td dir="ltr"><code>no service dhcp&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable MOP service</td>
+<td dir="ltr">**MOP is not available on the lab gear&nbsp;<br><br>Maintenance Operations Protocol (MOP) is a legacy protocol that is used primarily for remote maintenance, troubleshooting, and booting/bootstrapping of network devices.&nbsp;<br><br>Leaving MOP service enabled could allow a threat actor to obtain access to a remote console, if they possess the credentials.</td>
+<td dir="ltr"><code>PER INTERFACE:&nbsp;&lt;br&gt;&lt;br&gt;interface ###&nbsp;&lt;br&gt;&lt;br&gt;no mop enabled&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable PAD service</td>
+<td dir="ltr">Packet Assembler/Disassembler (PAD) is a legacy service that was used before IP-based networks were established. It allowed terminal communication over an X.25 packet-switched network by converting character-based terminal data and X.25 packets. PAD has been depreciated since the creation of IP-based networks&nbsp;<br><br>Since PAD service is not required, it should be disabled to reduce the attack surface.</td>
+<td dir="ltr"><code>no service pad&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable HTTP/HTTPS server</td>
+<td dir="ltr">HTTP/HTTPS servers are not required for this deployment&nbsp;<br><br>Disabling the services decreases the device’s attack surface</td>
+<td dir="ltr"><code>no ip http server&nbsp;&lt;br&gt;&lt;br&gt;no ip http secure-server&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable network configuration retrieval</td>
+<td dir="ltr">Can be used to retrieve information on target network or device.</td>
+<td dir="ltr"><code>Configure privilege level correctly (privilege exec level 5 show)</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure local AAA authentication</td>
+<td dir="ltr">Authenticates users before they are allowed to access the network or network services. Authentication is done using a RADIUS or TACACS+ server</td>
+<td dir="ltr"><code>Local:&nbsp;&lt;br&gt;&lt;br&gt;aaa new-model&nbsp;&lt;br&gt;&lt;br&gt;aaa authentication login default local&nbsp;&lt;br&gt;&lt;br&gt;line vty &lt;#&gt; &lt;#&gt;&nbsp;&lt;br&gt;&lt;br&gt;login authentication default&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used for local authentication, creates a list called “local_auth”&nbsp;&lt;br&gt;&lt;br&gt;Server-based:&nbsp;&lt;br&gt;&lt;br&gt;aaa new-model&nbsp;&lt;br&gt;&lt;br&gt;aaa authentication login radius-list group radius&nbsp;&lt;br&gt;&lt;br&gt;radius server AdminServ01&nbsp;&lt;br&gt;&lt;br&gt;add ipv4 10.30.0.1 auth-port 1645&nbsp;&lt;br&gt;&lt;br&gt;key 225-Admin-Red-2026</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Create user accounts</td>
+<td dir="ltr">User accounts are an essential/fundamental step in ensuring secure access and manipulation of the management plane</td>
+<td dir="ltr"><code>Server-based: Can be done on radius server&nbsp;&lt;br&gt;&lt;br&gt;Local-based: username [username] privilege [#] secret [pass]&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Block local authentication failed attempts</td>
+<td dir="ltr">Locks out a user upon a specified number of unsuccessful authentication attempts.&nbsp;&nbsp;<br><br>Prevents unauthorized access, brute force attacks, or dictionary attacks</td>
+<td dir="ltr"><code>aaa local authentication attempts max-fail 3</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Set console timeout</td>
+<td dir="ltr">7min – prevents an exec session being left open and used by someone else</td>
+<td dir="ltr"><code>line con 0&nbsp;&lt;br&gt;&lt;br&gt;login authentication default&nbsp;&lt;br&gt;&lt;br&gt;exec-timeout 7&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used, also enables timeout for VTY</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Restrict who can login based on by source IP address</td>
+<td dir="ltr">Access control lists can restrict traffic to only allow specified networks or hosts.&nbsp;&nbsp;<br><br>Can block anyone attempting to connect from an unauthorized network</td>
+<td dir="ltr"><code>ip access-list standard SSH-Connections -&gt; permit 10.30.0.0 0.0.1.255&nbsp;&lt;br&gt;&lt;br&gt;line vty &lt;#&gt; &lt;#&gt;&nbsp;&lt;br&gt;&lt;br&gt;access-class SSH-Connections in</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable Quiet-Mode Access</td>
+<td dir="ltr">“Sleeps” the switch if too many failed login attempts and only allows connections from IPs in the ACL</td>
+<td dir="ltr"><code>ip access-list standard QUIET-MODE-LIST&nbsp;&lt;br&gt;&lt;br&gt;permit host &lt;IP&gt;&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;login quiet-mode access-class QUIET-MODE-LIST</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enforce delay after failed login</td>
+<td dir="ltr">Can be used to prevent unauthorized access, brute force attacks, or dictionary attacks.&nbsp;&nbsp;<br><br>Block for 5 minutes if 3 failed attempts within 1 minute.</td>
+<td dir="ltr"><code>login block-for 300 attempts 3 within 60</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure SSH access</td>
+<td dir="ltr">Allows SSH version 2 on a VTY line.&nbsp;&nbsp;<br><br>SSH version 2 fixes known vulnerabilities with version 1&nbsp;<br><br>Allows for secure remote management of switches.</td>
+<td dir="ltr"><code>ip ssh version 2&nbsp;&lt;br&gt;&lt;br&gt;crypto key generate rsa general-keys modulus 4096&nbsp;&lt;br&gt;&lt;br&gt;line vty &lt;#&gt; &lt;#&gt;&nbsp;&lt;br&gt;&lt;br&gt;{login local \| login authentication default}&nbsp;&lt;br&gt;&lt;br&gt;transport input ssh&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used but also enables Telnet</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure maximum SSH authentication retries</td>
+<td dir="ltr">Can be used to prevent unauthorized access, brute force attacks, or dictionary attacks.&nbsp;&nbsp;<br><br>Times out for the time specified in “login block-for".</td>
+<td dir="ltr"><code>ip ssh authentication-retries 3</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure SSH connection timeout</td>
+<td dir="ltr">Prevents a threat actor from accessing a device that has an open SSH connection and using it.</td>
+<td dir="ltr"><code>ip ssh time-out 120&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used – Default is 60 seconds</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Disable AUX port</td>
+<td dir="ltr">Prevents a threat actor from physically connecting through the aux port.</td>
+<td dir="ltr"><code>line aux 0&nbsp;&lt;br&gt;&lt;br&gt;no exec&nbsp;&lt;br&gt;&lt;br&gt;transport input none</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Log successful logins</td>
+<td dir="ltr">Used to audit which users have logged in.&nbsp;&nbsp;<br><br>Can be used to audit if a user was logged in when a configuration was changed</td>
+<td dir="ltr"><code>login on-success log [every login]</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Log failed logins</td>
+<td dir="ltr">Used to audit which users have logged out.&nbsp;&nbsp;<br><br>Can be used to audit if a user was active when a configuration was changed</td>
+<td dir="ltr"><code>login on-failure log [every login]</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Syslog server connection</td>
+<td dir="ltr">Used to send device logs to a syslog server for centralization. Can be used for auditing or troubleshooting</td>
+<td dir="ltr"><code>logging on -&gt; logging host &lt;ip add&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configures TCP keepalives</td>
+<td dir="ltr">Prevents TCP connections from being left open.</td>
+<td dir="ltr"><code>service tcp-keepalives-in&nbsp;&lt;br&gt;&lt;br&gt;service tcp-keepalives-out&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable secure copy protocol (SCP)</td>
+<td dir="ltr">Secures data transferred over SSH.</td>
+<td dir="ltr"><code>ip scp server enable</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable IOS image resilience</td>
+<td dir="ltr">Prevent corruption and modification of the system. Allows recovery using the secured image or config</td>
+<td dir="ltr"><code>NOT RUNNING ON LAB GEAR – HIGH RISK&nbsp;&lt;br&gt;&lt;br&gt;secure boot-image&nbsp;&lt;br&gt;&lt;br&gt;secure boot-config</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure NTP (for accurate Syslog purposes)</td>
+<td dir="ltr">Keeps syslog's in sync and prevents network corruption.&nbsp;<br><br>MD5 can be used for hashing since speed is a higher priority than security for system logs.</td>
+<td dir="ltr"><code>ntp authentication&nbsp;&lt;br&gt;&lt;br&gt;ntp authentication-key &lt;key ID&gt; md5 &lt;secret &gt;&nbsp;&lt;br&gt;&lt;br&gt;ntp trusted-key &lt;key ID&gt;&nbsp;&lt;br&gt;&lt;br&gt;ntp server &lt;IP&gt; key &lt;key ID&gt;&nbsp;&lt;br&gt;&lt;br&gt;service timestamps log datetime msec&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used, also displays messages to the console</code></td>
+<td dir="auto"></td>
+</tr>
+</tbody>
+</table></div><div class="el-h2"><h2 data-heading="Control and Data Plane" dir="auto" class="heading" id="Control_and_Data_Plane_1"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Control and Data Plane</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">Configuration Task</th>
+<th dir="ltr">Description/Rationale</th>
+<th dir="ltr">Configuration</th>
+<th dir="ltr">Complete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Disable Discovery Protocols (CDP and LLDP)</td>
+<td dir="ltr">CDP and LLDP are vulnerable to reconnaissance attacks via device insertion</td>
+<td dir="ltr"><code>no cdp run&nbsp;&lt;br&gt;&lt;br&gt;no lldp run&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure disables CDP but not LLDP</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Configure Router Protocol Authentication</td>
+<td dir="ltr">Prevents man in the middle attacks from other devices trying to establish adjacencies</td>
+<td dir="ltr"><code>ip ospf message-digest-key 7 md5 225-OSPF-Blue-2026 (on int)&nbsp;&lt;br&gt;&lt;br&gt;area 0 authentication message-digest</code></td>
+<td dir="ltr">N/A</td>
+</tr>
+<tr>
+<td dir="ltr">Set Memory Threshold Notifications</td>
+<td dir="ltr">Used to send notifications to a SNMP server when memory resources are running low and have hit a certain threshold.</td>
+<td dir="ltr"><code>memory free low-watermark {processor\|io} &lt;threshold KB&gt;&nbsp;&lt;br&gt;&lt;br&gt;memory reserve critical &lt;kilobytes&gt;&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure runs “logging buffered” which sets the switch to use an internal buffer for logging but does not have to do with memory threshold notifications.</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Enable Cisco Express Forwarding</td>
+<td dir="ltr">Better route caching/newer switching technology</td>
+<td dir="ltr"><code>Enabled by default&nbsp;&lt;br&gt;&lt;br&gt;Auto Secure can be used</code></td>
+<td dir="auto"></td>
+</tr>
+</tbody>
+</table></div><div class="el-h2"><h2 data-heading="Layer 2 Threat Mitigation" dir="auto" class="heading" id="Layer_2_Threat_Mitigation_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Layer 2 Threat Mitigation</h2></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">Configuration Task</th>
+<th dir="ltr">Description/Rationale</th>
+<th dir="ltr">Configuration</th>
+<th dir="ltr">Complete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">Dynamic ARP Inspection</td>
+<td dir="ltr">Prevents ARP spoofing during MiTM attacks by verifying ARP messages.</td>
+<td dir="ltr"><code>REQUIRES DHCP SNOOPING&nbsp;&lt;br&gt;&lt;br&gt;ip arp inspection vlan 10,20,30&nbsp;&lt;br&gt;&lt;br&gt;On Trusted Interfaces:&nbsp;&lt;br&gt;&lt;br&gt;ip arp inspection trust</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">DHCP Snooping</td>
+<td dir="ltr">Prevents a rogue DHCP attack by scanning for rogue servers and blocking their traffic. It also prevents DHCP starvation attacks by scanning for large amounts of IP requests coming from the same MAC and verifying said MAC.</td>
+<td dir="ltr"><code>ip dhcp snooping&nbsp;&lt;br&gt;&lt;br&gt;ip dhcp snooping vlan 10,20,30&nbsp;&lt;br&gt;&lt;br&gt;ip dhcp snooping verify mac&nbsp;&lt;br&gt;&lt;br&gt;Trusted Interfaces:&nbsp;&lt;br&gt;&lt;br&gt;ip dhcp snooping trust&nbsp;&lt;br&gt;&lt;br&gt;Untrusted Interfaces:&nbsp;&lt;br&gt;&lt;br&gt;ip dhcp snooping limit rate 6</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">IP Source Guard</td>
+<td dir="ltr">Provides source IP address filtering. Prevents a threat actor from spoofing a legitimate host by using a legitimate host IP. Uses DHCP snooping and static IP source binding to match IP addresses to hosts on untrusted Layer 2 access ports</td>
+<td dir="ltr"><code>interface ###&nbsp;&lt;br&gt;&lt;br&gt;ip verify source&nbsp;&lt;br&gt;&lt;br&gt;exit&nbsp;&lt;br&gt;&lt;br&gt;ip source binding &lt;MAC&gt; vlan &lt;VLAN ID&gt; &lt;IP&gt; interface &lt;INT ID&gt;&nbsp;&lt;br&gt;&lt;br&gt;FOR SWITCHES CONNECTED TO STATIC HOSTS:&nbsp;&lt;br&gt;&lt;br&gt;ip device tracking&nbsp;&lt;br&gt;&lt;br&gt;interface ###&nbsp;&lt;br&gt;&lt;br&gt;ip verify source {tracking\|mac-check}&nbsp;&lt;br&gt;&lt;br&gt;ip device tracking maximum {0-10}</code></td>
+<td dir="ltr">N/A</td>
+</tr>
+<tr>
+<td dir="ltr">STP Security (PVSTP/Portfast/BDPUGuard/<br>RootGuard/LoopGuard)</td>
+<td dir="ltr">PortFast + BPDU Guard or Rootguard can be used to prevents MiTM attacks that take over the STP topology to change the root bridge.&nbsp;<br><br>Loopguard prevents a STP blocking/listening port from transitioning to another STP state when it stops receiving BPDUs and creating a loop. Loopguard does this by placing these ports into a loop-inconsistent state when they stop receiving BPDUs&nbsp;<br><br>PVST runs a separate instance of STP for each VLAN configured on the device. This is done to allow for logical separation and increased efficiency for STP.</td>
+<td dir="ltr"><code>On all access ports:&nbsp;&lt;br&gt;&lt;br&gt;spanning-tree portfast&nbsp;&lt;br&gt;&lt;br&gt;spanning-tree bpduguard enable&nbsp;&lt;br&gt;&lt;br&gt;On trunks:&nbsp;&lt;br&gt;&lt;br&gt;spanning-tree rootguard&nbsp;&lt;br&gt;&lt;br&gt;On non-designated trunk ports:&nbsp;&lt;br&gt;&lt;br&gt;Spanning-tree loopguard default&nbsp;&lt;br&gt;&lt;br&gt;PVST:&nbsp;&lt;br&gt;&lt;br&gt;spanning-tree mode pvst&nbsp;&lt;br&gt;&lt;br&gt;spanning-tree vlan &lt;id&gt; priority &lt;int&gt;</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">MAC-based Port Security</td>
+<td dir="ltr">Prevents MAC Address Table attacks by only allowing a certain amount of MAC’s from each port or restricting traffic from a port to only a s couple of specific MAC’s.</td>
+<td dir="ltr"><code>On all access ports:&nbsp;&lt;br&gt;&lt;br&gt;switchport nonegotiate&nbsp;&lt;br&gt;&lt;br&gt;switchport mode access&nbsp;&lt;br&gt;&lt;br&gt;switchport port-security&nbsp;&lt;br&gt;&lt;br&gt;switchport port-security maximum 4&nbsp;&lt;br&gt;&lt;br&gt;switchport port-security violation shutdown&nbsp;&lt;br&gt;&lt;br&gt;switchport port-security aging time 10</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">DTP Security&nbsp;<br><br>VTP Security</td>
+<td dir="ltr">Disables DTP and prevent DTP messages from being generated&nbsp;<br><br>Configures trunk ports to use a dedicated Native VLAN&nbsp;<br><br>VTP (VLAN Trunking Protocol) is a protocol that allows a switch to connect to a VTP server and receive information about VLANs (compared to manual configuration on each switch).</td>
+<td dir="ltr"><code>Configure Access ports&nbsp;&lt;br&gt;&lt;br&gt;Configure Trunk ports&nbsp;&lt;br&gt;&lt;br&gt;Create dedicated Native VLAN:&nbsp;&lt;br&gt;&lt;br&gt;vlan 99&nbsp;&lt;br&gt;&lt;br&gt;name Native&nbsp;&lt;br&gt;&lt;br&gt;Configure Trunk ports to use Native VLAN:&nbsp;&lt;br&gt;&lt;br&gt;switchport trunk native vlan 99&nbsp;&lt;br&gt;&lt;br&gt;Run “switchport nonegotiate” on all trunk and access ports&nbsp;&lt;br&gt;&lt;br&gt;vtp mode transparent</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Unused Port Security</td>
+<td dir="ltr">Shutdowns unused ports and takes them off the default VLAN (VLAN 1). This prevents a threat actor from being able to use the port to access the network.</td>
+<td dir="ltr"><code>Create a dedicated “Blackhole” VLAN:&nbsp;&lt;br&gt;&lt;br&gt;vlan 666&nbsp;&lt;br&gt;&lt;br&gt;name Blackhole&nbsp;&lt;br&gt;&lt;br&gt;Set all unused ports to access and shut them down:&nbsp;&lt;br&gt;&lt;br&gt;switchport mode access&nbsp;&lt;br&gt;&lt;br&gt;switchport access vlan 666&nbsp;&lt;br&gt;&lt;br&gt;shutdown</code></td>
+<td dir="auto"></td>
+</tr>
+<tr>
+<td dir="ltr">Private VLANs (if appropriate)</td>
+<td dir="ltr">Dictates how devices in a VLAN can communicate. Implementation of private VLANs is not appropriate for this deployment.</td>
+<td dir="ltr"><code>N/A</code></td>
+<td dir="ltr">N/A</td>
+</tr>
+</tbody>
+</table></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><label class="theme-toggle-container" for="theme-toggle-input" id=""><input class="theme-toggle-input" type="checkbox" id="theme-toggle-input"><div class="toggle-background"></div></label></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"><div class="graph-view-wrapper"><div class="feature-header"><div class="feature-title">Interactive Graph</div></div><div class="graph-view-placeholder">
 		<div class="graph-view-container">
 			<div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
 			<div class="graph-icon graph-global" role="button" aria-label="Global Graph" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-git-fork"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></div>
 			<canvas id="graph-canvas" class="hide" width="512px" height="512px"></canvas>
 		</div>
-		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item" data-depth="1"><a class="tree-item-self is-clickable" href="#Hardening_Checklist_0" data-path="#Hardening_Checklist_0"><div class="tree-item-inner heading-link" heading-name="Hardening Checklist">Hardening Checklist</div></a><div class="tree-item-children"></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>
+		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item" data-depth="1"><a class="tree-item-self is-clickable" href="#Hardening_Checklist_0" data-path="#Hardening_Checklist_0"><div class="tree-item-inner heading-link" heading-name="Hardening Checklist">Hardening Checklist</div></a><div class="tree-item-children"></div></div><div class="tree-item mod-collapsible" data-depth="1"><a class="tree-item-self is-clickable mod-collapsible" href="#Router_0" data-path="#Router_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="Router">Router</div></a><div class="tree-item-children"><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Base_config_0" data-path="#Base_config_0"><div class="tree-item-inner heading-link" heading-name="Base config">Base config</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Management_Plane_0" data-path="#Management_Plane_0"><div class="tree-item-inner heading-link" heading-name="Management Plane">Management Plane</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Control_and_Data_Plane_0" data-path="#Control_and_Data_Plane_0"><div class="tree-item-inner heading-link" heading-name="Control and Data Plane">Control and Data Plane</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item mod-collapsible" data-depth="1"><a class="tree-item-self is-clickable mod-collapsible" href="#Switch_0" data-path="#Switch_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="Switch">Switch</div></a><div class="tree-item-children"><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Base_Config_0" data-path="#Base_Config_0"><div class="tree-item-inner heading-link" heading-name="Base Config">Base Config</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Management_Plane_1" data-path="#Management_Plane_1"><div class="tree-item-inner heading-link" heading-name="Management Plane">Management Plane</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Control_and_Data_Plane_1" data-path="#Control_and_Data_Plane_1"><div class="tree-item-inner heading-link" heading-name="Control and Data Plane">Control and Data Plane</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="#Layer_2_Threat_Mitigation_0" data-path="#Layer_2_Threat_Mitigation_0"><div class="tree-item-inner heading-link" heading-name="Layer 2 Threat Mitigation">Layer 2 Threat Mitigation</div></a><div class="tree-item-children"></div></div></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>

@@ -1,4 +1,362 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[www.ryderfryling.ca]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>www.ryderfryling.ca</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 13 Oct 2026 13:35:01 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 13 Oct 2026 13:33:57 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Review]]></title><description><![CDATA[from test - work on this framework and legislation TCP the way flags
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[www.ryderfryling.ca]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>www.ryderfryling.ca</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 15 Oct 2026 14:27:26 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 15 Oct 2026 14:25:37 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Configs]]></title><description><![CDATA[
+<a data-href="OSPF Authentication - config" href="ict-225/configs/ospf-authentication-config.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF Authentication - config</a>
+<br><a data-href="NTP Authentication" href="ict-225/configs/ntp-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">NTP Authentication</a>
+<br><a data-href="SSH config" href="ict-225/configs/ssh-config.html" class="internal-link" target="_self" rel="noopener nofollow">SSH config</a>
+<br><a data-href="AAA conf - rename" href="ict-225/configs/aaa-conf-rename.html" class="internal-link" target="_self" rel="noopener nofollow">AAA conf - rename</a>
+<br><a data-href="DHCP snooping - Config" href="ict-225/configs/dhcp-snooping-config.html" class="internal-link" target="_self" rel="noopener nofollow">DHCP snooping - Config</a>
+<br><a data-href="Midterm Config" href="ict-225/configs/midterm-config.html" class="internal-link" target="_self" rel="noopener nofollow">Midterm Config</a>
+<br><a data-href="Access Port security config" href="ict-225/configs/access-port-security-config.html" class="internal-link" target="_self" rel="noopener nofollow">Access Port security config</a>
+<br><a data-href="Midterm prep config" href="ict-225/configs/midterm-prep-config.html" class="internal-link" target="_self" rel="noopener nofollow">Midterm prep config</a> ]]></description><link>ict-225/configs/configs.html</link><guid isPermaLink="false">ICT 225/Configs/Configs.md</guid><pubDate>Thu, 15 Oct 2026 14:17:39 GMT</pubDate></item><item><title><![CDATA[Midterm prep config]]></title><description><![CDATA[en
+config t
+router ospf 1
+area 0 authentication message-digest exit int range g0/0-1 ip ospf message-digest-key 1 md5 ICT225
+exit Banner motd cAuthorized administrative access only. All connections are logged and monitored.c username AdminLocal privilege 15 secret AdminLocal line con 0
+login local
+exec-timeout 1 30
+exit enable secret ICT service password-encryption security password min-length 10 en conf t secure boot-image secure boot-config router ospf 1
+area 0 authentication message-digest exit int range g0/0-1 ip ospf message-digest-key 1 md5 ICT225
+exit en conf t router ospf 1
+area 0 authentication message-digest exit int range g0/0-1 ip ospf message-digest-key 1 md5 ICT225
+exit en conf t spanning-tree mode rapid-pvst
+spanning-tree vlan 10,20 priority 4096 ip dhcp snooping
+ip dhcp snooping vlan 10,20 int range f0/22-24
+ip dhcp snooping trust
+exit int range f0/1-21,g0/1-2
+ip dhcp snooping limit rate 6 exit ip dhcp snooping verify mac ip arp inspection vlan 10,20 int range f0/22-24
+ip arp inspection trust
+exit ip arp inspection validate src-mac dst-mac ip en conf t vlan 666
+name BLACK-HOLE
+exit int range f0/3-21,g0/1-2
+switchport mode access switchport access vlan 666 shutdown exit spanning-tree mode rapid-pvst ip dhcp snooping
+ip dhcp snooping vlan 10,20 int range f0/22-24
+ip dhcp snooping trust
+exit int range f0/1-21,g0/1-2
+ip dhcp snooping limit rate 6 exit ip dhcp snooping verify mac int range f0/1-21
+switchport port-security
+switchport port-security mac sticky
+switchport port-security violation shutdown
+switchport port-security max 1
+switchport port-security aging time 30
+exit ip arp inspection vlan 10,20 int range f0/22-24
+ip arp inspection trust
+exit ip arp inspection validate src-mac dst-mac ip en
+config t ntp authenticate
+ntp authentication-key 1 md5 SynchedTime
+ntp trusted-key 1 ntp server 192.168.10.2 key 1 spanning-tree mode rapid-pvst
+spanning-tree portfast default spanning-tree portfast bpduguard default ip dhcp snooping
+ip dhcp snooping vlan 10,20 int range f0/3,f0/22-24
+ip dhcp snooping trust
+exit int range f0/1-2,f0/4-21,g0/1-2
+ip dhcp snooping limit rate 6 exit ip dhcp snooping verify mac ip arp inspection vlan 10,20 int range f0/3,f0/22-24
+ip arp inspection trust
+exit ip arp inspection validate src-mac dst-mac ip aaa new-model
+aaa authentication login radius-list group radius
+radius-server host 192.168.10.2 auth-port 1645 key ICT225 line con 0 radius-server host 192.168.10.2 auth-port 1645 key ICT225 exit ip domain-name ICT225
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2 ip domain-name example.com
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2 ip ssh time-out 60
+ip ssh authentication-retries 2 line vty 0 15
+login authentication radius-list
+transport input ssh exit login block-for 120 attempts 3 within 60 service timestamps log datetime msec
+logging on
+logging trap
+logging host 192.168.10.2
+login on-failure log
+login on-success log en conf t spanning-tree mode rapid-pvst
+spanning-tree vlan 10,20 priority 8192 ip dhcp snooping
+ip dhcp snooping vlan 10,20 int range f0/22-24
+ip dhcp snooping trust
+exit int range f0/1-21,g0/1-2
+ip dhcp snooping limit rate 6 exit ip dhcp snooping verify mac ip arp inspection vlan 10,20 int range f0/22-24
+ip arp inspection trust
+exit ip arp inspection validate src-mac dst-mac ip
+]]></description><link>ict-225/configs/midterm-prep-config.html</link><guid isPermaLink="false">ICT 225/Configs/Midterm prep config.md</guid><pubDate>Thu, 15 Oct 2026 03:27:31 GMT</pubDate></item><item><title><![CDATA[Hardening Checklist]]></title><link>ict-225/hardening-checklist.html</link><guid isPermaLink="false">ICT 225/Hardening Checklist.md</guid><pubDate>Thu, 15 Oct 2026 03:22:27 GMT</pubDate></item><item><title><![CDATA[Midterm Prep]]></title><description><![CDATA[to review DMZ STP terminology SSTP and other protocols Questions IOS image resilience commands (secure boot-imageand secure boot-config) vs copy run start –difference secure boot-image Secures the IOS image by hiding it in Flash memory. This can only be seen in ROMMON(Read only) mode. secure boot-config copy run start
+the difference one hides them in read only mode can ip ospf message-digest-key 1 md5 ICT225 be run on a range or does it have to be individual? it doesent matter way 1 - per int way 2 - int range way 3 - router config mode –globally the key has to be applied per interface – you can use range
+<a data-href="OSPF authentication" href="ict-225/ospf-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF authentication</a> &amp; <a data-href="OSPF Authentication - config" href="ict-225/configs/ospf-authentication-config.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF Authentication - config</a> Does anyone remember if there was an issue with using ‘spanning-tree vlan # root’ as opposed to setting the priority value? setting root auto calculates – sets priority relative to the other switches<br>
+<a data-href="STP Attacks" href="ict-225/attacks/stp-attacks.html" class="internal-link" target="_self" rel="noopener nofollow">STP Attacks</a><br>
+<a data-href="STP - Spanning Tree Protocol" href="ict-137/general-info/protocols/stp-spanning-tree-protocol.html" class="internal-link" target="_self" rel="noopener nofollow">STP - Spanning Tree Protocol</a> in the context of connections to routers, are they considered trunks for ARP inspection?
+they are trunks and should be trusted for both DHCP snooping and ARP. <br>
+<a data-href="DHCP snooping" href="ict-225/dhcp-snooping.html" class="internal-link" target="_self" rel="noopener nofollow">DHCP snooping</a> <br>
+<a data-href="DHCP snooping - Config" href="ict-225/configs/dhcp-snooping-config.html" class="internal-link" target="_self" rel="noopener nofollow">DHCP snooping - Config</a> <br>
+<a data-href="ARP Attacks" href="ict-225/attacks/arp-attacks.html" class="internal-link" target="_self" rel="noopener nofollow">ARP Attacks</a> <br><a href=".?query=tag:ROMON" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#ROMON">#ROMON</a><br>
+<img alt="Pasted image 20261014141302.png" src="images/pasted-image-20261014141302.png" target="_self">]]></description><link>ict-225/midterm-prep.html</link><guid isPermaLink="false">ICT 225/Midterm Prep.md</guid><pubDate>Wed, 14 Oct 2026 23:39:56 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Access Controlls]]></title><description><![CDATA[
+Logical Controls
+Administrative Controls
+Authentication, Authorization, Accounting
+Federated Identity Management (aka Single Sign-On - SSO)
+MFA
+NAC <a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a>
+Physical access controls are actual barriers deployed to prevent direct physical contact with systems. The goal is to prevent unauthorized users from gaining physical access to facilities, equipment and other organizational assets.For example, physical access control determines who can enter (or exit), where they can enter (or exit) and when they can enter (or exit). Logical access controls are the hardware and software solutions used to manage access to resources and systems. These technology-based solutions include tools and protocols that computer systems use for identification, authentication, authorization, and accountability. Encryption is the process of taking plaintext and creating ciphertext.
+Smart cards have an embedded microchip.
+Passwords are protected strings of characters.
+Biometrics are users' physical characteristics.
+Access control lists (ACLs) define the type of traffic allowed on a network.
+Protocols are sets of rules that govern the exchange of data between devices.
+Firewalls prevent unwanted network traffic.
+Routers connect at least two networks.
+Intrusion detection systems monitor a network for suspicious activities.
+Clipping levels are certain allowed thresholds for errors before triggering a red flag.
+This is where policies and procedures come in Administrative access controls are the policies and procedures defined by organizations to implement and enforce all aspects of controlling unauthorized access.
+Administrative controls focus on personnel and business practices. Policies are statements of intent.
+Procedures are the detailed steps required to perform an activity.
+Hiring practices define the steps an organization takes to find qualified employees.
+Background checks are a type of employee screening that includes information of past employment verification, credit history, and criminal history.
+Data classification categorizes data based on its sensitivity.
+Security training educates employees about the security policies at an organization.
+Reviews evaluate an employee's job performance. The concept of administrative access controls involves three security services: authentication, authorization, and accounting (AAA).
+These services provide the primary framework to control access, preventing unauthorized access to a computer, network, database, or other data resource. It verifies the identity of each user, to prevent unauthorized access.
+Users prove their identity with a username or ID.
+In addition, users need to verify their identity by providing one of the following: Something they know (such as a password)
+Something they have (such as a token or card)
+Something they are (such as a fingerprint)
+In the case of two factor authentication, which is increasingly becoming the norm, the system requires a combination of two of the above rather than just one to verify someone's identity. Nick C.
+"Going with Psychological acceptability because it mentions the user behavior as a problem. It also would violate/not adhere to the Economy of Mechanism principle Economy of mechanism is all about simplifying the design and implementation of security mechanisms.
+Because this password policy would be difficult for administrators to test as well. " It determines which resources users can access, along with the operations that users can perform.
+Some systems accomplish this by using an access control list, or an ACL. An ACL determines whether a user has certain access privileges once the user authenticates.
+It can also control when a user has access to a specific resource. It keeps track of what users do - including what they access, the amount of time they access resources, and any changes they make.
+Cybersecurity accounting services track each data transaction and provide auditing results.
+System administrators can set up computer policies to enable system auditing.
+Cybersecurity accounting tracks and monitors in real time.
+The concept of AAA is like using a credit card that identifies who can use it, how much that user
+can spend, and accounts for items or services the user purchased.<br><img alt="Pasted image 20260925135412.png" src="images/pasted-image-20260925135412.png" target="_self">
+<br><a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a> ]]></description><link>ict-225/access-controlls.html</link><guid isPermaLink="false">ICT 225/Access Controlls.md</guid><pubDate>Wed, 14 Oct 2026 21:48:28 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 225]]></title><description><![CDATA[
+<a data-href="Day one and two - 225" href="ict-225/day-one-and-two-225.html" class="internal-link" target="_self" rel="noopener nofollow">Day one and two - 225</a>
+<br><a data-href="Configs" href="ict-225/configs/configs.html" class="internal-link" target="_self" rel="noopener nofollow">Configs</a>
+<br><a data-href="Network Hardening" href="ict-225/network-hardening.html" class="internal-link" target="_self" rel="noopener nofollow">Network Hardening</a>
+<br><a data-href="CIA - when it comes to config" href="ict-225/cia-when-it-comes-to-config.html" class="internal-link" target="_self" rel="noopener nofollow">CIA - when it comes to config</a>
+<br><a data-href="Hashing" href="ict-225/hashing.html" class="internal-link" target="_self" rel="noopener nofollow">Hashing</a>
+<br><a data-href="Misc security" href="ict-225/misc-security.html" class="internal-link" target="_self" rel="noopener nofollow">Misc security</a>
+<br><a data-href="High Availability" href="ict-225/high-availability.html" class="internal-link" target="_self" rel="noopener nofollow">High Availability</a>
+<br><a data-href="Identifying vulnerubilities" href="ict-225/identifying-vulnerubilities.html" class="internal-link" target="_self" rel="noopener nofollow">Identifying vulnerubilities</a>
+<br><a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a>
+<br><a data-href="Network traffic" href="ict-225/network-traffic.html" class="internal-link" target="_self" rel="noopener nofollow">Network traffic</a>
+<br><a data-href="Legacy Protocols" href="ict-225/legacy-protocols.html" class="internal-link" target="_self" rel="noopener nofollow">Legacy Protocols</a>
+<br><a data-href="Access Controlls" href="ict-225/access-controlls.html" class="internal-link" target="_self" rel="noopener nofollow">Access Controlls</a>
+<br><a data-href="Hardening Checklist" href="ict-225/hardening-checklist.html" class="internal-link" target="_self" rel="noopener nofollow">Hardening Checklist</a>
+<br><a data-href="Cryptogaphy" href="ict-225/cryptogaphy.html" class="internal-link" target="_self" rel="noopener nofollow">Cryptogaphy</a>
+<br><a data-href="NTP and NTP Authentication" href="ict-225/ntp-and-ntp-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">NTP and NTP Authentication</a>
+<br><a data-href="Network Access Control - NAC" href="ict-225/network-access-control-nac.html" class="internal-link" target="_self" rel="noopener nofollow">Network Access Control - NAC</a>
+<br><a data-href="Syslog" href="ict-225/syslog.html" class="internal-link" target="_self" rel="noopener nofollow">Syslog</a>
+<br><a data-href="SNMP - remote management" href="ict-225/snmp-remote-management.html" class="internal-link" target="_self" rel="noopener nofollow">SNMP - remote management</a>
+<br><a data-href="OSPF authentication" href="ict-225/ospf-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF authentication</a>
+<br><a data-href="Triple A" href="ict-225/triple-a.html" class="internal-link" target="_self" rel="noopener nofollow">Triple A</a>
+<br><a data-href="Layer 2 Security" href="ict-225/layer-2-security.html" class="internal-link" target="_self" rel="noopener nofollow">Layer 2 Security</a>
+<br><a data-href="Lab 3 schpeal" href="ict-225/lab-3-schpeal.html" class="internal-link" target="_self" rel="noopener nofollow">Lab 3 schpeal</a>
+<br><a data-href="Auto Secure" href="ict-225/auto-secure.html" class="internal-link" target="_self" rel="noopener nofollow">Auto Secure</a>
+<br><a data-tooltip-position="top" aria-label="ICT 225/Show Commands" data-href="ICT 225/Show Commands" href="ict-225/show-commands.html" class="internal-link" target="_self" rel="noopener nofollow">Show Commands</a>
+<br><a data-href="Attacks" href="ict-225/attacks/attacks.html" class="internal-link" target="_self" rel="noopener nofollow">Attacks</a>
+<br><a data-tooltip-position="top" aria-label="ICT 225/Midterm Prep" data-href="ICT 225/Midterm Prep" href="ict-225/midterm-prep.html" class="internal-link" target="_self" rel="noopener nofollow">Midterm Prep</a> ]]></description><link>ict-225/ict-225.html</link><guid isPermaLink="false">ICT 225/ICT 225.md</guid><pubDate>Wed, 14 Oct 2026 21:45:06 GMT</pubDate></item><item><title><![CDATA[Pasted image 20261014141302]]></title><description><![CDATA[<img src="images/pasted-image-20261014141302.png" target="_self">]]></description><link>images/pasted-image-20261014141302.html</link><guid isPermaLink="false">images/Pasted image 20261014141302.png</guid><pubDate>Wed, 14 Oct 2026 21:13:02 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Cryptographic Solutions]]></title><description><![CDATA[Cryptography is the science of protecting information by converting readable data (plaintext) into unreadable data (ciphertext) so that only authorized users can access it. Cryptography helps organizations protect confidentiality, integrity, authentication, and non-repudiation. CompTIA Security+ SY0-701 Cert Guide and CompTIA Security+ SY0-701 Exam Cram, 7th Edition identify cryptography as a core Security+ domain.Cryptography provides:
+Confidentiality – Prevent unauthorized disclosure of information.
+Integrity – Ensure data is not altered.
+Authentication – Verify identity.
+Non-Repudiation – Prevent denial of an action or transaction
+Seealso
+<a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
+Public Key Infrastructure (PKI) is a framework that manages encryption keys and digital certificates to establish trust between users, devices, and services.PKI allows secure communications across untrusted networks such as the Internet.Certificate Authority (CA)
+A trusted organization that issues and validates digital certificates.• DigiCert
+• GlobalSign
+• Let's EncryptRegistration Authority (RA)
+Verifies the identity of users before certificates are issued.Certificate Repository
+Stores certificates for public access.A key that can be distributed publicly and is used for:
+• Encryption
+• Signature verificationA company web server publishes its public key through its SSL certificate.A secret key known only to the owner.
+Used for:
+• Decryption
+• Creating digital signaturesPrivate keys must never be shared.A secure method used by communicating parties to exchange encryption keys.Without secure key exchange:
+• Attackers may steal session keys.
+• Encrypted communication becomes vulnerable.• Diffie-Hellman (DH)
+• Elliptic Curve Diffie-Hellman (ECDHE)Key length refers to the number of bits within an encryption key.Longer keys increase the amount of work required to crack the encryption.• DES = 56-bit
+• AES-128 = 128-bit
+• AES-256 = 256-bit
+• RSA-2048 = 2048-bitExam Tip
+"Key Length = Work Factor"
+The larger the key, the harder it is to break.
+Uses the same key to encrypt and decrypt information.<br><img alt="Pasted image 20261009130607.png" src="images/pasted-image-20261009130607.png" target="_self"><br><img alt="Pasted image 20261009131150.png" src="images/pasted-image-20261009131150.png" target="_self">• Fast
+• Efficient
+• Suitable for large volumes of data• Key distribution challengeThe most widely used symmetric encryption standard.• BitLocker
+• VPNs
+• Wireless networks
+• Database encryptionWindows BitLocker uses AES to protect lost or stolen laptops.Uses two mathematically related keys:
+• Public Key
+• Private Key
+Public Key Encrypts
+Private Key Decrypts
+<br><img alt="Pasted image 20261009131202.png" src="images/pasted-image-20261009131202.png" target="_self">• Supports authentication
+• Enables digital signatures
+• Solves key sharing problem• Slower than symmetric encryptionA common asymmetric encryption algorithm used in:
+• HTTPS
+• Certificates
+• Digital signaturesData at rest means data stored on a device.Encrypts an entire drive.BitLocker• Lost laptops
+• Stolen hard drivesEncrypts a specific disk partition.Encrypts a logical storage volume.Encrypts individual files.Encrypting confidential HR documents.Encrypts all information stored in a database.Encrypts selected records inside a database.Encrypt only SIN or credit card fields.Hashing transforms data into a fixed-length value called a hash.Important
+Hashing is NOT encryption.
+Hashes cannot be reversed. Integrity Verification Detect file modification. Password Storage Stores passwords securely. Digital Signatures Creates message digest. A secure hashing algorithm commonly used today.Microsoft publishes file hashes for software verification.Random data added to a password before hashing.Protects against:
+Rainbow table attacks
+Precomputed hash attacks
+<br><img alt="Pasted image 20261014125105.png" src="images/pasted-image-20261014125105.png" target="_self">
+Two users with the same password will have different hashes.Increases hashing complexity to make password cracking slower.• PBKDF2
+• bcrypt
+• scrypt
+• Argon2Makes brute-force attacks significantly harder.A cryptographic method that proves:
+Sender identity
+Integrity
+Non-repudiation
+<br><img alt="Pasted image 20261014125722.png" src="images/pasted-image-20261014125722.png" target="_self">
+Recipient verifies using sender's public key.Microsoft digitally signs Windows updates.A digital document that associates an identity with a public key.• Subject Name
+• Public Key
+• Issuer
+• Serial Number
+• Expiration Date
+• Digital SignatureA request submitted to a CA for a new certificate.A certificate created and signed by the same organization using it.FreeNot trusted automatically.Protects multiple subdomains using one certificate.google.comProtects:<br>
+• <a data-tooltip-position="top" aria-label="http://www.google.com" rel="noopener nofollow" class="external-link is-unresolved" href="http://www.google.com" target="_self">www.google.com</a>
+• accounts.google.comSometimes certificates become compromised and must be revoked.A list of revoked certificates maintained by a CA.May not always contain real-time information.Provides real-time certificate validation.More current than CRLs.A hardware security chip that stores cryptographic keys securely.• BitLocker
+• Secure Boot
+• Windows HelloKeys are stored in hardware rather than software.A specialized security appliance that protects highly sensitive cryptographic keys.• Banks
+• Cloud providers
+• Certificate AuthoritiesProvides the highest level of key protection.Replaces sensitive data with a non-sensitive token.Credit Card:
+4111-2222-3333-4444
+Becomes
+TKN-98A7F32Original data is removed from systems.Conceals portions of sensitive information while preserving usability.SIN:
+123-456-789
+Displayed:
+XXX-XXX-789The practice of hiding information inside another file.• Hiding text in an image
+• Hiding information in audio files
+• Embedding data inside videosEncryption hides meaning.
+Steganography hides existence.A distributed ledger that stores data in cryptographically linked blocks.• Decentralized
+• Immutable
+• Tamper-resistant
+• Transparent• Cryptocurrency
+• Smart contracts
+• Supply chain trackingWhen a student visits Brightspace or online banking:
+The server presents its certificate.
+The browser validates the certificate using the CA.
+Public key cryptography establishes trust.
+Symmetric AES encryption secures the communication session.
+Hashing verifies data integrity.
+Digital signatures verify authenticity.
+This demonstrates PKI, certificates, encryption, hashing, and digital signatures
+working together to protect internet communications.
+Remember the following:
+AES (Advanced Encryption Standard) = Symmetric Encryption
+RSA (Rivest–Shamir–Adleman)= Asymmetric Encryption
+SHA-256 (Secure Hash Algorithm) = Hashing
+PKI (Public Key Infrastructure )= Trust Framework
+CA (Certificate Authorities) = Issues Certificates
+CSR (Certificate Signing Request) = Certificate Request
+Digital Signature = Integrity + Authentication + Non-Repudiation
+TPM (Trusted Platform Module )= Secure Key Chip
+HSM (Hardware security Module )= Enterprise Key Protection
+Salt = Protect Password Hashes
+OCSP(Online Certificate Status Protocol) = Real-Time Certificate Checking
+CRL = Revoked Certificate List
+Tokenization = Replace Sensitive Data
+Data Masking = Hide Sensitive Data
+Cryptography is the foundation of modern cybersecurity. Security professionals must choose the correct cryptographic solution based on the objective: confidentiality (encryption), integrity (hashing), authentication (certificates), or non-repudiation (digital signatures).]]></description><link>ict-218/cryptographic-solutions.html</link><guid isPermaLink="false">ICT 218/Cryptographic Solutions.md</guid><pubDate>Wed, 14 Oct 2026 20:19:20 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261014125722]]></title><description><![CDATA[<img src="images/pasted-image-20261014125722.png" target="_self">]]></description><link>images/pasted-image-20261014125722.html</link><guid isPermaLink="false">images/Pasted image 20261014125722.png</guid><pubDate>Wed, 14 Oct 2026 19:57:22 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261014125105]]></title><description><![CDATA[<img src="images/pasted-image-20261014125105.png" target="_self">]]></description><link>images/pasted-image-20261014125105.html</link><guid isPermaLink="false">images/Pasted image 20261014125105.png</guid><pubDate>Wed, 14 Oct 2026 19:51:05 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Midterm prep]]></title><description><![CDATA[
+Oct 16 - Networking
+Oct 19 - Networking / Review
+Oct 21 - Review
+Oct 22 - Midterm Exam 9:00 -11:00
+2 hours – 4 for me Oct 23 - Midterm Debrief
+This is an open-resource exam meaning that permitted resources are:
+Course text books, text from OC library Lecture notes and / or slides
+Your engineering journals
+Hyper-V
+Microsoft Learn
+Following resources are strictly prohibited and may not be used (off limits):
+Web-based browser searches (ie. Google, Bing, etc)
+Generative AI (ie. ChatGPT, OpenAI, etc)
+Cell phone use
+Translators (ie French to English)
+Headphones to listen to music are permitted during the exam.
+However, cell phones must be put away for the entire exam
+ie. can't change to a new song, pause, etc.Approach and prepare for the Midterm / Final Exam as if it were closed-resource, like last year.
+Use your open resources to verify your answers.
+The resources are intended to help you with verification - wording / explanationsThe questions are designed to apply your knowledge from the readings / lectures / labs.
+Not assessing your ability to just look up an answer.
+You will not have enough time to search for every single answer for the questions.Questions on lectures, readings, and labsLab questions could be:
+relationships between parent and child disks
+the purpose of Sysprep (ie what does it do?)
+Sysprep settings
+differences between .wim files (ie boot and install)
+WDS / PXE Boots / DHCP
+Section 1) Multiple Choice
+~Approx 35 to 45 Questions
+~Approx 1 minute each question
+Section 2) Extended Answer
+9 questions, 3 Tiers - 30 total possible marks
+Choose any 3 from any Tier!
+Choose ONLY 3! If you complete more, only the first 3 will be graded!
+Approx 15 - 20 minutes each question
+Point-form is acceptable!
+each tier is weighted differently 1st Tier Basic
+Comprehension-based questions Fundamental topics (ie Hypervisor Types, virtual switches, labs, etc.)
+List and Explain
+General descriptions 6 possible marks each
+Questions 1, 2, and 3
+if you only do this tier you get 60% on this section and a pass 2nd Tier Intermediate
+Analysis-based questions Intermediate topics (ie Hypervisor architectures, Hypervisor Settings, VM Behaviours, etc.)
+List and Explain
+General descriptions
+Screenshots and scenario-based
+Breakdown and differentiate
+Compare and contrast 8 possible marks each
+Questions 4, 5, and 6
+Max of 80% in this section 3rd Tier Advanced
+Evaluation-based questions List and Explain
+General descriptions
+Screenshots and scenario-based
+Breakdown and differentiate
+Compare and contrast
+Advanced topics and theory (ie Ballooning, NUMA, VMBus, etc.)
+Screenshots and scenario-based
+Assess potential impacts of a decisions (ie. a feature is enabled, what happens?)
+Critical analysis of decisions
+What would you do and defend your decision and action 10 possible marks each
+Questions 7, 8, and 9 ]]></description><link>ict-211/midterm-prep.html</link><guid isPermaLink="false">ICT 211/Midterm prep.md</guid><pubDate>Wed, 14 Oct 2026 18:29:10 GMT</pubDate></item><item><title><![CDATA[Users, Groups and Permmisions]]></title><description><![CDATA[
+User Owner vs Group Owner
+Can use "Is -In" to show UID and GID in the list
+<img alt="Pasted image 20261014100737.png" src="images/pasted-image-20261014100737.png" target="_self">
+User data stored in /etc/passwd Password information stored in /etc/shadow this file is hashes UID: user ID, unique number for a user
+GID: group ID, unique number for a group
+Command for showing UID and group information id Command for showing groups groups Caution
+Try not to directly edit the files above –you can seriously mess-up the system.
+Use commands. Use "chown" Command
+To change user ownership chown [user] [path]
+E.g: chown sysadmin ~/Documents To change user and group ownership chown [user]:[group] [path]
+E.g: chown sysadmin:adm ~/Documents To change just group chown :[group] [path]
+E.g: chown :adm ~/documents File type : regular file d : directory
+L: symbolic link (points to another file like shortcuts)
+s : socket
+p : pipe
+b : block file (communicate with hardware)
+<br>c : character file (communicate with hardware)<img alt="Pasted image 20261014102142.png" src="images/pasted-image-20261014102142.png" target="_self"> Permissions r: Read permission
+w: Write permission
+x: Execute permission
+-: No permission each set of 3 represents the following in order: user group
+other<br>
+<img alt="Pasted image 20261014102214.png" src="images/pasted-image-20261014102214.png" target="_self"> Command format `chmod [permission group]+/-/=[permission type] path is add permission is remove permission = is set permission Examples: `chmod g+w doc.txt add write permission to group `chmod o-rw script.sh remove read write permission to other `chmod a=rw music.mp3 assign read write permission to all user groups `chmod u+w,g-x test.sh add write to user, remove execute from group
+use the comma (,) to separate Imagine 'rwx' as a binary number r --: 100 -&gt; 4 in Decimal
+-w -: 010 &gt; 2 in Decimal
+-- x: 001 -&gt; 1 in Decimal
+---: 000 -&gt; 0 in Decimal All cases represent by numeric method r w x : 111 &gt; 7 in Decimal &gt; Read + Write + Execute
+r w - : 110 &gt; 6 in Decimal &gt; Read + Write
+r - x : 101 &gt; 5 in Decimal &gt; Read + Execute
+r - - : 100 &gt; 4 in Decimal &gt; Read w x : 011 &gt; 3 in Decimal &gt; Execute + Write w - : 010 &gt; 2 in Decimal &gt; Write x : 001 &gt; 1 in Decimal &gt; Execute : 000 &gt; 0 in Decimal &gt; No Permission Examples: `chmod 754 doc.txt (set permission rwxr-xr -- to doc.txt) `chmod 550 script.sh (set permission r-xr-x --- to script.sh) `chmod 664 music.mp3 (set rw-rw-r -- to music.mp3) ]]></description><link>ict-219/users,-groups-and-permmisions.html</link><guid isPermaLink="false">ICT 219/Users, Groups and Permmisions.md</guid><pubDate>Wed, 14 Oct 2026 17:48:17 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261014102214]]></title><description><![CDATA[<img src="images/pasted-image-20261014102214.png" target="_self">]]></description><link>images/pasted-image-20261014102214.html</link><guid isPermaLink="false">images/Pasted image 20261014102214.png</guid><pubDate>Wed, 14 Oct 2026 17:22:14 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261014102142]]></title><description><![CDATA[<img src="images/pasted-image-20261014102142.png" target="_self">]]></description><link>images/pasted-image-20261014102142.html</link><guid isPermaLink="false">images/Pasted image 20261014102142.png</guid><pubDate>Wed, 14 Oct 2026 17:21:42 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261014100737]]></title><description><![CDATA[<img src="images/pasted-image-20261014100737.png" target="_self">]]></description><link>images/pasted-image-20261014100737.html</link><guid isPermaLink="false">images/Pasted image 20261014100737.png</guid><pubDate>Wed, 14 Oct 2026 17:07:37 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[ICT 212]]></title><description><![CDATA[
+<a data-href="ICT 212/Day one" href="ict-212/day-one.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 212/Day one</a>
+<br><a data-href="Day 2 - 212" href="ict-212/day-2-212.html" class="internal-link" target="_self" rel="noopener nofollow">Day 2 - 212</a>
+<br><a data-href="Reconnaissance" href="ict-212/reconnaissance.html" class="internal-link" target="_self" rel="noopener nofollow">Reconnaissance</a>
+<br><a data-href="OSINT Tools" href="ict-212/osint-tools.html" class="internal-link" target="_self" rel="noopener nofollow">OSINT Tools</a>
+<br><a data-href="Network scanning" href="ict-212/network-scanning.html" class="internal-link" target="_self" rel="noopener nofollow">Network scanning</a>
+<br><a data-href="N-Map" href="ict-212/n-map.html" class="internal-link" target="_self" rel="noopener nofollow">N-Map</a>
+<br><a data-href="Wireshark" href="ict-212/wireshark.html" class="internal-link" target="_self" rel="noopener nofollow">Wireshark</a> <br><a data-href="what is an asset" href="ict-212/definitions/what-is-an-asset.html" class="internal-link" target="_self" rel="noopener nofollow">what is an asset</a>
+<br><a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
+<br><a data-tooltip-position="top" aria-label="The Technology Triangle.canvas" data-href="The Technology Triangle.canvas" href="ict-212/definitions/the-technology-triangle.html" class="internal-link" target="_self" rel="noopener nofollow">The Technology Triangle</a>
+<br><a data-href="TCP - 3 way handshake" href="ict-137/general-info/protocols/tcp-3-way-handshake.html" class="internal-link" target="_self" rel="noopener nofollow">TCP - 3 way handshake</a>
+<br><a data-href="3 States of Data" href="ict-212/definitions/3-states-of-data.html" class="internal-link" target="_self" rel="noopener nofollow">3 States of Data</a>
+<br><a data-href="Ethical hacking" href="ict-212/definitions/ethical-hacking.html" class="internal-link" target="_self" rel="noopener nofollow">Ethical hacking</a>
+<br><a data-href="Cybersecurity Kill Chain" href="ict-212/definitions/cybersecurity-kill-chain.html" class="internal-link" target="_self" rel="noopener nofollow">Cybersecurity Kill Chain</a>
+<br><a data-href="Types of hackers" href="ict-212/definitions/types-of-hackers.html" class="internal-link" target="_self" rel="noopener nofollow">Types of hackers</a>
+<br><a data-href="OSINT" href="ict-212/definitions/osint.html" class="internal-link" target="_self" rel="noopener nofollow">OSINT</a> ]]></description><link>ict-212/ict-212.html</link><guid isPermaLink="false">ICT 212/ICT 212.md</guid><pubDate>Wed, 14 Oct 2026 17:05:17 GMT</pubDate></item><item><title><![CDATA[Review]]></title><description><![CDATA[from test - work on this framework and legislation TCP the way flags
 port numbers Wireshark packet structure what is enumeration week 1-2, ch 1. Understanding Ethical Hacking
 Information Security
 The CIA triad Types of cyberattacks
@@ -56,43 +414,11 @@ Hacktivist - political or social motivation
 Insider - revenge, financial motivation, negligence or accidental actions
 State-sponsored attacker - espionage, intelligence or national objectives
 Script kiddie - curiosity, challenge or status, often using existing tools Different threat actors can use similar techniques for very different reasons.
-]]></description><link>ict-212/definitions/types-of-hackers.html</link><guid isPermaLink="false">ICT 212/Definitions/Types of hackers.md</guid><pubDate>Tue, 13 Oct 2026 00:08:37 GMT</pubDate></item><item><title><![CDATA[ICT 225]]></title><description><![CDATA[
-<a data-href="Day one and two - 225" href="ict-225/day-one-and-two-225.html" class="internal-link" target="_self" rel="noopener nofollow">Day one and two - 225</a>
-<br><a data-href="Configs" href="ict-225/configs/configs.html" class="internal-link" target="_self" rel="noopener nofollow">Configs</a>
-<br><a data-href="Network Hardening" href="ict-225/network-hardening.html" class="internal-link" target="_self" rel="noopener nofollow">Network Hardening</a>
-<br><a data-href="CIA - when it comes to config" href="ict-225/cia-when-it-comes-to-config.html" class="internal-link" target="_self" rel="noopener nofollow">CIA - when it comes to config</a>
-<br><a data-href="Hashing" href="ict-225/hashing.html" class="internal-link" target="_self" rel="noopener nofollow">Hashing</a>
-<br><a data-href="Misc security" href="ict-225/misc-security.html" class="internal-link" target="_self" rel="noopener nofollow">Misc security</a>
-<br><a data-href="High Availability" href="ict-225/high-availability.html" class="internal-link" target="_self" rel="noopener nofollow">High Availability</a>
-<br><a data-href="Identifying vulnerubilities" href="ict-225/identifying-vulnerubilities.html" class="internal-link" target="_self" rel="noopener nofollow">Identifying vulnerubilities</a>
-<br><a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a>
-<br><a data-href="Network traffic" href="ict-225/network-traffic.html" class="internal-link" target="_self" rel="noopener nofollow">Network traffic</a>
-<br><a data-href="Legacy Protocols" href="ict-225/legacy-protocols.html" class="internal-link" target="_self" rel="noopener nofollow">Legacy Protocols</a>
-<br><a data-href="Access Controlls" href="ict-225/access-controlls.html" class="internal-link" target="_self" rel="noopener nofollow">Access Controlls</a>
-<br><a data-href="Hardening Checklist" href="ict-225/hardening-checklist.html" class="internal-link" target="_self" rel="noopener nofollow">Hardening Checklist</a>
-<br><a data-href="Cryptogaphy" href="ict-225/cryptogaphy.html" class="internal-link" target="_self" rel="noopener nofollow">Cryptogaphy</a>
-<br><a data-href="NTP and NTP Authentication" href="ict-225/ntp-and-ntp-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">NTP and NTP Authentication</a>
-<br><a data-href="Network Access Control - NAC" href="ict-225/network-access-control-nac.html" class="internal-link" target="_self" rel="noopener nofollow">Network Access Control - NAC</a>
-<br><a data-href="Syslog" href="ict-225/syslog.html" class="internal-link" target="_self" rel="noopener nofollow">Syslog</a>
-<br><a data-href="SNMP - remote management" href="ict-225/snmp-remote-management.html" class="internal-link" target="_self" rel="noopener nofollow">SNMP - remote management</a>
-<br><a data-href="OSPF authentication" href="ict-225/ospf-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF authentication</a>
-<br><a data-href="Triple A" href="ict-225/triple-a.html" class="internal-link" target="_self" rel="noopener nofollow">Triple A</a>
-<br><a data-href="Layer 2 Security" href="ict-225/layer-2-security.html" class="internal-link" target="_self" rel="noopener nofollow">Layer 2 Security</a>
-<br><a data-href="Lab 3 schpeal" href="ict-225/lab-3-schpeal.html" class="internal-link" target="_self" rel="noopener nofollow">Lab 3 schpeal</a>
-<br><a data-href="Auto Secure" href="ict-225/auto-secure.html" class="internal-link" target="_self" rel="noopener nofollow">Auto Secure</a>
-<br><a data-tooltip-position="top" aria-label="ICT 225/Show Commands" data-href="ICT 225/Show Commands" href="ict-225/show-commands.html" class="internal-link" target="_self" rel="noopener nofollow">Show Commands</a>
-<br><a data-href="Attacks" href="ict-225/attacks/attacks.html" class="internal-link" target="_self" rel="noopener nofollow">Attacks</a> ]]></description><link>ict-225/ict-225.html</link><guid isPermaLink="false">ICT 225/ICT 225.md</guid><pubDate>Tue, 13 Oct 2026 00:00:48 GMT</pubDate></item><item><title><![CDATA[Attacks]]></title><description><![CDATA[
+]]></description><link>ict-212/definitions/types-of-hackers.html</link><guid isPermaLink="false">ICT 212/Definitions/Types of hackers.md</guid><pubDate>Tue, 13 Oct 2026 00:08:37 GMT</pubDate></item><item><title><![CDATA[Attacks]]></title><description><![CDATA[
 <a data-href="ARP Attacks" href="ict-225/attacks/arp-attacks.html" class="internal-link" target="_self" rel="noopener nofollow">ARP Attacks</a>
 <br><a data-href="Recon Attacks" href="ict-225/attacks/recon-attacks.html" class="internal-link" target="_self" rel="noopener nofollow">Recon Attacks</a>
 <br><a data-href="STP Attacks" href="ict-225/attacks/stp-attacks.html" class="internal-link" target="_self" rel="noopener nofollow">STP Attacks</a>
-]]></description><link>ict-225/attacks/attacks.html</link><guid isPermaLink="false">ICT 225/Attacks/Attacks.md</guid><pubDate>Tue, 13 Oct 2026 00:00:40 GMT</pubDate></item><item><title><![CDATA[Configs]]></title><description><![CDATA[
-<a data-href="OSPF Authentication - config" href="ict-225/configs/ospf-authentication-config.html" class="internal-link" target="_self" rel="noopener nofollow">OSPF Authentication - config</a>
-<br><a data-href="NTP Authentication" href="ict-225/configs/ntp-authentication.html" class="internal-link" target="_self" rel="noopener nofollow">NTP Authentication</a>
-<br><a data-href="SSH config" href="ict-225/configs/ssh-config.html" class="internal-link" target="_self" rel="noopener nofollow">SSH config</a>
-<br><a data-href="AAA conf - rename" href="ict-225/configs/aaa-conf-rename.html" class="internal-link" target="_self" rel="noopener nofollow">AAA conf - rename</a>
-<br><a data-href="DHCP snooping - Config" href="ict-225/configs/dhcp-snooping-config.html" class="internal-link" target="_self" rel="noopener nofollow">DHCP snooping - Config</a>
-<br><a data-href="Midterm Config" href="ict-225/configs/midterm-config.html" class="internal-link" target="_self" rel="noopener nofollow">Midterm Config</a>
-<br><a data-href="Access Port security config" href="ict-225/configs/access-port-security-config.html" class="internal-link" target="_self" rel="noopener nofollow">Access Port security config</a> ]]></description><link>ict-225/configs/configs.html</link><guid isPermaLink="false">ICT 225/Configs/Configs.md</guid><pubDate>Mon, 12 Oct 2026 23:06:37 GMT</pubDate></item><item><title><![CDATA[Midterm Config]]></title><description><![CDATA[<img alt="Pasted image 20261012160603.png" src="images/pasted-image-20261012160603.png" target="_self">**R1 en
+]]></description><link>ict-225/attacks/attacks.html</link><guid isPermaLink="false">ICT 225/Attacks/Attacks.md</guid><pubDate>Tue, 13 Oct 2026 00:00:40 GMT</pubDate></item><item><title><![CDATA[Midterm Config]]></title><description><![CDATA[<img alt="Pasted image 20261012160603.png" src="images/pasted-image-20261012160603.png" target="_self">**R1 en
 config t
 router ospf 1
 area 0 authentication message-digest exit int range g0/0-1 ip ospf message-digest-key 1 md5 ICT225
@@ -250,8 +576,7 @@ The password for priv exec mode will bypass priv level of the account when enter
 ISets up a delay between successive attempts to login. login delay 15 Plain text !login quiet-mode Defines an ACL to authorize connections when access is blocked by the login block-for.
 Quiet mode disables connections but not traffic. ip access-list standard QUIET-MODE-LIST permit host [ip of host that can access while in quiet mode - 10.30.0.50] login quiet-mode access-class QUITE-MODE-LIST Seealso
 <a data-href="Lab 3 schpeal" href="ict-225/lab-3-schpeal.html" class="internal-link" target="_self" rel="noopener nofollow">Lab 3 schpeal</a>
-]]></description><link>ict-225/configs/ssh-config.html</link><guid isPermaLink="false">ICT 225/Configs/SSH config.md</guid><pubDate>Mon, 12 Oct 2026 21:22:46 GMT</pubDate></item><item><title><![CDATA[Midterm Prep]]></title><description><![CDATA[to review DMZ STP terminology Questions IOS image resilience commands (secure boot-imageand secure boot-config) vs copy run start –difference can ip ospf message-digest-key 1 md5 ICT225 be run on a range or does it have to be individual? Does anyone remember if there was an issue with using ‘spanning-tree vlan # root’ as opposed to setting the priority value?
-in the context of connections to routers, are they considered trunks for ARP inspection? ]]></description><link>ict-225/midterm-prep.html</link><guid isPermaLink="false">ICT 225/Midterm Prep.md</guid><pubDate>Mon, 12 Oct 2026 20:37:15 GMT</pubDate></item><item><title><![CDATA[Access Port security config]]></title><description><![CDATA[int f0/3
+]]></description><link>ict-225/configs/ssh-config.html</link><guid isPermaLink="false">ICT 225/Configs/SSH config.md</guid><pubDate>Mon, 12 Oct 2026 21:22:46 GMT</pubDate></item><item><title><![CDATA[Access Port security config]]></title><description><![CDATA[int f0/3
 switchport port-security
 switchport port-security mac [MAC Add]
 switchport port-security max [max # of MAC Adds ]
@@ -512,104 +837,7 @@ of a host)!Must have DHCP snooping enabled before enabling DAI (Dynamic ARP Insp
 !List all 3 if you want all 3 checksip arp inspection validate src-mac dst-mac ipoptions of places to check scr-mac - checks source mac dst-mac - check destination mac ip - checks ip address
 Important This command will be overwritten every time you input it. – This works just like allowing VLAN’s on trunks. DHCP snooping must be configed first trusted ports are trunks or ports that are connected to a DHCP server just need to outline trusted ports ip arp inspection vlan [VLANs] int range [ints]
 ip arp inspection trust
-exit ip arp inspection validate [options - src-mac dst-mac ip] ]]></description><link>ict-225/attacks/arp-attacks.html</link><guid isPermaLink="false">ICT 225/Attacks/ARP Attacks.md</guid><pubDate>Fri, 09 Oct 2026 20:57:12 GMT</pubDate></item><item><title><![CDATA[Pasted image 20261009135003]]></title><description><![CDATA[<img src="images/pasted-image-20261009135003.png" target="_self">]]></description><link>images/pasted-image-20261009135003.html</link><guid isPermaLink="false">images/Pasted image 20261009135003.png</guid><pubDate>Fri, 09 Oct 2026 20:50:03 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Cryptographic Solutions]]></title><description><![CDATA[Cryptography is the science of protecting information by converting readable data (plaintext) into unreadable data (ciphertext) so that only authorized users can access it. Cryptography helps organizations protect confidentiality, integrity, authentication, and non-repudiation. CompTIA Security+ SY0-701 Cert Guide and CompTIA Security+ SY0-701 Exam Cram, 7th Edition identify cryptography as a core Security+ domain.Cryptography provides:
-Confidentiality – Prevent unauthorized disclosure of information.
-Integrity – Ensure data is not altered.
-Authentication – Verify identity.
-Non-Repudiation – Prevent denial of an action or transaction
-Seealso
-<a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
-Public Key Infrastructure (PKI) is a framework that manages encryption keys and digital certificates to establish trust between users, devices, and services.PKI allows secure communications across untrusted networks such as the Internet.Certificate Authority (CA)
-A trusted organization that issues and validates digital certificates.• DigiCert
-• GlobalSign
-• Let's EncryptRegistration Authority (RA)
-Verifies the identity of users before certificates are issued.Certificate Repository
-Stores certificates for public access.A key that can be distributed publicly and is used for:
-• Encryption
-• Signature verificationA company web server publishes its public key through its SSL certificate.A secret key known only to the owner.
-Used for:
-• Decryption
-• Creating digital signaturesPrivate keys must never be shared.A secure method used by communicating parties to exchange encryption keys.Without secure key exchange:
-• Attackers may steal session keys.
-• Encrypted communication becomes vulnerable.• Diffie-Hellman (DH)
-• Elliptic Curve Diffie-Hellman (ECDHE)Key length refers to the number of bits within an encryption key.Longer keys increase the amount of work required to crack the encryption.• DES = 56-bit
-• AES-128 = 128-bit
-• AES-256 = 256-bit
-• RSA-2048 = 2048-bitExam Tip
-"Key Length = Work Factor"
-The larger the key, the harder it is to break.
-Uses the same key to encrypt and decrypt information.<br><img alt="Pasted image 20261009130607.png" src="images/pasted-image-20261009130607.png" target="_self"><br><img alt="Pasted image 20261009131150.png" src="images/pasted-image-20261009131150.png" target="_self">• Fast
-• Efficient
-• Suitable for large volumes of data• Key distribution challengeThe most widely used symmetric encryption standard.• BitLocker
-• VPNs
-• Wireless networks
-• Database encryptionWindows BitLocker uses AES to protect lost or stolen laptops.Uses two mathematically related keys:
-• Public Key
-• Private Key
-Public Key Encrypts
-Private Key Decrypts
-<br><img alt="Pasted image 20261009131202.png" src="images/pasted-image-20261009131202.png" target="_self">• Supports authentication
-• Enables digital signatures
-• Solves key sharing problem• Slower than symmetric encryptionA common asymmetric encryption algorithm used in:
-• HTTPS
-• Certificates
-• Digital signatures
-Data-at-Rest Encryption
-Data at rest means data stored on a device.
-Full Disk Encryption (FDE)
-Definition
-Encrypts an entire drive.
-Example
-BitLocker
-Protects Against
-• Lost laptops
-• Stolen hard drives
-Partition Encryption
-Definition
-Encrypts a specific disk partition.
-Volume Encryption
-Definition
-Encrypts a logical storage volume.
-File Encryption
-Definition
-Encrypts individual files.
-Example
-Encrypting confidential HR documents.
-Database Encryption
-Definition
-Encrypts all information stored in a database.
-Record Encryption
-Definition
-Encrypts selected records inside a database.
-Example
-Encrypt only SIN or credit card fields.
-Hashing
-Definition
-Hashing transforms data into a fixed-length value called a hash.
-Important
-Hashing is NOT encryption.
-Hashes cannot be reversed.
-Purposes
-Integrity Verification
-Detect file modification.
-Password Storage
-Stores passwords securely.
-Digital Signatures
-Creates message digest.
-SHA-256
-Definition
-A secure hashing algorithm commonly used today.
-Real-World Example
-Microsoft publishes file hashes for software verification.
-Salting
-Definition
-Random data added to a password before hashing.
-Purpose
-Protects against:
-• Rainbow table attacks
-• Precomputed hash attacks
-Example
-]]></description><link>ict-218/cryptographic-solutions.html</link><guid isPermaLink="false">ICT 218/Cryptographic Solutions.md</guid><pubDate>Fri, 09 Oct 2026 20:12:24 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009131202]]></title><description><![CDATA[<img src="images/pasted-image-20261009131202.png" target="_self">]]></description><link>images/pasted-image-20261009131202.html</link><guid isPermaLink="false">images/Pasted image 20261009131202.png</guid><pubDate>Fri, 09 Oct 2026 20:12:02 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009131150]]></title><description><![CDATA[<img src="images/pasted-image-20261009131150.png" target="_self">]]></description><link>images/pasted-image-20261009131150.html</link><guid isPermaLink="false">images/Pasted image 20261009131150.png</guid><pubDate>Fri, 09 Oct 2026 20:11:50 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009131136]]></title><description><![CDATA[<img src="images/pasted-image-20261009131136.png" target="_self">]]></description><link>images/pasted-image-20261009131136.html</link><guid isPermaLink="false">images/Pasted image 20261009131136.png</guid><pubDate>Fri, 09 Oct 2026 20:11:36 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009130607]]></title><description><![CDATA[<img src="images/pasted-image-20261009130607.png" target="_self">]]></description><link>images/pasted-image-20261009130607.html</link><guid isPermaLink="false">images/Pasted image 20261009130607.png</guid><pubDate>Fri, 09 Oct 2026 20:06:07 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Memory]]></title><description><![CDATA[Virtual locations (addresses) of memory on a virtual machine map to physical
+exit ip arp inspection validate [options - src-mac dst-mac ip] ]]></description><link>ict-225/attacks/arp-attacks.html</link><guid isPermaLink="false">ICT 225/Attacks/ARP Attacks.md</guid><pubDate>Fri, 09 Oct 2026 20:57:12 GMT</pubDate></item><item><title><![CDATA[Pasted image 20261009135003]]></title><description><![CDATA[<img src="images/pasted-image-20261009135003.png" target="_self">]]></description><link>images/pasted-image-20261009135003.html</link><guid isPermaLink="false">images/Pasted image 20261009135003.png</guid><pubDate>Fri, 09 Oct 2026 20:50:03 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009131202]]></title><description><![CDATA[<img src="images/pasted-image-20261009131202.png" target="_self">]]></description><link>images/pasted-image-20261009131202.html</link><guid isPermaLink="false">images/Pasted image 20261009131202.png</guid><pubDate>Fri, 09 Oct 2026 20:12:02 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009131150]]></title><description><![CDATA[<img src="images/pasted-image-20261009131150.png" target="_self">]]></description><link>images/pasted-image-20261009131150.html</link><guid isPermaLink="false">images/Pasted image 20261009131150.png</guid><pubDate>Fri, 09 Oct 2026 20:11:50 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009131136]]></title><description><![CDATA[<img src="images/pasted-image-20261009131136.png" target="_self">]]></description><link>images/pasted-image-20261009131136.html</link><guid isPermaLink="false">images/Pasted image 20261009131136.png</guid><pubDate>Fri, 09 Oct 2026 20:11:36 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20261009130607]]></title><description><![CDATA[<img src="images/pasted-image-20261009130607.png" target="_self">]]></description><link>images/pasted-image-20261009130607.html</link><guid isPermaLink="false">images/Pasted image 20261009130607.png</guid><pubDate>Fri, 09 Oct 2026 20:06:07 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Memory]]></title><description><![CDATA[Virtual locations (addresses) of memory on a virtual machine map to physical
 locations (addresses) of memory on the physical hostConfiguring Memory for virtual machines can be either
 Static/Statically assigned Dynamic/Dynamically Assigned changes depending on workload <img alt="Pasted image 20261007114741.png" src="images/pasted-image-20261007114741.png" target="_self">
 this is how much RAM is needed from the host to start up. it is how much you set. same for both static and dynamic Static Memory is "fixed." The VM will always have access to this set value of Memory regardless of whether it is actually used or not.Always use Static Memory for Database (aka SQL) Servers! opManager is a Database Server!Note
@@ -1053,22 +1281,7 @@ Regular backups are essential for protecting company data.
 <br><a data-href="Linux" href="linux-personal-notes/linux.html" class="internal-link" target="_self" rel="noopener nofollow">Linux</a>
 <br><a data-href="Variables" href="ict-219/variables.html" class="internal-link" target="_self" rel="noopener nofollow">Variables</a>
 <br><a data-href="Apache 2 install" href="ict-219/apache-2-install.html" class="internal-link" target="_self" rel="noopener nofollow">Apache 2 install</a>
-<br><a data-href="Quoting and control statments" href="ict-219/quoting-and-control-statments.html" class="internal-link" target="_self" rel="noopener nofollow">Quoting and control statments</a> ]]></description><link>ict-219/ict-219.html</link><guid isPermaLink="false">ICT 219/ICT 219.md</guid><pubDate>Tue, 06 Oct 2026 00:24:09 GMT</pubDate></item><item><title><![CDATA[ICT 212]]></title><description><![CDATA[
-<a data-href="ICT 212/Day one" href="ict-212/day-one.html" class="internal-link" target="_self" rel="noopener nofollow">ICT 212/Day one</a>
-<br><a data-href="Day 2 - 212" href="ict-212/day-2-212.html" class="internal-link" target="_self" rel="noopener nofollow">Day 2 - 212</a>
-<br><a data-href="Recconnasance" href="ict-212/recconnasance.html" class="internal-link" target="_self" rel="noopener nofollow">Recconnasance</a>
-<br><a data-href="OSINT Tools" href="ict-212/osint-tools.html" class="internal-link" target="_self" rel="noopener nofollow">OSINT Tools</a>
-<br><a data-href="Network scanning" href="ict-212/network-scanning.html" class="internal-link" target="_self" rel="noopener nofollow">Network scanning</a>
-<br><a data-href="N-Map" href="ict-212/n-map.html" class="internal-link" target="_self" rel="noopener nofollow">N-Map</a>
-<br><a data-href="Wireshark" href="ict-212/wireshark.html" class="internal-link" target="_self" rel="noopener nofollow">Wireshark</a> <br><a data-href="what is an asset" href="ict-212/definitions/what-is-an-asset.html" class="internal-link" target="_self" rel="noopener nofollow">what is an asset</a>
-<br><a data-href="CIA Triad" href="ict-212/definitions/cia-triad.html" class="internal-link" target="_self" rel="noopener nofollow">CIA Triad</a>
-<br><a data-tooltip-position="top" aria-label="The Technology Triangle.canvas" data-href="The Technology Triangle.canvas" href="ict-212/definitions/the-technology-triangle.html" class="internal-link" target="_self" rel="noopener nofollow">The Technology Triangle</a>
-<br><a data-href="TCP - 3 way handshake" href="ict-137/general-info/protocols/tcp-3-way-handshake.html" class="internal-link" target="_self" rel="noopener nofollow">TCP - 3 way handshake</a>
-<br><a data-href="3 States of Data" href="ict-212/definitions/3-states-of-data.html" class="internal-link" target="_self" rel="noopener nofollow">3 States of Data</a>
-<br><a data-href="Ethical hacking" href="ict-212/definitions/ethical-hacking.html" class="internal-link" target="_self" rel="noopener nofollow">Ethical hacking</a>
-<br><a data-href="Cybersecurity Kill Chain" href="ict-212/definitions/cybersecurity-kill-chain.html" class="internal-link" target="_self" rel="noopener nofollow">Cybersecurity Kill Chain</a>
-<br><a data-href="Types of hackers" href="ict-212/definitions/types-of-hackers.html" class="internal-link" target="_self" rel="noopener nofollow">Types of hackers</a>
-<br><a data-href="OSINT" href="ict-212/definitions/osint.html" class="internal-link" target="_self" rel="noopener nofollow">OSINT</a> ]]></description><link>ict-212/ict-212.html</link><guid isPermaLink="false">ICT 212/ICT 212.md</guid><pubDate>Tue, 06 Oct 2026 00:23:27 GMT</pubDate></item><item><title><![CDATA[Pasted image 20261005141634]]></title><description><![CDATA[<img src="images/pasted-image-20261005141634.png" target="_self">]]></description><link>images/pasted-image-20261005141634.html</link><guid isPermaLink="false">images/Pasted image 20261005141634.png</guid><pubDate>Mon, 05 Oct 2026 21:16:34 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Show Commands]]></title><description><![CDATA[Show Int status
+<br><a data-href="Quoting and control statments" href="ict-219/quoting-and-control-statments.html" class="internal-link" target="_self" rel="noopener nofollow">Quoting and control statments</a> ]]></description><link>ict-219/ict-219.html</link><guid isPermaLink="false">ICT 219/ICT 219.md</guid><pubDate>Tue, 06 Oct 2026 00:24:09 GMT</pubDate></item><item><title><![CDATA[Pasted image 20261005141634]]></title><description><![CDATA[<img src="images/pasted-image-20261005141634.png" target="_self">]]></description><link>images/pasted-image-20261005141634.html</link><guid isPermaLink="false">images/Pasted image 20261005141634.png</guid><pubDate>Mon, 05 Oct 2026 21:16:34 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Show Commands]]></title><description><![CDATA[Show Int status
 shows VLAN and other info about the port ]]></description><link>ict-225/show-commands.html</link><guid isPermaLink="false">ICT 225/Show Commands.md</guid><pubDate>Mon, 05 Oct 2026 21:08:12 GMT</pubDate></item><item><title><![CDATA[General info]]></title><description><![CDATA[
 <a data-href="Terminology" href="ict-137/general-info/terminology.html" class="internal-link" target="_self" rel="noopener nofollow">Terminology</a>
 <br><a data-href="Subnet charts" href="ict-137/general-info/subnet-charts.html" class="internal-link" target="_self" rel="noopener nofollow">Subnet charts</a>
@@ -1625,45 +1838,7 @@ Manage method list order behavior to prevent lockout while maintaining security
 Practical
 Enable the aaa new-model commands, create local users with privilege levels, build a login method list and bind it to console/VTY/AUX lines
 local authenticationen conf t username [username - bob] privilege [level - 15] secret [password - P@ssw0rd] aaa new-model aaa authentication login{ default| [list-name - bob] } { methodl [ method2 configure radius server multiple servers Direct accounting logs to the AAA server and/or Syslog, ensuring timestamps are accurate (NTP) for forensic integrity
-]]></description><link>ict-225/week-3-readings.html</link><guid isPermaLink="false">ICT 225/week 3 readings.md</guid><pubDate>Mon, 28 Sep 2026 02:36:35 GMT</pubDate></item><item><title><![CDATA[Access Controlls]]></title><description><![CDATA[
-Logical Controls
-Administrative Controls
-Authentication, Authorization, Accounting
-Federated Identity Management (aka Single Sign-On - SSO)
-MFA
-NAC <a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a>
-Physical access controls are actual barriers deployed to prevent direct physical contact with systems. The goal is to prevent unauthorized users from gaining physical access to facilities, equipment and other organizational assets.For example, physical access control determines who can enter (or exit), where they can enter (or exit) and when they can enter (or exit). Logical access controls are the hardware and software solutions used to manage access to resources and systems. These technology-based solutions include tools and protocols that computer systems use for identification, authentication, authorization, and accountability. Encryption is the process of taking plaintext and creating ciphertext.
-Smart cards have an embedded microchip.
-Passwords are protected strings of characters.
-Biometrics are users' physical characteristics.
-Access control lists (ACLs) define the type of traffic allowed on a network.
-Protocols are sets of rules that govern the exchange of data between devices.
-Firewalls prevent unwanted network traffic.
-Routers connect at least two networks.
-Intrusion detection systems monitor a network for suspicious activities.
-Clipping levels are certain allowed thresholds for errors before triggering a red flag.
-This is where policies and procedures come in Administrative access controls are the policies and procedures defined by organizations to implement and enforce all aspects of controlling unauthorized access.
-Administrative controls focus on personnel and business practices. Policies are statements of intent.
-Procedures are the detailed steps required to perform an activity.
-Hiring practices define the steps an organization takes to find qualified employees.
-Background checks are a type of employee screening that includes information of past employment verification, credit history, and criminal history.
-Data classification categorizes data based on its sensitivity.
-Security training educates employees about the security policies at an organization.
-Reviews evaluate an employee's job performance. The concept of administrative access controls involves three security services: authentication, authorization, and accounting (AAA).
-These services provide the primary framework to control access, preventing unauthorized access to a computer, network, database, or other data resource. It verifies the identity of each user, to prevent unauthorized access.
-Users prove their identity with a username or ID.
-In addition, users need to verify their identity by providing one of the following: Something they know (such as a password)
-Something they have (such as a token or card)
-Something they are (such as a fingerprint)
-In the case of two factor authentication, which is increasingly becoming the norm, the system requires a combination of two of the above rather than just one to verify someone's identity. It determines which resources users can access, along with the operations that users can perform.
-Some systems accomplish this by using an access control list, or an ACL. An ACL determines whether a user has certain access privileges once the user authenticates.
-It can also control when a user has access to a specific resource. It keeps track of what users do - including what they access, the amount of time they access resources, and any changes they make.
-Cybersecurity accounting services track each data transaction and provide auditing results.
-System administrators can set up computer policies to enable system auditing.
-Cybersecurity accounting tracks and monitors in real time.
-The concept of AAA is like using a credit card that identifies who can use it, how much that user
-can spend, and accounts for items or services the user purchased.<br><img alt="Pasted image 20260925135412.png" src="images/pasted-image-20260925135412.png" target="_self">
-<br><a data-href="Physical Security" href="ict-225/physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a> ]]></description><link>ict-225/access-controlls.html</link><guid isPermaLink="false">ICT 225/Access Controlls.md</guid><pubDate>Sat, 26 Sep 2026 22:11:52 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Physical Security]]></title><description><![CDATA[
+]]></description><link>ict-225/week-3-readings.html</link><guid isPermaLink="false">ICT 225/week 3 readings.md</guid><pubDate>Mon, 28 Sep 2026 02:36:35 GMT</pubDate></item><item><title><![CDATA[Physical Security]]></title><description><![CDATA[
 Barricades or fencing are often the first things that come to mind when thinking about types of physical security.
 In many situations, they are the outermost layer of defense and the most visible. All physical barriers should meet specific design requirements and material specifications. Perimeter fence system
 Security gate system
@@ -1808,7 +1983,7 @@ Administrators interact with the device through protocols and services.
 SSH, Telnet, HTTP/HTTPS, SNMP, RADIUS, NTP, SYSLOG A network administrator establishes an SSH session with a switch.
 Network Administrator uses HTTPS with a web-browser to a pfSense firewall to adjust an ACL.
 A SolarWinds monitoring server executes a ping (ICMP) to a router every 15 minutes to poll whether the device is up or down. this is because monitoring is considered management Summary
-this is based on the intention of the traffic. basically anything used by admins or data that would be on the management VLAN. The plane that the traffic belongs to is based on the intention of the data. They are more logical planes then literal planes. ]]></description><link>ict-225/network-traffic.html</link><guid isPermaLink="false">ICT 225/Network traffic.md</guid><pubDate>Wed, 23 Sep 2026 21:20:15 GMT</pubDate></item><item><title><![CDATA[Hardening Checklist]]></title><link>ict-225/hardening-checklist.html</link><guid isPermaLink="false">ICT 225/Hardening Checklist.md</guid><pubDate>Wed, 23 Sep 2026 21:03:20 GMT</pubDate></item><item><title><![CDATA[Group policy]]></title><description><![CDATA[• Group Policy is the primary security management tool in Active Directory environments.
+this is based on the intention of the traffic. basically anything used by admins or data that would be on the management VLAN. The plane that the traffic belongs to is based on the intention of the data. They are more logical planes then literal planes. ]]></description><link>ict-225/network-traffic.html</link><guid isPermaLink="false">ICT 225/Network traffic.md</guid><pubDate>Wed, 23 Sep 2026 21:20:15 GMT</pubDate></item><item><title><![CDATA[Group policy]]></title><description><![CDATA[• Group Policy is the primary security management tool in Active Directory environments.
 • Security settings can be deployed from a central location.
 • GPOs help enforce organizational security policies.
 • Security controls can be applied to thousands of devices simultaneously.
@@ -2051,7 +2226,7 @@ Is the source trustworthy?
 Does another source confirm it?
 How does it relate to other findings?
 Is it relevant to the authorized objective? Reconnaissance is not just collecting data - it is connecting and validating information.
-]]></description><link>ict-212/osint-tools.html</link><guid isPermaLink="false">ICT 212/OSINT Tools.md</guid><pubDate>Wed, 23 Sep 2026 16:43:17 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260923093755]]></title><description><![CDATA[<img src="images/pasted-image-20260923093755.png" target="_self">]]></description><link>images/pasted-image-20260923093755.html</link><guid isPermaLink="false">images/Pasted image 20260923093755.png</guid><pubDate>Wed, 23 Sep 2026 16:37:55 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Recconnasance]]></title><description><![CDATA[
+]]></description><link>ict-212/osint-tools.html</link><guid isPermaLink="false">ICT 212/OSINT Tools.md</guid><pubDate>Wed, 23 Sep 2026 16:43:17 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Pasted image 20260923093755]]></title><description><![CDATA[<img src="images/pasted-image-20260923093755.png" target="_self">]]></description><link>images/pasted-image-20260923093755.html</link><guid isPermaLink="false">images/Pasted image 20260923093755.png</guid><pubDate>Wed, 23 Sep 2026 16:37:55 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Reconnaissance]]></title><description><![CDATA[
 Overview of reconnaissance
 Passive vs active reconnaissance
 Ethics, authorization and scope
@@ -2084,7 +2259,7 @@ Passive research can still collect personal, sensitive or organizational informa
 Active reconnaissance may interact with systems and generate traffic.
 The method, purpose, authorization and scope all matter.
 An ethical hacker should collect only what is necessary for the authorized objective.
-]]></description><link>ict-212/recconnasance.html</link><guid isPermaLink="false">ICT 212/Recconnasance.md</guid><pubDate>Wed, 23 Sep 2026 16:29:10 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[OSINT]]></title><description><![CDATA[. OSINT = Open-Source Intelligence.
+]]></description><link>ict-212/reconnaissance.html</link><guid isPermaLink="false">ICT 212/Reconnaissance.md</guid><pubDate>Wed, 23 Sep 2026 16:29:10 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;.&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[OSINT]]></title><description><![CDATA[. OSINT = Open-Source Intelligence.
 <a rel="noopener nofollow" class="external-link is-unresolved" href="https://osintframework.com" target="_self">https://osintframework.com</a>
 . It is intelligence collected and analyzed from publicly available information.· Possible sources: websites, search engines, social media, news, public
 documents, DNS/domain information, job postings, maps and public code
